@@ -178,6 +178,7 @@ img {
   grid-template-columns: repeat(4, 1fr);
   border: 0.5px solid var(--color-hero-line);
   max-width: 720px;
+  margin: 0 auto;
 }
 
 .case-hero__meta-cell {
@@ -414,8 +415,8 @@ img {
 .hero-b__panel {
   display: grid;
   grid-template-columns: 1fr 220px;
-  width: 100%;
   max-width: 720px;
+  margin: 0 auto;
   border: 0.5px solid var(--color-hero-line);
   animation: hero-rise var(--duration-slow) var(--easing-standard) 200ms both;
 }
@@ -632,7 +633,7 @@ img {
 .quote-panel {
   position: relative;
   max-width: 640px;
-  width: 100%;
+  margin: 0 auto;
   border: 0.5px solid var(--color-hero-line);
   padding: var(--space-48) var(--space-32);
   display: flex;
