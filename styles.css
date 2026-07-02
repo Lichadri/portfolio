@@ -252,6 +252,25 @@ img {
   line-height: var(--line-height-sm);
 }
 
+.case-section__tokens {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 0.5px solid var(--color-hero-line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0.45;
+}
+
+@media (max-width: 768px) {
+  .case-section__tokens {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
 .case-image {
   position: relative;
   border: 0.5px solid var(--color-hero-line);
