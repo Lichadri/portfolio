@@ -60,4 +60,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---- Parallax sutil en las cards del hero ----
+  // Referencia: la sensación de profundidad de MetaMask/Swag, traducida a
+  // un mousemove simple. Se desactiva en touch (no hay cursor) y en
+  // prefers-reduced-motion (accesibilidad > efecto).
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+  const heroStage = document.querySelector('.hero__stage');
+  const parallaxEls = document.querySelectorAll('[data-parallax]');
+
+  if (heroStage && parallaxEls.length && !prefersReducedMotion && !isTouchDevice) {
+    let rafId = null;
+
+    heroStage.addEventListener('mousemove', (e) => {
+      const rect = heroStage.getBoundingClientRect();
+      const relX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      const relY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        parallaxEls.forEach((el) => {
+          const depth = parseFloat(el.getAttribute('data-depth')) || 10;
+          el.style.setProperty('--parallax-x', `${relX * depth}px`);
+          el.style.setProperty('--parallax-y', `${relY * depth}px`);
+        });
+      });
+    });
+
+    heroStage.addEventListener('mouseleave', () => {
+      parallaxEls.forEach((el) => {
+        el.style.setProperty('--parallax-x', '0px');
+        el.style.setProperty('--parallax-y', '0px');
+      });
+    });
+  }
+
 });
