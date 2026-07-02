@@ -23,16 +23,6 @@
   --color-mint-badge: #c9fdc0;      /* fondo de badges de categoría */
   --color-link: #0d2960;            /* NUEVO TOKEN — antes hardcodeado, ahora semántico */
 
-  /* ---- Bento palette (sección Herramientas) ----
-     Extensión pastel de la misma familia que mint-light/mint-badge,
-     no colores nuevos sin relación. Todos con suficiente contraste
-     para texto oscuro encima (secondary-900). */
-  --color-bento-mint: #effcf0;
-  --color-bento-lime: #e4fbc4;
-  --color-bento-blue: #e7f0fd;
-  --color-bento-peach: #fdeee3;
-  --color-bento-lavender: #f1ecfb;
-
   /* ---- Tipografía / Familias ---- */
   --font-title: 'Space Grotesk', sans-serif;   /* H1, H2 */
   --font-subtitle: 'Space Grotesk', sans-serif; /* H3, títulos de card */
