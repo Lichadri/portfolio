@@ -635,7 +635,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 180px;
+  height: 140px;
 }
 
 .project-card__image-wrapper img {
@@ -704,14 +704,14 @@ img {
 .bento-cell__mark {
   font-family: var(--font-subtitle);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-lg);
   color: var(--color-secondary-900);
   opacity: 0.85;
 }
 
 .bento-cell__logo {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   opacity: 0.85;
 }
 
