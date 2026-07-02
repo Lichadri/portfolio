@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FNA — Adriana Bautista</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar">
+    <div class="navbar__logo">AB</div>
+    <nav>
+      <ul class="navbar__menu">
+        <li><a href="proyectos.html" class="navbar__link navbar__link--active">Proyectos</a></li>
+        <li><a href="index.html" class="navbar__link">Sobre mi</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===================== BREADCRUMB ===================== -->
+  <nav class="case-breadcrumb">
+    <a href="proyectos.html">Proyectos</a> / FNA
+  </nav>
+
+  <!-- ===================== CASE HERO ===================== -->
+  <section class="case-hero">
+    <span class="case-hero__eyebrow" data-reveal>case study</span>
+    <h1 class="case-hero__title" data-reveal>FNA</h1>
+
+    <div class="case-hero__meta" data-reveal>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Cliente</span>
+        <span class="case-hero__meta-value">FNA Milano Forlanini</span>
+      </div>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Categoría</span>
+        <span class="case-hero__meta-value">Diseño de sistema</span>
+      </div>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Rol</span>
+        <span class="case-hero__meta-value">UI/UX Designer</span>
+      </div>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Fecha</span>
+        <span class="case-hero__meta-value">2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CASE BODY ===================== -->
+  <main class="case-body">
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Contexto de negocio</span>
+      <h2 class="case-section__title">El problema</h2>
+      <p>
+        La plataforma fnamilanoforlanini.com no tenía versión mobile,
+        perdiendo gran parte del tráfico que llegaba desde ese canal. Lideré
+        el rediseño completo de la experiencia, adaptándola a mobile y
+        desktop por primera vez.
+      </p>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Mi rol</span>
+      <h2 class="case-section__title">UI/UX Designer — diseño de sistema y componentes</h2>
+      <p>
+        Trabajé sola en diseño con un plazo ajustado, cubriendo desde la
+        arquitectura de pantallas hasta la documentación del sistema para
+        que el equipo pudiera escalar sin rehacer cada patrón.
+      </p>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Decisión de sistema</span>
+      <h2 class="case-section__title">Una librería de componentes, no solo pantallas</h2>
+      <p>
+        Construí un set de componentes reutilizables: selector de idioma con
+        variantes de estado, navbar responsive (mobile/desktop), widget de
+        chat y carrusel de testimonios — documentando estilos, paleta y
+        tipografía. Prioricé primero los componentes de mayor reúso, dado el
+        plazo ajustado del proyecto.
+      </p>
+      <div class="case-image">
+        <img src="https://www.figma.com/api/mcp/asset/ca029a15-9509-45b3-88f2-a23f4d6b02af" alt="Mockup del rediseño de FNA" />
+      </div>
+      <p class="case-image__caption">Mockup de la plataforma rediseñada</p>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Restricción real</span>
+      <h2 class="case-section__title">Plazo ajustado, equipo de una sola persona</h2>
+      <p>
+        Sin equipo de diseño adicional ni tiempo para explorar múltiples
+        direcciones visuales, prioricé sistematizar primero los patrones que
+        se repetían más veces en el sitio (navegación, botones, cards de
+        contenido) antes que los casos de borde.
+      </p>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Resultado</span>
+      <h2 class="case-section__title">Sin medición formal — aprendizaje documentado</h2>
+      <p>
+        El proyecto no llegó a medirse formalmente tras el lanzamiento. La
+        siguiente iteración debería trackear conversión mobile vs. desktop
+        para validar el impacto real de tener, por primera vez, una versión
+        mobile de la plataforma.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <section class="footer-cta">
+    <div class="footer-cta__eyebrow">contacto</div>
+    "Gracias por tu interés en mi trabajo, sigamos en contacto"
+  </section>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <div class="navbar__logo" style="color: var(--color-secondary-10); margin-bottom: var(--space-16);">AB</div>
+        <p class="footer__bio">
+          Mi pasión es la democratización de servicios e información a través
+          del diseño, creando experiencias significativas que impulsan el
+          éxito de las empresas en línea.
+        </p>
+      </div>
+      <div>
+        <p class="footer__contact-title">Contact</p>
+        <p class="footer__contact-item"><a href="tel:+51989952907">+51 989952907</a></p>
+        <p class="footer__contact-item"><a href="mailto:lichibautista@gmail.com">lichibautista@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer__divider"></div>
+    <p class="footer__copyright">Copyright© 2026 Portfolio designed by me</p>
+  </footer>
+
+  <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
+
+  <script src="main.js"></script>
+</body>
+</html>

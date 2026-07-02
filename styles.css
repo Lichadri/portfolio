@@ -119,7 +119,176 @@ img {
 }
 
 /* ==========================================================================
-   HERO — dirección B: spec-sheet editorial, no "SaaS friendly".
+   CASE STUDY — componentes reutilizables para las 5 páginas de detalle
+   (fna.html, inkabank.html, agros.html, ama.html, banbif.html). Mismo
+   lenguaje que el resto del sitio: hueso/tinta, bordes finos, mono labels,
+   corner marks. Un solo set de clases para las 5 páginas.
+   ========================================================================== */
+
+.case-breadcrumb {
+  padding: var(--space-16) var(--space-96) 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
+}
+
+.case-breadcrumb a {
+  border-bottom: 1px solid transparent;
+}
+
+.case-breadcrumb a:hover {
+  border-bottom-color: var(--color-secondary-900);
+}
+
+.case-hero {
+  background: var(--color-hero-bg);
+  padding: var(--space-24) var(--space-96) var(--space-48);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.case-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+}
+
+.case-hero__title {
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-xl);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.case-hero__meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 0.5px solid var(--color-hero-line);
+  max-width: 720px;
+}
+
+.case-hero__meta-cell {
+  padding: var(--space-16);
+  border-right: 0.5px solid var(--color-hero-line);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.case-hero__meta-cell:last-child {
+  border-right: none;
+}
+
+.case-hero__meta-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
+}
+
+.case-hero__meta-value {
+  font-family: var(--font-subtitle);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.case-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-48) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.case-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-top: var(--space-32);
+  border-top: 0.5px solid var(--color-hero-line);
+}
+
+.case-section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.case-section__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-600);
+}
+
+.case-section__label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent-lime);
+}
+
+.case-section__title {
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.case-section p {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-sm);
+}
+
+.case-image {
+  position: relative;
+  border: 0.5px solid var(--color-hero-line);
+  padding: var(--space-16);
+  display: flex;
+  justify-content: center;
+  background: var(--color-hero-surface);
+}
+
+.case-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.case-image__caption {
+  margin-top: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-align: center;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .case-breadcrumb,
+  .case-hero {
+    padding-left: var(--space-16);
+    padding-right: var(--space-16);
+  }
+  .case-hero__meta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .case-hero__meta-cell:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+
    Referencia: inspector de Figma / redlines. Paleta hueso+tinta propia
    de esta sección (--color-hero-*), separada de la paleta mint/lima que
    usa el resto del sitio — ver nota de sistema sobre extender esto a

@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // logo del navbar que ya está ahí). Usa IntersectionObserver sobre el
   // propio hero: cuando el hero sale de vista, se muestra el avatar.
   const floatingAvatar = document.getElementById('floating-avatar');
-  const heroSection = document.querySelector('.hero-b');
+  const heroSection = document.querySelector('.hero-b, .case-hero');
 
   if (floatingAvatar && heroSection) {
     if ('IntersectionObserver' in window) {
