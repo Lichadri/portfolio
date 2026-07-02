@@ -95,4 +95,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---- Avatar flotante persistente ----
+  // Aparece después de pasar el hero (no antes — sería redundante con el
+  // logo del navbar que ya está ahí). Usa IntersectionObserver sobre el
+  // propio hero: cuando el hero sale de vista, se muestra el avatar.
+  const floatingAvatar = document.getElementById('floating-avatar');
+  const heroSection = document.querySelector('.hero');
+
+  if (floatingAvatar && heroSection) {
+    if ('IntersectionObserver' in window) {
+      const avatarObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            floatingAvatar.classList.toggle('is-visible', !entry.isIntersecting);
+          });
+        },
+        { threshold: 0 }
+      );
+      avatarObserver.observe(heroSection);
+    } else {
+      floatingAvatar.classList.add('is-visible');
+    }
+
+    floatingAvatar.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 });

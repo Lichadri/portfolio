@@ -191,11 +191,38 @@
 
   <!-- ===================== HERRAMIENTAS ===================== -->
   <section class="tools-section">
-    <h2 class="tools-section__title">Herramientas que uso</h2>
-    <!-- Collage de herramientas — mantener como imagen única exportada
-         del Figma es razonable aquí: es puramente decorativo/ilustrativo,
-         no necesita ser HTML granular. -->
-    <img src="https://www.figma.com/api/mcp/asset/450732ee-e0fb-4edb-b075-f66bd041f31f" alt="Collage de herramientas: Figma, InVision, Hotjar, Google Analytics, Condens, Maze" style="max-width: 600px;" />
+    <h2 class="tools-section__title" data-reveal>Herramientas que uso</h2>
+
+    <!-- Bento grid: lettermarks abstractos, no logos reales de terceros
+         (evita depender de assets externos Y de reproducir marca ajena).
+         Grid con 2 celdas grandes + 4 chicas — jerarquía visual real,
+         no todas iguales. -->
+    <div class="bento-grid">
+      <div class="bento-cell bento-cell--large" style="background: var(--color-bento-lavender);" data-reveal>
+        <span class="bento-cell__mark">Fi</span>
+        <span class="bento-cell__label">Figma</span>
+      </div>
+      <div class="bento-cell" style="background: var(--color-bento-mint);" data-reveal>
+        <span class="bento-cell__mark">In</span>
+        <span class="bento-cell__label">InVision</span>
+      </div>
+      <div class="bento-cell" style="background: var(--color-bento-peach);" data-reveal>
+        <span class="bento-cell__mark">Hj</span>
+        <span class="bento-cell__label">Hotjar</span>
+      </div>
+      <div class="bento-cell bento-cell--large" style="background: var(--color-bento-blue);" data-reveal>
+        <span class="bento-cell__mark">Ga</span>
+        <span class="bento-cell__label">Google Analytics</span>
+      </div>
+      <div class="bento-cell" style="background: var(--color-bento-lime);" data-reveal>
+        <span class="bento-cell__mark">Cn</span>
+        <span class="bento-cell__label">Condens</span>
+      </div>
+      <div class="bento-cell" style="background: var(--color-bento-lavender);" data-reveal>
+        <span class="bento-cell__mark">Mz</span>
+        <span class="bento-cell__label">Maze</span>
+      </div>
+    </div>
   </section>
 
   <!-- ===================== FOOTER ===================== -->
@@ -222,6 +249,13 @@
     <div class="footer__divider"></div>
     <p class="footer__copyright">Copyright© 2026 Portfolio designed by me</p>
   </footer>
+
+  <!-- ===================== ÍCONO FLOTANTE PERSISTENTE =====================
+       Rol del "personaje" (referencia: zorro de MetaMask), resuelto como
+       avatar abstracto (tu monograma), no ilustración de mascota — decisión
+       tomada explícitamente para evitar depender de un asset que no existe.
+       Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
+  <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
   <script src="main.js"></script>
 </body>

@@ -191,12 +191,12 @@ img {
 .hero__stage {
   position: relative;
   width: 100%;
-  max-width: 720px;
-  min-height: 380px;
+  max-width: 460px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: var(--space-24) 0;
+  margin: var(--space-32) 0;
 }
 
 .hero__image-wrapper {
@@ -239,7 +239,7 @@ img {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md);
   color: var(--color-secondary-900);
-  max-width: 160px;
+  max-width: 128px;
 }
 
 .hero__card-icon {
@@ -598,6 +598,71 @@ img {
 }
 
 /* ==========================================================================
+   BENTO GRID — reemplaza el collage de imagen. Mismo lenguaje de
+   microinteracción que .project-card (lift + sombra) por consistencia
+   de sistema, no un patrón de hover nuevo.
+   ========================================================================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 140px;
+  gap: var(--space-16);
+  width: 100%;
+  max-width: 720px;
+}
+
+.bento-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-16);
+  border-radius: var(--radius-md);
+  transition: transform var(--duration-base) var(--easing-standard),
+              box-shadow var(--duration-base) var(--easing-standard);
+}
+
+.bento-cell--large {
+  grid-column: span 2;
+}
+
+.bento-cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(40, 37, 38, 0.16);
+}
+
+.bento-cell__mark {
+  font-family: var(--font-subtitle);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  color: var(--color-secondary-900);
+  opacity: 0.85;
+}
+
+.bento-cell__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary-900);
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 120px;
+  }
+  .bento-cell--large {
+    grid-column: span 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-cell {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 
@@ -687,6 +752,76 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-link);
   outline-offset: 2px;
+}
+
+/* ==========================================================================
+   FLOATING AVATAR — avatar abstracto persistente (rol de "personaje",
+   sin ilustración de mascota). Oculto hasta pasar el hero; JS agrega
+   .is-visible. Idle animation sutil para que se sienta "vivo" sin
+   competir con el contenido.
+   ========================================================================== */
+
+.floating-avatar {
+  position: fixed;
+  bottom: var(--space-24);
+  right: var(--space-24);
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-secondary-900);
+  color: var(--color-accent-lime);
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  box-shadow: 0 12px 24px -8px rgba(40, 37, 38, 0.32);
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--easing-standard),
+              transform var(--duration-base) var(--easing-emphasis);
+  animation: avatar-idle 3.2s var(--easing-standard) infinite;
+  animation-play-state: paused;
+}
+
+.floating-avatar.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  animation-play-state: running;
+}
+
+.floating-avatar:hover,
+.floating-avatar:focus-visible {
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.05);
+}
+
+@keyframes avatar-idle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-6px) scale(1); }
+}
+
+@media (max-width: 768px) {
+  .floating-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-md);
+    bottom: var(--space-16);
+    right: var(--space-16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-avatar {
+    animation: none;
+    transition: opacity var(--duration-fast) linear;
+  }
+  .floating-avatar:hover {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
