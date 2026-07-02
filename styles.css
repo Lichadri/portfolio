@@ -1,0 +1,604 @@
+/* ==========================================================================
+   STYLES.CSS
+   Consume tokens.css. Nomenclatura BEM para que cada bloque sea reconocible
+   como componente reutilizable, no como estilo suelto por página.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=DM+Sans:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-secondary-900);
+  background: var(--color-secondary-10);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--easing-standard);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL — utilidad reusable, no un efecto por sección distinto.
+   Un solo patrón (fade + subtle rise) aplicado con delay escalonado via
+   variable CSS, activado por IntersectionObserver en main.js.
+   ========================================================================== */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-slow) var(--easing-standard),
+              transform var(--duration-slow) var(--easing-standard);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-24) var(--space-96);
+  background: var(--color-secondary-10);
+}
+
+.navbar__logo {
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-lg);
+}
+
+.navbar__menu {
+  display: flex;
+  gap: var(--space-32);
+  list-style: none;
+}
+
+.navbar__link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  padding-bottom: var(--space-8);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-secondary-900);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--easing-standard);
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navbar__link--active {
+  font-weight: var(--font-weight-semibold);
+}
+
+.navbar__link--active::after {
+  transform: scaleX(1);
+  background: var(--color-accent-lime);
+  height: 3px;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+  background: var(--color-mint-light);
+  padding: var(--space-48) var(--space-96) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.hero__title {
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-xl);
+  text-align: center;
+  animation: hero-rise var(--duration-slow) var(--easing-standard) 120ms both;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--color-secondary-900);
+  border-radius: 20px;
+  padding: var(--space-8) var(--space-16);
+  font-size: var(--font-size-md);
+  animation: hero-rise var(--duration-slow) var(--easing-standard) both;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title,
+  .hero__badge {
+    animation: none;
+  }
+}
+
+.hero__quote {
+  max-width: 215px;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  text-align: left;
+}
+
+.hero__experience {
+  text-align: right;
+}
+
+.hero__experience-number {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-md);
+}
+
+.hero__experience-label {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xs);
+}
+
+.hero__image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 476px;
+}
+
+.hero__arrow {
+  cursor: pointer;
+  padding: var(--space-16);
+  display: inline-flex;
+  border-radius: 50%;
+  transition: background var(--duration-fast) var(--easing-standard);
+  animation: arrow-bounce 2.4s var(--easing-standard) infinite;
+}
+
+.hero__arrow:hover,
+.hero__arrow:focus-visible {
+  background: rgba(0, 0, 0, 0.05);
+  animation-play-state: paused;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__arrow {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   QUOTE + CONFETTI DECORATIVO
+   Antes: 12 <div> con rotación inline hardcodeada, cada uno único.
+   Ahora: un solo componente ".confetti" + variantes por nth-child.
+   Si quieres agregar/quitar íconos, se edita ESTE bloque, no el HTML.
+   ========================================================================== */
+
+.quote-section {
+  position: relative;
+  padding: var(--space-48) var(--space-96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  overflow: hidden;
+}
+
+.quote-section__text {
+  max-width: 600px;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-md);
+  text-align: center;
+  z-index: 1;
+}
+
+.quote-section__author {
+  font-size: var(--font-size-md);
+  z-index: 1;
+}
+
+.confetti {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Variantes de posición/rotación centralizadas — mismo ícono, mismo
+   componente, distinta transformación. Escalable: agregar un ícono más
+   es una línea nueva aquí, no un bloque de HTML nuevo. */
+.confetti:nth-child(1) { top: -4%;  left: 1.5%;  transform: rotate(-23deg); }
+.confetti:nth-child(2) { top: 4%;   left: 55%;   transform: rotate(-21deg); }
+.confetti:nth-child(3) { top: 15%;  left: 27%;   transform: rotate(66deg); }
+.confetti:nth-child(4) { top: 15%;  left: 4.5%;  transform: rotate(-66deg) scaleY(-1); }
+.confetti:nth-child(5) { top: 11%;  left: 50%;   transform: rotate(180deg) scaleY(-1); }
+.confetti:nth-child(6) { top: 2%;   left: 55%;   transform: rotate(15deg); }
+.confetti:nth-child(7) { top: 13%;  left: 63%;   transform: rotate(-18deg); }
+.confetti:nth-child(8) { top: 1%;   left: 89%;   transform: rotate(162deg); }
+.confetti:nth-child(9) { top: 6%;   left: 76%;   transform: rotate(-176deg) scaleY(-1); }
+.confetti:nth-child(10){ top: 16%;  left: 90%;   transform: rotate(-4deg); }
+
+/* En mobile, el confetti compite por atención sin aportar información —
+   se retira por completo (ver justificación en el mensaje de chat). */
+@media (max-width: 768px) {
+  .confetti { display: none; }
+}
+
+/* ==========================================================================
+   PROYECTOS — GRID Y CARD
+   ========================================================================== */
+
+.projects-section {
+  background: var(--color-secondary-50);
+  padding: var(--space-48) var(--space-96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-48);
+}
+
+.projects-section__title {
+  position: relative;
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-lg);
+  padding-bottom: 20px;
+}
+
+.projects-section__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--color-accent-lime);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-24);
+  width: 100%;
+}
+
+.project-card {
+  position: relative;
+  background: var(--color-secondary-10);
+  border: 1px solid var(--color-secondary-300);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--easing-standard),
+              border-color var(--duration-base) var(--easing-standard),
+              box-shadow var(--duration-base) var(--easing-standard);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--color-accent-lime);
+  box-shadow: 0 16px 32px -12px rgba(40, 37, 38, 0.16);
+}
+
+.project-card__image-wrapper img {
+  transition: transform var(--duration-slow) var(--easing-standard);
+}
+
+.project-card:hover .project-card__image-wrapper img {
+  transform: scale(1.04);
+}
+
+.project-card__badge {
+  transition: transform var(--duration-fast) var(--easing-emphasis);
+}
+
+.project-card:hover .project-card__badge {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__image-wrapper img,
+  .project-card__badge {
+    transition: none;
+  }
+  .project-card:hover {
+    transform: none;
+  }
+  .project-card:hover .project-card__image-wrapper img {
+    transform: none;
+  }
+}
+
+.project-card__badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: var(--color-mint-badge);
+  border-radius: 0 var(--radius-md) 0 var(--radius-md);
+  padding: var(--space-8) var(--space-16);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md);
+}
+
+.project-card__title {
+  font-family: var(--font-subtitle);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-sm);
+}
+
+/* Estructura de copy recomendada: rol + problema + resultado.
+   Ver placeholders en el HTML — reemplazar con contenido real por proyecto. */
+.project-card__role {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.project-card__description {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-sm);
+}
+
+.project-card__result {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-sm);
+  padding-left: var(--space-16);
+  border-left: 3px solid var(--color-accent-lime);
+}
+
+.project-card__link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-link);
+  color: var(--color-link);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md);
+  padding-bottom: var(--space-4);
+}
+
+.project-card__link::after {
+  content: '→';
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--easing-standard);
+}
+
+.project-card__link:hover::after,
+.project-card__link:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.project-card__image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+}
+
+/* ==========================================================================
+   HERRAMIENTAS (collage)
+   ========================================================================== */
+
+.tools-section {
+  background: white;
+  padding: var(--space-48) var(--space-96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-32);
+}
+
+.tools-section__title {
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-xl);
+  text-align: center;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.footer-cta {
+  background: var(--color-primary-10);
+  border-bottom: 1px solid var(--color-accent-lime);
+  padding: var(--space-24) var(--space-96);
+  text-align: center;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-md);
+}
+
+.footer {
+  background: var(--color-secondary-900);
+  color: var(--color-secondary-10);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--space-24) 71px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-32);
+}
+
+.footer__bio {
+  max-width: 635px;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-md);
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.footer__social img,
+.footer__social svg {
+  transition: transform var(--duration-fast) var(--easing-emphasis),
+              opacity var(--duration-fast) var(--easing-standard);
+}
+
+.footer__social a:hover img,
+.footer__social a:focus-visible img {
+  transform: translateY(-3px);
+  opacity: 0.85;
+}
+
+.footer__contact-title {
+  color: var(--color-accent-lime);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.footer__contact-item {
+  font-size: var(--font-size-md);
+}
+
+.footer__contact-item a {
+  border-bottom: 1px solid transparent;
+}
+
+.footer__contact-item a:hover,
+.footer__contact-item a:focus-visible {
+  border-bottom-color: var(--color-accent-lime);
+}
+
+.footer__divider {
+  height: 1px;
+  background: var(--color-secondary-300);
+  opacity: 0.3;
+}
+
+.footer__copyright {
+  font-size: var(--font-size-md);
+}
+
+/* ==========================================================================
+   ACCESIBILIDAD BÁSICA — piso de calidad no negociable
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   RESPONSIVE — un solo breakpoint real (768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .navbar,
+  .hero,
+  .quote-section,
+  .projects-section,
+  .tools-section,
+  .footer-cta {
+    padding-left: var(--space-16);
+    padding-right: var(--space-16);
+  }
+
+  .footer {
+    padding: var(--space-24) var(--space-16);
+  }
+
+  .hero__title {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-lg);
+  }
+
+  .navbar__menu {
+    gap: var(--space-16);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    flex-direction: column;
+  }
+
+  .footer__top {
+    flex-direction: column;
+  }
+}

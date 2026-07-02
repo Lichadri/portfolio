@@ -1,0 +1,81 @@
+/* ==========================================================================
+   TOKENS.CSS
+   Fuente de verdad del sistema de diseño. Extraído del Figma "portfolio_adri".
+   REGLA: nunca hardcodear un color, tamaño de fuente o spacing fuera de aquí.
+   Si necesitas un valor nuevo, agrégalo como token primero.
+   ========================================================================== */
+
+:root {
+  /* ---- Color / Primitivos ---- */
+  --gray-25: #fcfcfd;
+  --gray-600: #475467;
+
+  /* ---- Color / Secondary scale (neutros) ---- */
+  --color-secondary-10: #fdfcfc;
+  --color-secondary-50: #f3f2f2;
+  --color-secondary-300: #c2bdc0;
+  --color-secondary-900: #282526;
+
+  /* ---- Color / Acentos con rol semántico ---- */
+  --color-primary-10: #fef6fa;      /* fondo de sección destacada (footer CTA) */
+  --color-accent-lime: #90eb2f;     /* acento decorativo / underline / borde CTA */
+  --color-mint-light: #effcf0;      /* fondo sección hero */
+  --color-mint-badge: #c9fdc0;      /* fondo de badges de categoría */
+  --color-link: #0d2960;            /* NUEVO TOKEN — antes hardcodeado, ahora semántico */
+
+  /* ---- Tipografía / Familias ---- */
+  --font-title: 'Space Grotesk', sans-serif;   /* H1, H2 */
+  --font-subtitle: 'Space Grotesk', sans-serif; /* H3, títulos de card */
+  --font-body: 'DM Sans', sans-serif;           /* párrafos, labels */
+
+  /* ---- Tipografía / Escala (tomada literal del Figma) ---- */
+  --font-size-xs: 12px;
+  --font-size-sm: 16px;   /* nota: sm y md coinciden en el Figma original */
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  --line-height-xs: 16px;
+  --line-height-sm: 24px;
+  --line-height-md: 32px;
+  --line-height-lg: 40px;
+  --line-height-xl: 48px;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---- Spacing (escala de 8pt, tomada del Figma) ---- */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-96: 96px;
+
+  /* ---- Radio de bordes ---- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* ---- Breakpoint (referencia, no ejecutable en CSS puro) ----
+     mobile: < 768px
+     desktop: >= 768px
+     Si más adelante hay datos de tráfico real, se puede sumar un
+     breakpoint intermedio (tablet ~1024px). Por ahora, uno solo
+     evita sobre-ingeniería sin evidencia de uso. */
+
+  /* ---- Motion tokens ----
+     Dos duraciones, dos easings. No más — un sistema de motion con
+     10 curvas distintas es tan inconsistente como uno sin tokens.
+     easing-standard: para elementos que entran/cambian de estado.
+     easing-emphasis: para microinteracciones que necesitan "vida"
+     (hover de card, bounce sutil) — sale rápido, llega suave. */
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 600ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-emphasis: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
