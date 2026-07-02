@@ -21,47 +21,59 @@
   </header>
 
   <!-- ===================== HERO ===================== -->
-  <section class="hero">
-    <span class="hero__badge" data-reveal>¡Hola!</span>
-    <h1 class="hero__title" data-reveal>Soy <em class="hero__title-emphasis">Adriana</em></h1>
+  <section class="hero-b">
+    <div class="hero-b__eyebrow" data-reveal>01 — product &amp; service designer</div>
+    <h1 class="hero-b__name" data-reveal>Adriana Bautista</h1>
+    <p class="hero-b__tagline" data-reveal>
+      Diseño de sistemas para productos digitales complejos B2B/B2C — enfoque en Design Systems y negocio.
+    </p>
 
-    <div class="hero__stage">
-      <!-- Cards flotantes con datos reales — reemplazan el mockup de app
-           genérico. Cada una lleva data-depth para el parallax en main.js:
-           mayor valor = se mueve más respecto al mouse (sensación de
-           profundidad, como en la referencia de Swag). -->
-      <div class="hero__card hero__card--top-left" data-parallax data-depth="18">
-        <span class="hero__card-label">Experiencia</span>
-        <span class="hero__card-value">6 años</span>
+    <div class="hero-b__panel" data-reveal>
+      <div class="hero-b__spec">
+        <div class="hero-b__spec-grid">
+          <div class="hero-b__spec-cell">
+            <span class="hero-b__spec-label">Experiencia</span>
+            <span class="hero-b__spec-value">6 años</span>
+          </div>
+          <div class="hero-b__spec-cell">
+            <span class="hero-b__spec-label">Enfoque</span>
+            <span class="hero-b__spec-value">Design Systems</span>
+          </div>
+          <div class="hero-b__spec-cell">
+            <span class="hero-b__spec-label">Rol</span>
+            <span class="hero-b__spec-value">Product &amp; Service</span>
+          </div>
+          <div class="hero-b__spec-cell hero-b__spec-cell--status">
+            <span class="hero-b__status-dot" aria-hidden="true"></span>
+            <span class="hero-b__spec-value">Disponible para nuevos retos</span>
+          </div>
+        </div>
+        <div class="hero-b__spec-footer">
+          <span>--font-title: Space Grotesk</span>
+          <span>--color-accent: #90eb2f</span>
+        </div>
       </div>
 
-      <div class="hero__card hero__card--top-right" data-parallax data-depth="26">
-        <span class="hero__card-label">Enfoque</span>
-        <span class="hero__card-value">Design Systems</span>
-      </div>
-
-      <div class="hero__image-wrapper" data-parallax data-depth="8">
-        <!-- NOTA: imagen temporal desde Figma (expira en 7 días).
-             Reemplazar por asset exportado en /assets/img antes de publicar. -->
+      <div class="hero-b__photo">
+        <span class="hero-b__photo-tag">img · 240×320</span>
+        <!-- NOTA: imagen temporal desde Figma (expira). Reemplazar por
+             asset exportado en /assets/img antes de publicar. -->
         <img src="https://www.figma.com/api/mcp/asset/0dd5a13a-755b-48e1-ba64-ef6bb533a295" alt="Foto de Adriana Bautista" />
-      </div>
-
-      <div class="hero__card hero__card--bottom-left" data-parallax data-depth="22">
-        <span class="hero__card-label">Rol</span>
-        <span class="hero__card-value">Product &amp; Service Designer</span>
-      </div>
-
-      <div class="hero__card hero__card--bottom-right" data-parallax data-depth="14">
-        <span class="hero__card-icon" aria-hidden="true">✓</span>
-        <span class="hero__card-value">Disponible para nuevos retos</span>
+        <span class="hero-b__corner hero-b__corner--tr" aria-hidden="true"></span>
+        <span class="hero-b__corner hero-b__corner--bl" aria-hidden="true"></span>
       </div>
     </div>
 
-    <p class="hero__quote" data-reveal>
+    <p class="hero-b__quote" data-reveal>
       Hola, soy Adri. Me apasiona crear experiencias intuitivas y efectivas.
       Me considero una persona comunicativa y siempre buscando mejorar y aprender.
     </p>
-    <div class="hero__arrow" aria-hidden="true">↓</div>
+
+    <div class="hero-b__scroll-cue" id="hero-scroll-cue">
+      <span>scroll</span>
+      <span class="hero-b__scroll-line"></span>
+      <span>02 — proyectos</span>
+    </div>
   </section>
 
   <!-- ===================== QUOTE + CONFETTI ===================== -->

@@ -37,6 +37,18 @@
   --font-title: 'Space Grotesk', sans-serif;   /* H1, H2 */
   --font-subtitle: 'Space Grotesk', sans-serif; /* H3, títulos de card */
   --font-body: 'DM Sans', sans-serif;           /* párrafos, labels */
+  --font-mono: 'JetBrains Mono', monospace;     /* NUEVO — labels técnicos,
+     tags de spec (dirección B: editorial/sistema, no "SaaS friendly") */
+
+  /* ---- Dirección B: paleta editorial para hero y acentos técnicos ----
+     No reemplaza la paleta existente (mint/lima ya usada en cards) —
+     conviven: el hero usa hueso/tinta, el resto del sitio sigue en su
+     paleta ya establecida. Ver nota de sistema en el chat sobre por qué
+     no se aplicó todavía a todo el sitio. */
+  --color-hero-bg: #f7f6f2;
+  --color-hero-ink: #15130f;
+  --color-hero-line: #d8d4c9;
+  --color-hero-surface: #eae7dd;
 
   /* ---- Tipografía / Escala (tomada literal del Figma) ---- */
   --font-size-xs: 12px;

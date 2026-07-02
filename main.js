@@ -41,57 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
     revealTargets.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // ---- Scroll suave desde la flecha del hero hacia proyectos ----
-  const heroArrow = document.querySelector('.hero__arrow');
+  // ---- Scroll suave desde el scroll-cue del hero hacia proyectos ----
+  const heroScrollCue = document.getElementById('hero-scroll-cue');
   const projectsSection = document.querySelector('.projects-section');
 
-  if (heroArrow && projectsSection) {
-    heroArrow.addEventListener('click', () => {
+  if (heroScrollCue && projectsSection) {
+    heroScrollCue.addEventListener('click', () => {
       projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    heroArrow.setAttribute('role', 'button');
-    heroArrow.setAttribute('tabindex', '0');
-    heroArrow.setAttribute('aria-label', 'Ir a la sección de proyectos');
-    heroArrow.addEventListener('keydown', (e) => {
+    heroScrollCue.setAttribute('role', 'button');
+    heroScrollCue.setAttribute('tabindex', '0');
+    heroScrollCue.setAttribute('aria-label', 'Ir a la sección de proyectos');
+    heroScrollCue.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    });
-  }
-
-  // ---- Parallax sutil en las cards del hero ----
-  // Referencia: la sensación de profundidad de MetaMask/Swag, traducida a
-  // un mousemove simple. Se desactiva en touch (no hay cursor) y en
-  // prefers-reduced-motion (accesibilidad > efecto).
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = window.matchMedia('(hover: none)').matches;
-  const heroStage = document.querySelector('.hero__stage');
-  const parallaxEls = document.querySelectorAll('[data-parallax]');
-
-  if (heroStage && parallaxEls.length && !prefersReducedMotion && !isTouchDevice) {
-    let rafId = null;
-
-    heroStage.addEventListener('mousemove', (e) => {
-      const rect = heroStage.getBoundingClientRect();
-      const relX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      const relY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        parallaxEls.forEach((el) => {
-          const depth = parseFloat(el.getAttribute('data-depth')) || 10;
-          el.style.setProperty('--parallax-x', `${relX * depth}px`);
-          el.style.setProperty('--parallax-y', `${relY * depth}px`);
-        });
-      });
-    });
-
-    heroStage.addEventListener('mouseleave', () => {
-      parallaxEls.forEach((el) => {
-        el.style.setProperty('--parallax-x', '0px');
-        el.style.setProperty('--parallax-y', '0px');
-      });
     });
   }
 
@@ -100,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // logo del navbar que ya está ahí). Usa IntersectionObserver sobre el
   // propio hero: cuando el hero sale de vista, se muestra el avatar.
   const floatingAvatar = document.getElementById('floating-avatar');
-  const heroSection = document.querySelector('.hero');
+  const heroSection = document.querySelector('.hero-b');
 
   if (floatingAvatar && heroSection) {
     if ('IntersectionObserver' in window) {
