@@ -66,7 +66,8 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-24) var(--space-96);
-  background: var(--color-secondary-10);
+  background: var(--color-hero-bg);
+  border-bottom: 0.5px solid var(--color-hero-line);
 }
 
 .navbar__logo {
@@ -213,6 +214,21 @@ img {
   border-bottom: none;
 }
 
+.hero-b__spec-cell--wide {
+  grid-column: span 2;
+  border-right: none;
+  border-bottom: none;
+}
+
+.hero-b__spec-bio {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+  max-width: 460px;
+  opacity: 0.8;
+  margin: 0;
+}
+
 .hero-b__spec-label {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -301,15 +317,6 @@ img {
   border-left: 1.5px solid var(--color-secondary-900);
 }
 
-.hero-b__quote {
-  max-width: 480px;
-  font-size: var(--font-size-md);
-  line-height: var(--line-height-sm);
-  text-align: center;
-  margin: var(--space-24) 0 var(--space-16);
-  opacity: 0.85;
-}
-
 .hero-b__scroll-cue {
   display: flex;
   align-items: center;
@@ -323,6 +330,7 @@ img {
   letter-spacing: 0.06em;
   opacity: 0.5;
   padding: var(--space-8) 0;
+  margin-top: var(--space-24);
   transition: opacity var(--duration-fast) var(--easing-standard);
 }
 
@@ -363,61 +371,83 @@ img {
 }
 
 /* ==========================================================================
-   QUOTE + CONFETTI DECORATIVO
-   Antes: 12 <div> con rotación inline hardcodeada, cada uno único.
-   Ahora: un solo componente ".confetti" + variantes por nth-child.
-   Si quieres agregar/quitar íconos, se edita ESTE bloque, no el HTML.
+   QUOTE — panel editorial, mismo lenguaje que hero-b y project-card
+   (borde fino + corner marks). Reemplaza el confetti de flores pastel,
+   que pertenecía a la dirección visual anterior (ver chat: "ya no encaja").
    ========================================================================== */
 
 .quote-section {
-  position: relative;
   padding: var(--space-48) var(--space-96);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-16);
-  overflow: hidden;
+}
+
+.quote-section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+}
+
+.quote-panel {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  border: 0.5px solid var(--color-hero-line);
+  padding: var(--space-48) var(--space-32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  background: var(--color-hero-bg);
+}
+
+.quote-panel__mark {
+  font-family: var(--font-title);
+  font-size: 48px;
+  line-height: 1;
+  color: var(--color-accent-lime);
+  -webkit-text-stroke: 1.5px var(--color-secondary-900);
 }
 
 .quote-section__text {
-  max-width: 600px;
+  max-width: 480px;
   font-size: var(--font-size-lg);
   line-height: var(--line-height-md);
   text-align: center;
-  z-index: 1;
+  margin: 0;
 }
 
 .quote-section__author {
-  font-size: var(--font-size-md);
-  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  margin: 0;
 }
 
-.confetti {
+.quote-panel__corner {
   position: absolute;
-  width: 88px;
-  height: 88px;
-  opacity: 0.9;
-  pointer-events: none;
+  width: 14px;
+  height: 14px;
 }
 
-/* Variantes de posición/rotación centralizadas — mismo ícono, mismo
-   componente, distinta transformación. Escalable: agregar un ícono más
-   es una línea nueva aquí, no un bloque de HTML nuevo. */
-.confetti:nth-child(1) { top: -4%;  left: 1.5%;  transform: rotate(-23deg); }
-.confetti:nth-child(2) { top: 4%;   left: 55%;   transform: rotate(-21deg); }
-.confetti:nth-child(3) { top: 15%;  left: 27%;   transform: rotate(66deg); }
-.confetti:nth-child(4) { top: 15%;  left: 4.5%;  transform: rotate(-66deg) scaleY(-1); }
-.confetti:nth-child(5) { top: 11%;  left: 50%;   transform: rotate(180deg) scaleY(-1); }
-.confetti:nth-child(6) { top: 2%;   left: 55%;   transform: rotate(15deg); }
-.confetti:nth-child(7) { top: 13%;  left: 63%;   transform: rotate(-18deg); }
-.confetti:nth-child(8) { top: 1%;   left: 89%;   transform: rotate(162deg); }
-.confetti:nth-child(9) { top: 6%;   left: 76%;   transform: rotate(-176deg) scaleY(-1); }
-.confetti:nth-child(10){ top: 16%;  left: 90%;   transform: rotate(-4deg); }
+.quote-panel__corner--tr {
+  top: 8px;
+  right: 8px;
+  border-top: 1.5px solid var(--color-secondary-900);
+  border-right: 1.5px solid var(--color-secondary-900);
+}
 
-/* En mobile, el confetti compite por atención sin aportar información —
-   se retira por completo (ver justificación en el mensaje de chat). */
-@media (max-width: 768px) {
-  .confetti { display: none; }
+.quote-panel__corner--bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 1.5px solid var(--color-secondary-900);
+  border-left: 1.5px solid var(--color-secondary-900);
 }
 
 /* ==========================================================================
@@ -605,7 +635,14 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 240px;
+  height: 180px;
+}
+
+.project-card__image-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 /* ==========================================================================
@@ -672,6 +709,12 @@ img {
   opacity: 0.85;
 }
 
+.bento-cell__logo {
+  width: 32px;
+  height: 32px;
+  opacity: 0.85;
+}
+
 .bento-cell__label {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
@@ -699,18 +742,28 @@ img {
    ========================================================================== */
 
 .footer-cta {
-  background: var(--color-primary-10);
-  border-bottom: 1px solid var(--color-accent-lime);
+  background: var(--color-hero-bg);
+  border-top: 0.5px solid var(--color-hero-line);
+  border-bottom: 0.5px solid var(--color-hero-line);
   padding: var(--space-24) var(--space-96);
   text-align: center;
   font-size: var(--font-size-lg);
   line-height: var(--line-height-md);
+  color: var(--color-hero-ink);
+}
+
+.footer-cta__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+  margin-bottom: var(--space-8);
 }
 
 .footer {
   background: var(--color-secondary-900);
   color: var(--color-secondary-10);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   padding: var(--space-24) 71px;
   display: flex;
   flex-direction: column;
@@ -748,9 +801,11 @@ img {
 }
 
 .footer__contact-title {
+  font-family: var(--font-mono);
   color: var(--color-accent-lime);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--font-size-xs);
 }
 
 .footer__contact-item {
@@ -773,7 +828,11 @@ img {
 }
 
 .footer__copyright {
-  font-size: var(--font-size-md);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
 }
 
 /* ==========================================================================

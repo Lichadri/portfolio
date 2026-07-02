@@ -47,6 +47,12 @@
             <span class="hero-b__status-dot" aria-hidden="true"></span>
             <span class="hero-b__spec-value">Disponible para nuevos retos</span>
           </div>
+          <div class="hero-b__spec-cell hero-b__spec-cell--wide">
+            <span class="hero-b__spec-label">Sobre mí</span>
+            <p class="hero-b__spec-bio">
+              Diseño experiencias intuitivas conectando usuario y negocio — comunicativa, curiosa, siempre en modo aprendizaje.
+            </p>
+          </div>
         </div>
         <div class="hero-b__spec-footer">
           <span>--font-title: Space Grotesk</span>
@@ -64,11 +70,6 @@
       </div>
     </div>
 
-    <p class="hero-b__quote" data-reveal>
-      Hola, soy Adri. Me apasiona crear experiencias intuitivas y efectivas.
-      Me considero una persona comunicativa y siempre buscando mejorar y aprender.
-    </p>
-
     <div class="hero-b__scroll-cue" id="hero-scroll-cue">
       <span>scroll</span>
       <span class="hero-b__scroll-line"></span>
@@ -76,26 +77,19 @@
     </div>
   </section>
 
-  <!-- ===================== QUOTE + CONFETTI ===================== -->
+  <!-- ===================== QUOTE ===================== -->
   <section class="quote-section">
-    <!-- Componente .confetti: agregar/quitar instancias aquí, la
-         rotación/posición de cada una vive en styles.css (nth-child) -->
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/79cf0cef-2343-44db-a53c-65629003707b" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/380e4778-9f0f-4a4d-8a90-fecab4d3ff59" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/c4d286a0-f928-4827-97e2-2b23ce0598b0" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/380e4778-9f0f-4a4d-8a90-fecab4d3ff59" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/79cf0cef-2343-44db-a53c-65629003707b" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/c4d286a0-f928-4827-97e2-2b23ce0598b0" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/380e4778-9f0f-4a4d-8a90-fecab4d3ff59" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/380e4778-9f0f-4a4d-8a90-fecab4d3ff59" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/79cf0cef-2343-44db-a53c-65629003707b" alt="" aria-hidden="true" />
-    <img class="confetti" src="https://www.figma.com/api/mcp/asset/c4d286a0-f928-4827-97e2-2b23ce0598b0" alt="" aria-hidden="true" />
-
-    <p class="quote-section__text" data-reveal>
-      "El diseño centrado en el usuario es todo sobre sentir que tienes el control.
-      Incluye: usabilidad, comprensión, pero también la sensación."
-    </p>
-    <p class="quote-section__author" data-reveal>Don Norman</p>
+    <div class="quote-section__eyebrow" data-reveal>principio de diseño</div>
+    <div class="quote-panel" data-reveal>
+      <span class="quote-panel__mark" aria-hidden="true">&ldquo;</span>
+      <p class="quote-section__text">
+        El diseño centrado en el usuario es todo sobre sentir que tienes el control.
+        Incluye: usabilidad, comprensión, pero también la sensación.
+      </p>
+      <p class="quote-section__author">— Don Norman</p>
+      <span class="quote-panel__corner quote-panel__corner--tr" aria-hidden="true"></span>
+      <span class="quote-panel__corner quote-panel__corner--bl" aria-hidden="true"></span>
+    </div>
   </section>
 
   <!-- ===================== PROYECTOS ===================== -->
@@ -206,13 +200,14 @@
   <section class="tools-section">
     <h2 class="tools-section__title" data-reveal>Herramientas que uso</h2>
 
-    <!-- Bento grid: lettermarks abstractos, no logos reales de terceros
-         (evita depender de assets externos Y de reproducir marca ajena).
-         Grid con 2 celdas grandes + 4 chicas — jerarquía visual real,
-         no todas iguales. -->
+    <!-- Bento grid: logo real donde está confirmado en Simple Icons
+         (Figma, Hotjar, Google Analytics), lettermark abstracto donde no
+         (InVision, Condens, Maze — sin evidencia confiable del asset,
+         mejor no arriesgar otra imagen rota). Ver justificación en chat.
+         Grid con 2 celdas grandes + 4 chicas — jerarquía visual real. -->
     <div class="bento-grid">
       <div class="bento-cell bento-cell--large" style="background: var(--color-bento-lavender);" data-reveal>
-        <span class="bento-cell__mark">Fi</span>
+        <img class="bento-cell__logo" src="https://cdn.simpleicons.org/figma/15130F" alt="" aria-hidden="true" />
         <span class="bento-cell__label">Figma</span>
       </div>
       <div class="bento-cell" style="background: var(--color-bento-mint);" data-reveal>
@@ -220,11 +215,11 @@
         <span class="bento-cell__label">InVision</span>
       </div>
       <div class="bento-cell" style="background: var(--color-bento-peach);" data-reveal>
-        <span class="bento-cell__mark">Hj</span>
+        <img class="bento-cell__logo" src="https://cdn.simpleicons.org/hotjar/15130F" alt="" aria-hidden="true" />
         <span class="bento-cell__label">Hotjar</span>
       </div>
       <div class="bento-cell bento-cell--large" style="background: var(--color-bento-blue);" data-reveal>
-        <span class="bento-cell__mark">Ga</span>
+        <img class="bento-cell__logo" src="https://cdn.simpleicons.org/googleanalytics/15130F" alt="" aria-hidden="true" />
         <span class="bento-cell__label">Google Analytics</span>
       </div>
       <div class="bento-cell" style="background: var(--color-bento-lime);" data-reveal>
@@ -240,6 +235,7 @@
 
   <!-- ===================== FOOTER ===================== -->
   <section class="footer-cta">
+    <div class="footer-cta__eyebrow">03 — contacto</div>
     "Gracias por tu interés en mi trabajo, sigamos en contacto"
   </section>
 
