@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AMA — Adriana Bautista</title>
+  <title>Banbif — Adriana Bautista</title>
   <link rel="stylesheet" href="tokens.css?v=5" />
   <link rel="stylesheet" href="styles.css?v=5" />
 </head>
@@ -25,26 +25,26 @@
 
   <!-- ===================== BREADCRUMB ===================== -->
   <nav class="case-breadcrumb">
-    <a href="proyectos.html">Proyectos</a> / AMA
+    <a href="proyectos.html">Proyectos</a> / Rediseño Banbif
   </nav>
 
   <!-- ===================== CASE HERO ===================== -->
   <section class="case-hero">
     <span class="case-hero__eyebrow" data-reveal>case study</span>
-    <h1 class="case-hero__title" data-reveal>AMA — Perfilamiento de usuario</h1>
+    <h1 class="case-hero__title" data-reveal>Rediseño Banbif</h1>
 
     <div class="case-hero__meta" data-reveal>
       <div class="case-hero__meta-cell">
         <span class="case-hero__meta-label">Cliente</span>
-        <span class="case-hero__meta-value">AGROS / CITE</span>
+        <span class="case-hero__meta-value">Reto de bootcamp</span>
       </div>
       <div class="case-hero__meta-cell">
         <span class="case-hero__meta-label">Categoría</span>
-        <span class="case-hero__meta-value">Service Design — investigación</span>
+        <span class="case-hero__meta-value">Fintech — banca digital</span>
       </div>
       <div class="case-hero__meta-cell">
         <span class="case-hero__meta-label">Rol</span>
-        <span class="case-hero__meta-value">Service Designer</span>
+        <span class="case-hero__meta-value">UI/UX Designer</span>
       </div>
       <div class="case-hero__meta-cell">
         <span class="case-hero__meta-label">Fecha</span>
@@ -60,19 +60,15 @@
       <span class="case-section__label">Contexto de negocio</span>
       <h2 class="case-section__title">El reto</h2>
       <p>
-        AGROS, en colaboración con CITE, buscaba identificar los roles y
-        actores de la cadena productiva del sector textil de camélidos en
-        Cusco, para habilitar un servicio de emisión de certificados
-        digitales respaldados en blockchain — una identidad digital
-        funcional para las unidades productivas de la zona.
+        Reto de bootcamp enfocado en rediseñar la plataforma web de Banbif
+        (tarjetas de crédito). Partí de un benchmark competitivo — bancos
+        nacionales, internacionales y globales — para definir color,
+        tipografía, assets y densidad de información antes de tocar UI.
       </p>
-      <p>
-        Cuatro objetivos específicos guiaron el research: entender la
-        cadena de valor de cada grupo, mapear su relación con entidades
-        locales (formalidad/informalidad de su comercialización),
-        identificar temores sobre sus productos y cómo se protegen, y
-        conocer su nivel de digitalización y forma de comunicación.
-      </p>
+      <div class="case-image">
+        <img src="banbif-benchmark.png" alt="Benchmark visual de bancos nacionales, internacionales y globales — color, tipografía, assets, densidad de información" />
+      </div>
+      <p class="case-image__caption">Benchmark visual — estándares de la industria financiera que inspiraron el rediseño</p>
       <div class="case-section__tokens">
         <span>--font-body: DM Sans</span>
         <span>--line-height-sm: 24px</span>
@@ -81,14 +77,11 @@
 
     <section class="case-section" data-reveal>
       <span class="case-section__label">Mi rol</span>
-      <h2 class="case-section__title">Service Designer — investigación y facilitación</h2>
+      <h2 class="case-section__title">UI/UX Designer — reto de bootcamp</h2>
       <p>
-        Lideré research de campo con metodología cualitativa (Design
-        Research) — investigaciones remotas y en sitio para descubrir
-        procesos demográficos, productivos, financieros, comerciales y
-        sociales, entrevistas y perfilamiento de usuario, y la construcción
-        de los entregables de service design que documentaron el
-        ecosistema completo de actores.
+        Cubrí el proceso completo: benchmark, foundations, sistema de
+        componentes, motion, y testing visual con usuarios reales para
+        validar la dirección antes de cerrar el diseño.
       </p>
       <div class="case-section__tokens">
         <span>--font-title: Space Grotesk</span>
@@ -98,44 +91,30 @@
 
     <section class="case-section" data-reveal>
       <span class="case-section__label">Decisión de sistema</span>
-      <h2 class="case-section__title">De entrevistas sueltas a un ecosistema documentado</h2>
+      <h2 class="case-section__title">Componentes con estados + motion, no solo pantallas</h2>
       <p>
-        Empecé por el perfilamiento inicial: identificar productores y
-        actores de la producción. Juan, líder referente del valle y
-        productor digital, fue el perfil ancla — bancarizado, gestiona pagos
-        a tejedoras y ya trabajaba con agencias antes de AMA.
+        Con esos foundations construí un set de componentes documentado por
+        estados (default, hover, pressed, disabled) — botones primarios,
+        secundarios y terciarios, inputs, sliders, tabs, menú, ilustraciones
+        y progress bar.
       </p>
       <div class="case-image">
-        <img src="ama-perfil-usuario.png" alt="Perfil de usuario: Juan, productor referente del Valle Sagrado" />
+        <img src="banbif-componentes.png" alt="Sistema de componentes de Banbif documentado por estados: botones, inputs, sliders, tabs, banners" />
       </div>
-      <p class="case-image__caption">Perfil ancla — Juan, productor</p>
+      <p class="case-image__caption">Componentes con estados — los foundations dieron la base para optimizar botones, inputs, sliders y navegación</p>
       <p>
-        Sinteticé las entrevistas en un clustering de hallazgos: la
-        importancia de comunicarse en idioma materno (quechua), la
-        necesidad de acceso a información, la relación de poder desigual
-        con las agencias, y el celular como herramienta necesaria pero no
-        un hábito instalado.
+        Agregué motion en las transiciones para reforzar el feedback visual
+        (heurística de Nielsen #1, visibilidad del estado del sistema).
       </p>
       <div class="case-image">
-        <img src="ama-cluster.png" alt="Clustering de hallazgos de investigación: comunicación en idioma materno, acceso a información, relación con agencias, uso del celular" />
+        <img src="banbif-motion.png" alt="Motion en transiciones e interacciones del rediseño de Banbif" />
       </div>
-      <p class="case-image__caption">Síntesis de hallazgos — afinidad de entrevistas en campo</p>
+      <p class="case-image__caption">Motion — feedback visual en transiciones para mejorar la comprensión del usuario</p>
       <p>
-        Con esos hallazgos construí el mapa de ecosistema (Patacancha),
-        clasificando actores como directos, conectores o indirectos según
-        su relación con el productor central — y el service blueprint de
-        AMA Sacred Valley, documentando las 5 etapas de su proceso
-        (Compromiso, Confianza, Innovación, Mejora continua, Experiencia)
-        con los sentimientos e información recolectada en cada una.
+        Para el flujo de compra de tarjeta comparé un formulario único vs.
+        un wizard paso a paso; elegí el wizard para reducir carga cognitiva
+        en un proceso financiero sensible (chunking, Ley de Miller).
       </p>
-      <div class="case-image">
-        <img src="ama-mapa-actores.png" alt="Mapa de ecosistema de actores — Patacancha, clasificando actores directos, conectores e indirectos" />
-      </div>
-      <p class="case-image__caption">Mapa de ecosistema — Patacancha</p>
-      <div class="case-image">
-        <img src="ama-blueprint.png" alt="Service blueprint de AMA Sacred Valley: 5 etapas del proceso con sentimientos e información recolectada" />
-      </div>
-      <p class="case-image__caption">Service blueprint — proceso de AMA en la comunidad de Patacancha</p>
       <div class="case-section__tokens">
         <span>--color-accent: #90eb2f</span>
         <span>--border-width: 0.5px</span>
@@ -144,12 +123,12 @@
 
     <section class="case-section" data-reveal>
       <span class="case-section__label">Restricción real</span>
-      <h2 class="case-section__title">Acceso rural + barrera de idioma</h2>
+      <h2 class="case-section__title">Reto de bootcamp con tiempo definido</h2>
       <p>
-        El Valle Sagrado es una zona rural de difícil acceso — la mayor
-        restricción logística del proyecto. A eso se sumó una barrera de
-        comunicación real: varios procesos necesitaban explicarse en
-        quechua para un entendimiento genuino, no solo traducción literal.
+        Sin equipo de diseño adicional y con un plazo fijo de bootcamp,
+        prioricé validar la dirección visual con testing real antes de
+        invertir tiempo en pulir cada pantalla — reduciendo el riesgo de
+        iterar sobre una base equivocada.
       </p>
       <div class="case-section__tokens">
         <span>--space-32: 32px</span>
@@ -157,9 +136,29 @@
       </div>
     </section>
 
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Resultado</span>
+      <h2 class="case-section__title">Testing visual: estética validada, oportunidades identificadas</h2>
+      <p>
+        Los usuarios valoraron la estética moderna y la cercanía a la marca
+        Banbif, y percibieron los elementos gráficos como más modernos y
+        atractivos — también sugirieron destacar más las promociones y
+        servicios clave, feedback que documenté para una siguiente
+        iteración.
+      </p>
+      <div class="case-image">
+        <img src="banbif-testing.png" alt="Hallazgos del testing visual de Banbif: percepción de estética, elementos gráficos y sugerencias de usuarios" />
+      </div>
+      <p class="case-image__caption">Principales hallazgos del testing visual</p>
+      <div class="case-section__tokens">
+        <span>--color-hero-line: #d8d4c9</span>
+        <span>--color-hero-bg: #f7f6f2</span>
+      </div>
+    </section>
+
     <div class="case-nav-footer">
-      <a href="agros.html">← Anterior: AGROS</a>
-      <a href="banbif.html">Siguiente: Banbif →</a>
+      <a href="ama.html">← Anterior: AMA</a>
+      <a href="proyectos.html">Volver a proyectos</a>
     </div>
 
   </main>
