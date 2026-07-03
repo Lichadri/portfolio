@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // dos elementos idénticos en la misma esquina rompen la heurística de
   // consistencia de Nielsen).
   const floatingAvatar = document.getElementById('floating-avatar');
-  const heroSection = document.querySelector('.hero-b, .case-hero');
+  const heroSection = document.querySelector('.hero-b, .case-hero, .about-hero');
   const footerSection = document.querySelector('.footer');
 
   if (floatingAvatar && heroSection) {
