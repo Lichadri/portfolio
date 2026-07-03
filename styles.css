@@ -68,16 +68,13 @@ img {
 
 .navbar {
   position: sticky;
-  top: var(--space-16);
+  top: 0;
   z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: var(--space-16) var(--space-96) 0;
-  padding: var(--space-16) var(--space-24);
+  padding: var(--space-24) var(--space-96);
   background: var(--color-hero-bg);
-  border: 0.5px solid var(--color-hero-line);
-  border-radius: 4px;
 }
 
 .navbar__logo {
@@ -1307,11 +1304,6 @@ html {
    ========================================================================== */
 
 @media (max-width: 768px) {
-  .navbar {
-    margin-left: var(--space-16);
-    margin-right: var(--space-16);
-  }
-
   .navbar,
   .hero,
   .quote-section,
