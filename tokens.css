@@ -21,7 +21,6 @@
   --color-accent-lime: #90eb2f;     /* acento decorativo / underline / borde CTA */
   --color-mint-light: #effcf0;      /* fondo sección hero */
   --color-mint-badge: #c9fdc0;      /* fondo de badges de categoría */
-  --color-link: #0d2960;            /* NUEVO TOKEN — antes hardcodeado, ahora semántico */
 
   /* ---- Tipografía / Familias ---- */
   --font-title: 'Space Grotesk', sans-serif;   /* H1, H2 */

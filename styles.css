@@ -128,37 +128,49 @@ img {
 
 .navbar__link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-body);
   font-size: var(--font-size-lg);
-  padding-bottom: var(--space-8);
+  padding: var(--space-8) var(--space-4);
+  min-height: 44px;
 }
 
-.navbar__link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--color-secondary-900);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-base) var(--easing-standard);
-}
-
-.navbar__link:hover::after,
-.navbar__link:focus-visible::after {
-  transform: scaleX(1);
+/* Prefijo ">" reservado en TODOS los items (activos o no) — el ancho
+   fijo evita que el texto salte al cambiar de item activo (jank).
+   Contenido siempre presente, solo cambia opacidad/posición. */
+.navbar__link::before {
+  content: '>';
+  display: inline-block;
+  width: 14px;
+  font-family: var(--font-mono);
+  color: var(--color-accent-lime);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--duration-fast) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
 }
 
 .navbar__link--active {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-lime);
 }
 
-.navbar__link--active::after {
-  transform: scaleX(1);
-  background: var(--color-accent-lime);
-  height: 3px;
+.navbar__link--active::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .navbar__link::before {
+    width: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__link::before {
+    transition: none;
+  }
 }
 
 /* ==========================================================================
@@ -531,6 +543,10 @@ img {
 .hero-b__spec-cell--wide {
   grid-column: span 2;
   border-right: none;
+  border-bottom: 0.5px solid var(--color-hero-line);
+}
+
+.hero-b__spec-cell--wide:last-child {
   border-bottom: none;
 }
 
@@ -832,7 +848,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-48);
+  gap: var(--space-8);
 }
 
 .projects-section__eyebrow {
@@ -868,6 +884,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-24);
   width: 100%;
+  margin-top: var(--space-32);
 }
 
 /* ==========================================================================
@@ -1064,16 +1081,26 @@ img {
   display: inline-flex;
   align-items: center;
   gap: var(--space-4);
-  border-bottom: 1px solid var(--color-link);
-  color: var(--color-link);
+  border-bottom: 1px solid var(--color-accent-lime);
+  color: var(--color-secondary-900);
+  font-family: var(--font-mono);
   font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-md);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   padding-bottom: var(--space-4);
+  transition: color var(--duration-fast) var(--easing-standard);
+}
+
+.project-card__link:hover,
+.project-card__link:focus-visible {
+  color: var(--color-accent-lime);
 }
 
 .project-card__link::after {
   content: '→';
   display: inline-block;
+  color: var(--color-accent-lime);
   transition: transform var(--duration-fast) var(--easing-standard);
 }
 
@@ -1106,7 +1133,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-32);
+  gap: var(--space-8);
 }
 
 .tools-section__eyebrow {
@@ -1120,9 +1147,10 @@ img {
 .tools-section__title {
   font-family: var(--font-title);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-xl);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-lg);
   text-align: center;
+  margin-bottom: var(--space-24);
 }
 
 /* ==========================================================================
@@ -1381,7 +1409,7 @@ img {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-link);
+  outline: 2px solid var(--color-accent-lime);
   outline-offset: 2px;
 }
 
