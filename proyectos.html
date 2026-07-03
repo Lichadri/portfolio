@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
-  <link rel="stylesheet" href="tokens.css?v=7" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="tokens.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
 
@@ -201,40 +201,57 @@
     </div>
   </section>
 
-  <!-- ===================== HERRAMIENTAS ===================== -->
+  <!-- ===================== STACK ===================== -->
   <section class="tools-section">
     <div class="tools-section__eyebrow" data-reveal>stack</div>
-    <h2 class="tools-section__title" data-reveal>Herramientas que uso</h2>
+    <h2 class="tools-section__title" data-reveal>Con qué construyo</h2>
 
-    <!-- Bento grid, dirección B: fondo hueso uniforme (sin pastel), la
-         variación visual la aportan los logos a color de marca real donde
-         están confirmados (Figma, Hotjar, Google Analytics). InVision,
-         Condens y Maze mantienen lettermark abstracto — sin evidencia
-         confiable del asset, mejor no arriesgar otra imagen rota. -->
-    <div class="bento-grid">
-      <div class="bento-cell bento-cell--large" data-reveal>
-        <img class="bento-cell__logo" src="https://cdn.simpleicons.org/figma" alt="" aria-hidden="true" />
-        <span class="bento-cell__label">Figma</span>
+    <!-- Tercera variante de "spec card" del sistema (junto a hero-card y
+         quote-card): corner marks + token footer, pero el reveal es en
+         hover por repetición de 6 instancias — el typewriter queda
+         reservado al mensaje central único (cita/KPI), no a una grilla. -->
+    <div class="stack-grid">
+      <div class="stack-card" data-reveal>
+        <span class="stack-card__logo stack-card__logo--figma" aria-hidden="true"></span>
+        <span class="stack-card__label">Figma</span>
+        <span class="stack-card__used-for">--used-for: UI + design systems</span>
+        <span class="stack-card__corner stack-card__corner--tr" aria-hidden="true"></span>
+        <span class="stack-card__corner stack-card__corner--bl" aria-hidden="true"></span>
       </div>
-      <div class="bento-cell" data-reveal>
-        <span class="bento-cell__mark">In</span>
-        <span class="bento-cell__label">InVision</span>
+      <div class="stack-card" data-reveal>
+        <span class="stack-card__mark">Cl</span>
+        <span class="stack-card__label">Claude</span>
+        <span class="stack-card__used-for">--used-for: research &amp; content</span>
+        <span class="stack-card__corner stack-card__corner--tr" aria-hidden="true"></span>
+        <span class="stack-card__corner stack-card__corner--bl" aria-hidden="true"></span>
       </div>
-      <div class="bento-cell" data-reveal>
-        <img class="bento-cell__logo" src="https://cdn.simpleicons.org/hotjar" alt="" aria-hidden="true" />
-        <span class="bento-cell__label">Hotjar</span>
+      <div class="stack-card" data-reveal>
+        <span class="stack-card__logo stack-card__logo--hotjar" aria-hidden="true"></span>
+        <span class="stack-card__label">Hotjar</span>
+        <span class="stack-card__used-for">--used-for: behavior analytics</span>
+        <span class="stack-card__corner stack-card__corner--tr" aria-hidden="true"></span>
+        <span class="stack-card__corner stack-card__corner--bl" aria-hidden="true"></span>
       </div>
-      <div class="bento-cell bento-cell--large" data-reveal>
-        <img class="bento-cell__logo" src="https://cdn.simpleicons.org/googleanalytics" alt="" aria-hidden="true" />
-        <span class="bento-cell__label">Google Analytics</span>
+      <div class="stack-card" data-reveal>
+        <span class="stack-card__mark">St</span>
+        <span class="stack-card__label">Stitch</span>
+        <span class="stack-card__used-for">--used-for: AI-assisted UI</span>
+        <span class="stack-card__corner stack-card__corner--tr" aria-hidden="true"></span>
+        <span class="stack-card__corner stack-card__corner--bl" aria-hidden="true"></span>
       </div>
-      <div class="bento-cell" data-reveal>
-        <span class="bento-cell__mark">Cn</span>
-        <span class="bento-cell__label">Condens</span>
+      <div class="stack-card" data-reveal>
+        <span class="stack-card__mark">Cn</span>
+        <span class="stack-card__label">Condens</span>
+        <span class="stack-card__used-for">--used-for: research repository</span>
+        <span class="stack-card__corner stack-card__corner--tr" aria-hidden="true"></span>
+        <span class="stack-card__corner stack-card__corner--bl" aria-hidden="true"></span>
       </div>
-      <div class="bento-cell" data-reveal>
-        <span class="bento-cell__mark">Mz</span>
-        <span class="bento-cell__label">Maze</span>
+      <div class="stack-card" data-reveal>
+        <span class="stack-card__mark">Mz</span>
+        <span class="stack-card__label">Maze</span>
+        <span class="stack-card__used-for">--used-for: usability testing</span>
+        <span class="stack-card__corner stack-card__corner--tr" aria-hidden="true"></span>
+        <span class="stack-card__corner stack-card__corner--bl" aria-hidden="true"></span>
       </div>
     </div>
   </section>
@@ -272,6 +289,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=7"></script>
+  <script src="main.js?v=8"></script>
 </body>
 </html>

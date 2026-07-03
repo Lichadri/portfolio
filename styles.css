@@ -1126,102 +1126,146 @@ img {
 }
 
 /* ==========================================================================
-   BENTO GRID — reemplaza el collage de imagen. Mismo lenguaje de
-   microinteracción que .project-card (lift + sombra) por consistencia
-   de sistema, no un patrón de hover nuevo.
+   STACK CARD — tercera variante de "spec card" del sistema (junto a
+   hero-card y quote-card). Comparten corner marks + token footer, pero
+   el reveal es en hover por repetición de 6 instancias — el typewriter
+   queda reservado al mensaje central único (cita/KPI).
    ========================================================================== */
 
-.bento-grid {
+.stack-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 140px;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-16);
   width: 100%;
   max-width: 720px;
 }
 
-.bento-cell {
+.stack-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   gap: var(--space-4);
   padding: var(--space-16);
+  min-height: 100px;
   background: var(--color-hero-bg);
   border: 0.5px solid var(--color-hero-line);
-  border-radius: 4px;
   transition: border-color var(--duration-base) var(--easing-standard);
 }
 
-.bento-cell::before,
-.bento-cell::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--easing-standard);
-}
-
-.bento-cell::before {
-  top: 6px;
-  right: 6px;
-  border-top: 1.5px solid var(--color-secondary-900);
-  border-right: 1.5px solid var(--color-secondary-900);
-}
-
-.bento-cell::after {
-  bottom: 6px;
-  left: 6px;
-  border-bottom: 1.5px solid var(--color-secondary-900);
-  border-left: 1.5px solid var(--color-secondary-900);
-}
-
-.bento-cell--large {
-  grid-column: span 2;
-}
-
-.bento-cell:hover {
+.stack-card:hover {
   border-color: var(--color-accent-lime);
 }
 
-.bento-cell:hover::before,
-.bento-cell:hover::after {
-  opacity: 1;
+/* Logo monocromo vía mask-image: el SVG de marca solo aporta la forma
+   (alpha), el color real lo controla background-color — así el logo
+   puede pasar de tinta a lima en :hover sin swap de imagen ni JS. */
+.stack-card__logo {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-secondary-900);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  transition: background-color var(--duration-base) var(--easing-standard);
 }
 
-.bento-cell__mark {
+.stack-card__logo--figma {
+  -webkit-mask-image: url('https://cdn.simpleicons.org/figma');
+  mask-image: url('https://cdn.simpleicons.org/figma');
+}
+
+.stack-card__logo--hotjar {
+  -webkit-mask-image: url('https://cdn.simpleicons.org/hotjar');
+  mask-image: url('https://cdn.simpleicons.org/hotjar');
+}
+
+.stack-card:hover .stack-card__logo {
+  background-color: var(--color-accent-lime);
+}
+
+.stack-card__mark {
   font-family: var(--font-subtitle);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-lg);
   color: var(--color-secondary-900);
-  opacity: 0.85;
+  transition: color var(--duration-base) var(--easing-standard);
 }
 
-.bento-cell__logo {
-  width: 22px;
-  height: 22px;
-  opacity: 0.85;
+.stack-card:hover .stack-card__mark {
+  color: var(--color-accent-lime);
 }
 
-.bento-cell__label {
+.stack-card__label {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-secondary-900);
+  margin-top: auto;
+}
+
+/* Token footer — mismo patrón que hero-card y quote-card, pero disparado
+   por hover (no por scroll) porque son 6 instancias repetidas del mismo
+   gesto; un reveal narrativo por card sería ruido, no información. */
+.stack-card__used-for {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity var(--duration-base) var(--easing-standard),
+              max-height var(--duration-base) var(--easing-standard);
+}
+
+.stack-card:hover .stack-card__used-for {
+  opacity: 0.5;
+  max-height: 20px;
+}
+
+/* Corner marks: mismo "draw" del quote-panel (clip-path progresivo),
+   disparado en hover en vez de por scroll. */
+.stack-card__corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  --draw: 0;
+}
+
+.stack-card__corner--tr {
+  top: 6px;
+  right: 6px;
+  border-top: 1.5px solid var(--color-secondary-900);
+  border-right: 1.5px solid var(--color-secondary-900);
+  clip-path: polygon(0 0, calc(var(--draw) * 100%) 0, calc(var(--draw) * 100%) 100%, 0 100%);
+  transition: clip-path var(--motion-corner-draw);
+}
+
+.stack-card__corner--bl {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1.5px solid var(--color-secondary-900);
+  border-left: 1.5px solid var(--color-secondary-900);
+  clip-path: polygon(calc(100% - (var(--draw) * 100%)) 100%, 100% 100%, 100% 0, calc(100% - (var(--draw) * 100%)) 0);
+  transition: clip-path var(--motion-corner-draw);
+}
+
+.stack-card:hover .stack-card__corner--tr,
+.stack-card:hover .stack-card__corner--bl {
+  --draw: 1;
 }
 
 @media (max-width: 768px) {
-  .bento-grid {
+  .stack-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 120px;
-  }
-  .bento-cell--large {
-    grid-column: span 2;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bento-cell {
+  .stack-card,
+  .stack-card__logo,
+  .stack-card__mark,
+  .stack-card__used-for,
+  .stack-card__corner--tr,
+  .stack-card__corner--bl {
     transition: none;
   }
 }
