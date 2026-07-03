@@ -747,22 +747,7 @@ img {
   gap: var(--space-16);
   font-family: var(--font-mono);
   font-size: 10px;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity var(--duration-base) var(--easing-standard),
-              transform var(--duration-base) var(--easing-standard);
-}
-
-.quote-panel:hover .quote-panel__tokens,
-.quote-panel:focus-within .quote-panel__tokens {
   opacity: 0.45;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .quote-panel__tokens {
-    transition: none;
-  }
 }
 
 .quote-panel__corner {
@@ -783,6 +768,57 @@ img {
   left: 8px;
   border-bottom: 1.5px solid var(--color-secondary-900);
   border-left: 1.5px solid var(--color-secondary-900);
+}
+
+/* Corner-draw: en vez de aparecer de golpe, la esquina "se dibuja" —
+   ambos brazos crecen desde el vértice hacia afuera. Activado por JS
+   agregando .is-drawn cuando el quote-panel entra a viewport. */
+.quote-panel__corner--tr,
+.quote-panel__corner--bl {
+  --draw: 0;
+}
+
+.quote-panel__corner--tr {
+  clip-path: polygon(0 0, calc(var(--draw) * 100%) 0, calc(var(--draw) * 100%) 100%, 0 100%);
+  transition: clip-path var(--motion-corner-draw);
+}
+
+.quote-panel__corner--bl {
+  clip-path: polygon(calc(100% - (var(--draw) * 100%)) 100%, 100% 100%, 100% 0, calc(100% - (var(--draw) * 100%)) 0);
+  transition: clip-path var(--motion-corner-draw);
+}
+
+.quote-panel.is-drawn .quote-panel__corner--tr,
+.quote-panel.is-drawn .quote-panel__corner--bl {
+  --draw: 1;
+}
+
+/* Cursor parpadeante del typewriter — agregado por JS al final del
+   texto mientras escribe, removido al terminar. */
+.quote-panel__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--color-accent-lime);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-panel__corner--tr,
+  .quote-panel__corner--bl {
+    transition: none;
+    --draw: 1;
+  }
+  .quote-panel__cursor {
+    display: none;
+  }
 }
 
 /* ==========================================================================
@@ -831,6 +867,85 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-24);
   width: 100%;
+}
+
+/* ==========================================================================
+   CAROUSEL — resto de proyectos, más allá de los 3 destacados. Scroll-snap
+   nativo (drag/swipe gratis en touch y trackpad), flechas para affordance
+   visible en desktop. Mismo lenguaje visual que project-card, sin librería.
+   ========================================================================== */
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+  margin-top: var(--space-16);
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--space-24);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: var(--space-8);
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: var(--color-hero-line);
+}
+
+.carousel-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-hero-bg);
+  border: 0.5px solid var(--color-hero-line);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--easing-standard),
+              opacity var(--duration-fast) var(--easing-standard);
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+  border-color: var(--color-accent-lime);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .carousel-card {
+    flex-basis: 260px;
+  }
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    scroll-behavior: auto;
+  }
 }
 
 .project-card {
@@ -991,6 +1106,14 @@ img {
   flex-direction: column;
   align-items: center;
   gap: var(--space-32);
+}
+
+.tools-section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
 }
 
 .tools-section__title {

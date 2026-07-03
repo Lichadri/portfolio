@@ -90,4 +90,18 @@
   --duration-slow: 600ms;
   --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --easing-emphasis: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- Motion reveal tokens ----
+     El motion también es un token, no un efecto suelto (misma tesis que
+     "toda la plataforma es un artefacto de tokens"). Regla de uso:
+     - reveal-char: typewriter, solo para el mensaje central (<80 caracteres,
+       primera vez por sesión) — quote-panel y KPI de Resultado con número real.
+     - reveal-word: stagger por palabra, para contexto/narrativa más larga.
+     - reveal-simple: fade/slide único — todo lo demás, y repeticiones
+       dentro de la misma sesión (evita fatiga, Ley de Jakob).
+     - corner-draw: los corner marks se "dibujan" en vez de aparecer de golpe. */
+  --motion-reveal-char: 18ms;
+  --motion-reveal-word: 45ms;
+  --motion-reveal-simple: 320ms;
+  --motion-corner-draw: 480ms cubic-bezier(0.2, 0.7, 0.3, 1);
 }

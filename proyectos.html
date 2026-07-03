@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
-  <link rel="stylesheet" href="tokens.css?v=5" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="tokens.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 
@@ -53,7 +53,7 @@
           <div class="hero-b__spec-cell hero-b__spec-cell--wide">
             <span class="hero-b__spec-label">Sobre mí</span>
             <p class="hero-b__spec-bio">
-              Traduzco objetivos de negocio y necesidades reales de usuario en soluciones escalables — del research a la documentación para desarrollo.
+              Traduzco objetivos de negocio y necesidades reales de usuario en soluciones escalables — del research a la documentación para desarrollo. Vengo de la docencia artística y el teatro, de ahí mi enfoque narrativo.
             </p>
           </div>
         </div>
@@ -85,11 +85,11 @@
     <div class="quote-section__eyebrow" data-reveal>principio de diseño</div>
     <div class="quote-panel" data-reveal>
       <span class="quote-panel__mark" aria-hidden="true">&ldquo;</span>
-      <p class="quote-section__text">
+      <p class="quote-section__text" id="quote-typewriter" data-typewriter="Buen diseño es tan poco diseño como sea posible.">
         Buen diseño es tan poco diseño como sea posible.
       </p>
       <p class="quote-section__author">— Dieter Rams</p>
-      <div class="quote-panel__tokens">
+      <div class="quote-panel__tokens quote-panel__tokens--visible">
         <span>--font-title: Space Grotesk</span>
         <span>--font-size-lg: 20px</span>
       </div>
@@ -101,8 +101,12 @@
   <!-- ===================== PROYECTOS ===================== -->
   <section class="projects-section">
     <div class="projects-section__eyebrow" data-reveal>02 — proyectos</div>
-    <h2 class="projects-section__title" data-reveal>Mis proyectos</h2>
+    <h2 class="projects-section__title" data-reveal>Casos de estudio</h2>
 
+    <!-- Destacados: grid estático, 3 casos fijos. El resto vive en el
+         carrusel de abajo — con 9 proyectos totales, un grid uniforme
+         obligaría a escanear todo antes de decidir qué abrir (Ley de
+         Hick). Curaduría editorial en vez de dejarlo al azar del orden. -->
     <div class="projects-grid">
 
       <!-- ===== CARD 1 — FNA (teaser — detalle completo vive en fna.html) ===== -->
@@ -135,22 +139,7 @@
         <a href="inkabank.html" class="project-card__link">Ver proyecto</a>
       </article>
 
-      <!-- ===== CARD 3 — AGROS Registro (contenido real, Reto corregido) ===== -->
-      <article class="project-card" data-reveal>
-        <span class="project-card__badge">Diseño</span>
-        <h3 class="project-card__title">AGROS Registro</h3>
-        <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
-        <p class="project-card__description">
-          App de registro de parcelas para zonas rurales de baja cobertura —
-          30+ parcelas registradas, tiempo de proceso reducido a la mitad.
-        </p>
-        <div class="project-card__image-wrapper">
-          <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
-        </div>
-        <a href="agros.html" class="project-card__link">Ver proyecto</a>
-      </article>
-
-      <!-- ===== CARD 4 — AMA / Perfilamiento de usuario (teaser) ===== -->
+      <!-- ===== CARD 3 — AMA / Perfilamiento de usuario ===== -->
       <article class="project-card" data-reveal>
         <span class="project-card__badge">Investigación</span>
         <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
@@ -165,26 +154,56 @@
         <a href="ama.html" class="project-card__link">Ver proyecto</a>
       </article>
 
-      <!-- ===== CARD 5 — Rediseño Banbif (contenido real, enriquecido) ===== -->
-      <article class="project-card" data-reveal>
-        <span class="project-card__badge">Diseño</span>
-        <h3 class="project-card__title">Rediseño Banbif</h3>
-        <p class="project-card__role">UI/UX Designer — reto de bootcamp</p>
-        <p class="project-card__description">
-          Sistema de componentes con estados documentados, benchmark
-          competitivo y testing visual con usuarios reales.
-        </p>
-        <div class="project-card__image-wrapper">
-          <img src="https://www.figma.com/api/mcp/asset/c07b8562-99f6-4e06-b07d-cb7a66856418" alt="Mockup del proyecto Rediseño Banbif" />
-        </div>
-        <a href="banbif.html" class="project-card__link">Ver proyecto</a>
-      </article>
+    </div>
 
+    <!-- Carrusel: resto de proyectos (crece hasta ~9). Scroll-snap nativo
+         (drag/swipe funciona sin JS extra) + flechas para visibilidad del
+         affordance en desktop (Nielsen #1 — sin flecha, muchos usuarios
+         nunca descubren que se puede arrastrar). -->
+    <div class="carousel-wrapper" data-reveal>
+      <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Ver proyecto anterior">←</button>
+
+      <div class="carousel-track" id="carousel-track">
+
+        <!-- ===== CARD 4 — AGROS Registro ===== -->
+        <article class="project-card carousel-card">
+          <span class="project-card__badge">Diseño</span>
+          <h3 class="project-card__title">AGROS Registro</h3>
+          <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
+          <p class="project-card__description">
+            App de registro de parcelas para zonas rurales de baja cobertura —
+            30+ parcelas registradas, tiempo de proceso reducido a la mitad.
+          </p>
+          <div class="project-card__image-wrapper">
+            <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
+          </div>
+          <a href="agros.html" class="project-card__link">Ver proyecto</a>
+        </article>
+
+        <!-- ===== CARD 5 — Rediseño Banbif ===== -->
+        <article class="project-card carousel-card">
+          <span class="project-card__badge">Diseño</span>
+          <h3 class="project-card__title">Rediseño Banbif</h3>
+          <p class="project-card__role">UI/UX Designer — reto de bootcamp</p>
+          <p class="project-card__description">
+            Sistema de componentes con estados documentados, benchmark
+            competitivo y testing visual con usuarios reales.
+          </p>
+          <div class="project-card__image-wrapper">
+            <img src="https://www.figma.com/api/mcp/asset/c07b8562-99f6-4e06-b07d-cb7a66856418" alt="Mockup del proyecto Rediseño Banbif" />
+          </div>
+          <a href="banbif.html" class="project-card__link">Ver proyecto</a>
+        </article>
+
+      </div>
+
+      <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Ver siguiente proyecto">→</button>
     </div>
   </section>
 
   <!-- ===================== HERRAMIENTAS ===================== -->
   <section class="tools-section">
+    <div class="tools-section__eyebrow" data-reveal>stack</div>
     <h2 class="tools-section__title" data-reveal>Herramientas que uso</h2>
 
     <!-- Bento grid, dirección B: fondo hueso uniforme (sin pastel), la
@@ -253,6 +272,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=5"></script>
+  <script src="main.js?v=6"></script>
 </body>
 </html>

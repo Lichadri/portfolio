@@ -110,4 +110,97 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---- Quote-panel: typewriter + corner-draw ----
+  // Primera vez por sesión: typewriter letra a letra + corners dibujándose.
+  // Siguientes veces (o prefers-reduced-motion): contenido completo directo,
+  // sin cursor ni animación de escritura (evita fatiga — Ley de Jakob — y
+  // respeta accesibilidad).
+  const quotePanel = document.querySelector('.quote-panel');
+  const quoteTextEl = document.getElementById('quote-typewriter');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (quotePanel && quoteTextEl) {
+    const fullText = quoteTextEl.getAttribute('data-typewriter') || quoteTextEl.textContent.trim();
+    const alreadyPlayed = sessionStorage.getItem('specCardTypewriterPlayed') === 'true';
+    const skipTypewriter = alreadyPlayed || reducedMotionQuery.matches;
+
+    const runTypewriter = () => {
+      quoteTextEl.textContent = '';
+      const cursor = document.createElement('span');
+      cursor.className = 'quote-panel__cursor';
+      quoteTextEl.appendChild(cursor);
+
+      let i = 0;
+      const charDelay = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--motion-reveal-char'),
+        10
+      ) || 18;
+
+      const typeNext = () => {
+        if (i < fullText.length) {
+          cursor.insertAdjacentText('beforebegin', fullText[i]);
+          i += 1;
+          setTimeout(typeNext, charDelay);
+        } else {
+          cursor.remove();
+          sessionStorage.setItem('specCardTypewriterPlayed', 'true');
+        }
+      };
+      typeNext();
+    };
+
+    const revealQuote = () => {
+      quotePanel.classList.add('is-drawn');
+      if (skipTypewriter) {
+        quoteTextEl.textContent = fullText;
+      } else {
+        runTypewriter();
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const quoteObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealQuote();
+              quoteObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      quoteObserver.observe(quotePanel);
+    } else {
+      revealQuote();
+    }
+  }
+
+  // ---- Carrusel de proyectos ----
+  const carouselTrack = document.getElementById('carousel-track');
+  const carouselPrev = document.getElementById('carousel-prev');
+  const carouselNext = document.getElementById('carousel-next');
+
+  if (carouselTrack && carouselPrev && carouselNext) {
+    const scrollAmount = () => {
+      const card = carouselTrack.querySelector('.carousel-card');
+      return card ? card.offsetWidth + 24 : 320;
+    };
+
+    const updateArrowState = () => {
+      const maxScroll = carouselTrack.scrollWidth - carouselTrack.clientWidth;
+      carouselPrev.disabled = carouselTrack.scrollLeft <= 4;
+      carouselNext.disabled = carouselTrack.scrollLeft >= maxScroll - 4;
+    };
+
+    carouselPrev.addEventListener('click', () => {
+      carouselTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+    carouselNext.addEventListener('click', () => {
+      carouselTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+    carouselTrack.addEventListener('scroll', updateArrowState);
+    updateArrowState();
+  }
+
 });
