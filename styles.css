@@ -79,12 +79,13 @@ img {
 
 .navbar__logo {
   position: relative;
+  display: inline-block;
   font-family: var(--font-title);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-lg);
   letter-spacing: -0.01em;
-  cursor: default;
+  cursor: pointer;
 }
 
 .navbar__logo-tooltip {
