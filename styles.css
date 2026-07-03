@@ -67,19 +67,59 @@ img {
    ========================================================================== */
 
 .navbar {
+  position: sticky;
+  top: var(--space-16);
+  z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-24) var(--space-96);
+  margin: var(--space-16) var(--space-96) 0;
+  padding: var(--space-16) var(--space-24);
   background: var(--color-hero-bg);
-  border-bottom: 0.5px solid var(--color-hero-line);
+  border: 0.5px solid var(--color-hero-line);
+  border-radius: 4px;
 }
 
 .navbar__logo {
+  position: relative;
   font-family: var(--font-title);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-lg);
   line-height: var(--line-height-lg);
+  letter-spacing: -0.01em;
+  cursor: default;
+}
+
+.navbar__logo-tooltip {
+  position: absolute;
+  top: calc(100% + var(--space-8));
+  left: 0;
+  white-space: nowrap;
+  background: var(--color-secondary-900);
+  color: var(--color-hero-bg);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--space-8) var(--space-16);
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--easing-standard),
+              transform var(--duration-fast) var(--easing-standard);
+}
+
+.navbar__logo:hover .navbar__logo-tooltip,
+.navbar__logo:focus-visible .navbar__logo-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__logo-tooltip {
+    transition: none;
+  }
 }
 
 .navbar__menu {
@@ -404,7 +444,7 @@ img {
   background: var(--color-hero-bg);
   color: var(--color-hero-ink);
   border: 0.5px solid var(--color-hero-line);
-  padding: var(--space-96) var(--space-96) var(--space-24);
+  padding: var(--space-48) var(--space-96) var(--space-24);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -703,6 +743,29 @@ img {
   letter-spacing: 0.06em;
   opacity: 0.6;
   margin: 0;
+}
+
+.quote-panel__tokens {
+  display: flex;
+  gap: var(--space-16);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--duration-base) var(--easing-standard),
+              transform var(--duration-base) var(--easing-standard);
+}
+
+.quote-panel:hover .quote-panel__tokens,
+.quote-panel:focus-within .quote-panel__tokens {
+  opacity: 0.45;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-panel__tokens {
+    transition: none;
+  }
 }
 
 .quote-panel__corner {
@@ -1069,17 +1132,24 @@ img {
 .footer {
   background: var(--color-secondary-900);
   color: var(--color-secondary-10);
-  padding: var(--space-24) 71px;
+  padding: var(--space-24);
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
 }
 
 .footer__top {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-32);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer__top > div {
+  padding: var(--space-24);
+}
+
+.footer__top > div:first-child {
+  border-right: 0.5px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer__bio {
@@ -1237,6 +1307,11 @@ html {
    ========================================================================== */
 
 @media (max-width: 768px) {
+  .navbar {
+    margin-left: var(--space-16);
+    margin-right: var(--space-16);
+  }
+
   .navbar,
   .hero,
   .quote-section,
@@ -1269,6 +1344,11 @@ html {
   }
 
   .footer__top {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  .footer__top > div:first-child {
+    border-right: none;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
   }
 }

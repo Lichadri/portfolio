@@ -61,23 +61,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---- Avatar flotante persistente ----
-  // Aparece después de pasar el hero (no antes — sería redundante con el
-  // logo del navbar que ya está ahí). Usa IntersectionObserver sobre el
-  // propio hero: cuando el hero sale de vista, se muestra el avatar.
+  // Aparece después de pasar el hero, y se oculta de nuevo al llegar al
+  // footer (evita que compita visualmente con el logo "AB" del footer —
+  // dos elementos idénticos en la misma esquina rompen la heurística de
+  // consistencia de Nielsen).
   const floatingAvatar = document.getElementById('floating-avatar');
   const heroSection = document.querySelector('.hero-b, .case-hero');
+  const footerSection = document.querySelector('.footer');
 
   if (floatingAvatar && heroSection) {
+    let pastHero = false;
+    let nearFooter = false;
+
+    const updateAvatarVisibility = () => {
+      floatingAvatar.classList.toggle('is-visible', pastHero && !nearFooter);
+    };
+
     if ('IntersectionObserver' in window) {
-      const avatarObserver = new IntersectionObserver(
+      const heroObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            floatingAvatar.classList.toggle('is-visible', !entry.isIntersecting);
+            pastHero = !entry.isIntersecting;
+            updateAvatarVisibility();
           });
         },
         { threshold: 0 }
       );
-      avatarObserver.observe(heroSection);
+      heroObserver.observe(heroSection);
+
+      if (footerSection) {
+        const footerObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              nearFooter = entry.isIntersecting;
+              updateAvatarVisibility();
+            });
+          },
+          { threshold: 0, rootMargin: '0px 0px -10% 0px' }
+        );
+        footerObserver.observe(footerSection);
+      }
     } else {
       floatingAvatar.classList.add('is-visible');
     }

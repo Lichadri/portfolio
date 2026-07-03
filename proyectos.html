@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
-  <link rel="stylesheet" href="tokens.css?v=4" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="tokens.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
 
   <!-- ===================== NAVBAR ===================== -->
   <header class="navbar">
-    <div class="navbar__logo">AB</div>
+    <div class="navbar__logo" tabindex="0">
+      AB
+      <span class="navbar__logo-tooltip">role: product &amp; service designer</span>
+    </div>
     <nav>
       <ul class="navbar__menu">
         <li><a href="proyectos.html" class="navbar__link navbar__link--active">Proyectos</a></li>
@@ -83,10 +86,13 @@
     <div class="quote-panel" data-reveal>
       <span class="quote-panel__mark" aria-hidden="true">&ldquo;</span>
       <p class="quote-section__text">
-        El diseño centrado en el usuario es todo sobre sentir que tienes el control.
-        Incluye: usabilidad, comprensión, pero también la sensación.
+        Buen diseño es tan poco diseño como sea posible.
       </p>
-      <p class="quote-section__author">— Don Norman</p>
+      <p class="quote-section__author">— Dieter Rams</p>
+      <div class="quote-panel__tokens">
+        <span>--font-title: Space Grotesk</span>
+        <span>--font-size-lg: 20px</span>
+      </div>
       <span class="quote-panel__corner quote-panel__corner--tr" aria-hidden="true"></span>
       <span class="quote-panel__corner quote-panel__corner--bl" aria-hidden="true"></span>
     </div>
@@ -247,6 +253,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=4"></script>
+  <script src="main.js?v=5"></script>
 </body>
 </html>
