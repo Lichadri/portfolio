@@ -314,7 +314,8 @@ img {
   background: var(--color-hero-surface);
 }
 
-.case-image img {
+.case-image img,
+.case-image video {
   max-width: 100%;
   height: auto;
 }
@@ -358,7 +359,8 @@ img {
   height: 100%;
 }
 
-.case-image--mobile img {
+.case-image--mobile img,
+.case-image--mobile video {
   max-height: 420px;
   width: auto;
   margin: 0 auto;
