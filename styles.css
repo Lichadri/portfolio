@@ -186,7 +186,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .case-breadcrumb a {
@@ -238,7 +238,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .case-hero__title {
@@ -275,7 +275,7 @@ img {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .case-hero__meta-value {
@@ -375,7 +375,7 @@ img {
   font-family: var(--font-mono);
   font-size: 10px;
   text-align: center;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .case-proto-link {
@@ -439,7 +439,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 @media (max-width: 768px) {
@@ -493,7 +493,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.55;
+  color: var(--gray-600);
   text-align: center;
   margin: 0 auto;
   animation: hero-rise var(--duration-slow) var(--easing-standard) both;
@@ -591,7 +591,7 @@ img {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .hero-b__spec-value {
@@ -649,7 +649,7 @@ img {
   left: 8px;
   font-family: var(--font-mono);
   font-size: 9px;
-  opacity: 0.4;
+  color: var(--gray-600);
   z-index: 2;
 }
 
@@ -685,7 +685,7 @@ img {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.5;
+  color: var(--gray-600);
   padding: var(--space-8) 0;
   transition: opacity var(--duration-fast) var(--easing-standard);
 }
@@ -745,7 +745,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .quote-panel {
@@ -883,7 +883,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .projects-section__title {
@@ -906,16 +906,8 @@ img {
   background: var(--color-accent-lime);
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-24);
-  width: 100%;
-  margin-top: var(--space-32);
-}
-
 /* ==========================================================================
-   CAROUSEL — resto de proyectos, más allá de los 3 destacados. Scroll-snap
+   CAROUSEL — resto de proyectos, más allá de los destacados. Scroll-snap
    nativo (drag/swipe gratis en touch y trackpad), flechas para affordance
    visible en desktop. Mismo lenguaje visual que project-card, sin librería.
    ========================================================================== */
@@ -1215,7 +1207,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .tools-section__title {
@@ -1319,7 +1311,7 @@ img {
 }
 
 .stack-card:hover .stack-card__used-for {
-  opacity: 0.5;
+  color: var(--gray-600);
   max-height: 20px;
 }
 
@@ -1392,7 +1384,7 @@ img {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
   margin-bottom: var(--space-8);
 }
 
@@ -1597,10 +1589,6 @@ html {
     gap: var(--space-16);
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
   .project-card {
     flex-direction: column;
   }
@@ -1634,7 +1622,7 @@ html {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
   margin-bottom: var(--space-8);
 }
 
@@ -1704,7 +1692,7 @@ html {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .timeline-section__title {
@@ -1743,7 +1731,7 @@ html {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.5;
+  color: var(--gray-600);
 }
 
 .timeline-entry__role {
@@ -1771,7 +1759,7 @@ html {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.5;
+  color: var(--gray-600);
   text-align: center;
   display: block;
 }
