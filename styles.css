@@ -1140,7 +1140,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 140px;
+  height: 170px;
 }
 
 .project-card__image-wrapper img {
@@ -1151,14 +1151,15 @@ img {
 }
 
 /* ==========================================================================
-   ANCLAS — dos casos con jerarquía distinta, mismo componente base.
-   Son MODIFICADORES de .project-card, no un componente nuevo: cualquier
-   cambio futuro al card base (padding, tipografía, motion) se hereda aquí
-   automáticamente. El corner mark ya existe como hover-only en .project-card
-   (línea ~1009) — acá lo dejamos permanentemente visible en dos
-   intensidades distintas (1 / 0.5) en vez de inventar un tercer lenguaje
-   visual. Von Restorff funciona por contraste con el resto del grid: por
-   eso solo hay 2 anclas sobre 6 proyectos totales, no 3+.
+   CASO DESTACADO — un solo proyecto con jerarquía distinta, mismo
+   componente base (.project-card). Layout horizontal (no vertical como el
+   resto) porque al ocupar el ancho completo de .projects-anchors necesita
+   usar ese espacio con intención, no dejarlo vacío. El corner mark ya
+   existe como hover-only en .project-card (línea ~1009) — acá queda
+   permanentemente visible en vez de inventar un lenguaje visual nuevo.
+   Von Restorff funciona por contraste: por eso es 1 sobre 6 proyectos
+   totales, no 2 o 3 — más de un tercio del set "destacado" deja de leerse
+   como excepción.
    ========================================================================== */
 
 .projects-anchors {
@@ -1170,7 +1171,19 @@ img {
 }
 
 .project-card--anchor-primary {
+  flex-direction: row;
+  align-items: center;
   padding: var(--space-32);
+  gap: var(--space-32);
+}
+
+.project-card__anchor-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  flex: 1;
+  min-width: 0;
+  max-width: 640px;
 }
 
 .project-card--anchor-primary .project-card__title {
@@ -1179,7 +1192,9 @@ img {
 }
 
 .project-card--anchor-primary .project-card__image-wrapper {
-  height: 220px;
+  flex: 0 0 280px;
+  height: 280px;
+  justify-content: center;
 }
 
 .project-card--anchor-primary::before,
@@ -1187,25 +1202,10 @@ img {
   opacity: 1;
 }
 
-.project-card--anchor-secondary .project-card__image-wrapper {
-  height: 160px;
-}
-
-.project-card--anchor-secondary::before,
-.project-card--anchor-secondary::after {
-  opacity: 0.5;
-}
-
 .project-card__badge--primary {
   background: var(--color-accent-lime);
   border-color: var(--color-accent-lime);
   color: var(--color-hero-ink);
-}
-
-.project-card__badge--secondary {
-  background: transparent;
-  border-color: var(--color-accent-lime);
-  color: var(--color-secondary-900);
 }
 
 .project-card__metric {
@@ -1219,11 +1219,17 @@ img {
 }
 
 @media (max-width: 768px) {
-  .project-card--anchor-primary .project-card__image-wrapper {
-    height: 180px;
+  .project-card--anchor-primary {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .project-card--anchor-secondary .project-card__image-wrapper {
-    height: 140px;
+  .project-card__anchor-body {
+    max-width: 100%;
+  }
+  .project-card--anchor-primary .project-card__image-wrapper {
+    flex: none;
+    width: 100%;
+    height: 200px;
   }
 }
 
