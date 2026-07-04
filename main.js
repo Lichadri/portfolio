@@ -182,9 +182,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const carouselNext = document.getElementById('carousel-next');
 
   if (carouselTrack && carouselPrev && carouselNext) {
+    // Gap leído desde el token real (--space-24), no hardcodeado — mismo
+    // patrón que ya usa el typewriter del quote-panel para
+    // --motion-reveal-char. Si el token cambia algún día, el carrusel
+    // scrollea consistente con lo que el ojo ve, sin tocar JS.
+    const cardGap = () =>
+      parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--space-24'),
+        10
+      ) || 24;
+
     const scrollAmount = () => {
       const card = carouselTrack.querySelector('.carousel-card');
-      return card ? card.offsetWidth + 24 : 320;
+      return card ? card.offsetWidth + cardGap() : 320;
     };
 
     const updateArrowState = () => {

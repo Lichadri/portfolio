@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=13" />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="tokens.css?v=15" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <body>
 
@@ -28,9 +28,6 @@
   <section class="hero-b">
     <div class="hero-b__eyebrow" data-reveal>01 — product &amp; service designer</div>
     <h1 class="hero-b__name" data-reveal>Adriana Bautista</h1>
-    <p class="hero-b__tagline" data-reveal>
-      Conecto necesidades reales de usuario con objetivos de negocio en productos B2B/B2C complejos — seguros y fintech.
-    </p>
 
     <div class="hero-b__panel" data-reveal>
       <div class="hero-b__spec">
@@ -110,68 +107,63 @@
     <div class="projects-section__eyebrow" data-reveal>02 — proyectos</div>
     <h2 class="projects-section__title" data-reveal>Casos de estudio</h2>
 
-    <!-- Un solo caso destacado. El contraste que hace notar un caso se
-         diluye si más de ~1/3 del set "compite" por atención primaria
-         (efecto von Restorff) — con 6 proyectos, 1 es el punto justo.
-         Selección basada en métrica real verificable, no en preferencia:
-         Inkabank tiene la única puntuación cuantitativa del set completo
-         (SUS 85/100 vs. 68 promedio industria) y es research+diseño
-         end-to-end. -->
+    <!-- Dos casos destacados, misma anatomía de card que el resto (sin
+         layout especial) — al vivir en un grid de 2 columnas, cada card
+         vuelve a tener ancho acotado por el grid, igual que en el
+         carrusel. Selección basada en métrica real verificable: Inkabank
+         (SUS 85/100 vs. 68 promedio industria) y AGROS (-50% tiempo de
+         proceso) son los únicos dos proyectos con cifra cuantitativa. -->
     <div class="projects-anchors">
-      <article class="project-card project-card--anchor-primary" data-reveal>
+      <article class="project-card project-card--featured" data-reveal>
         <span class="project-card__badge project-card__badge--primary">Caso destacado</span>
-        <div class="project-card__anchor-body">
-          <h3 class="project-card__title">Inkabank</h3>
-          <p class="project-card__role">UI/UX Designer end-to-end — research y diseño</p>
-          <p class="project-card__description">
-            Diseñé de cero una solución de cambio de divisas, con UI kit completo
-            y una decisión de marca entre dos direcciones distintas.
-          </p>
-          <span class="project-card__metric">SUS 85/100 · vs. 68 promedio industria</span>
-          <a href="inkabank.html" class="project-card__link">Ver proyecto</a>
-        </div>
+        <h3 class="project-card__title">Inkabank</h3>
+        <p class="project-card__role">UI/UX Designer end-to-end — research y diseño</p>
+        <p class="project-card__description">
+          Solución de cambio de divisas con UI kit completo y decisión de
+          marca validada con testing real.
+        </p>
+        <span class="project-card__metric">SUS 85/100 · vs. 68 promedio industria</span>
         <div class="project-card__image-wrapper">
           <img src="https://www.figma.com/api/mcp/asset/10d099fc-293d-4700-a506-6963bab71903" alt="Mockup del proyecto Inkabank" />
         </div>
+        <a href="inkabank.html" class="project-card__link">Ver proyecto</a>
+      </article>
+
+      <article class="project-card project-card--featured" data-reveal>
+        <span class="project-card__badge project-card__badge--primary">Caso destacado</span>
+        <h3 class="project-card__title">AGROS Registro</h3>
+        <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
+        <p class="project-card__description">
+          App de registro de parcelas para zonas rurales de baja cobertura
+          y conectividad limitada.
+        </p>
+        <span class="project-card__metric">-50% tiempo de proceso · 30+ parcelas</span>
+        <div class="project-card__image-wrapper">
+          <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
+        </div>
+        <a href="agros.html" class="project-card__link">Ver proyecto</a>
       </article>
     </div>
 
-    <!-- Carrusel: resto de proyectos (crece hasta ~9). Sin badge de métrica
-         donde no hay cifra pública verificable — FNA y AMA no tienen
-         Resultado con data real (regla del sistema: omitir antes que
-         inventar). Scroll-snap nativo (drag/swipe funciona sin JS extra) +
-         flechas para visibilidad del affordance en desktop (Nielsen #1 —
-         sin flecha, muchos usuarios nunca descubren que se puede arrastrar). -->
+    <!-- Carrusel: teaser puro, texto corto a propósito. El detalle rico
+         (contexto, decisiones, resultado) vive en la página de cada
+         proyecto — acá el trabajo del texto es que se pueda escanear las
+         4 cards en paralelo, no leerlas completas (Ley de Miller). Sin
+         badge de métrica ni párrafo de resultado: eso queda reservado a
+         los 2 casos destacados de arriba, para no diluir la jerarquía. -->
     <div class="carousel-wrapper" data-reveal>
       <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Ver proyecto anterior">←</button>
 
       <div class="carousel-track" id="carousel-track">
 
-        <!-- ===== CARD — AGROS Registro ===== -->
-        <article class="project-card carousel-card">
-          <span class="project-card__badge">Diseño</span>
-          <h3 class="project-card__title">AGROS Registro</h3>
-          <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
-          <p class="project-card__description">
-            App de registro de parcelas para zonas rurales de baja cobertura y
-            conectividad limitada — validada en campo con agricultores reales.
-          </p>
-          <span class="project-card__metric">-50% tiempo de proceso · 30+ parcelas</span>
-          <div class="project-card__image-wrapper">
-            <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
-          </div>
-          <a href="agros.html" class="project-card__link">Ver proyecto</a>
-        </article>
-
-        <!-- ===== CARD — FNA (teaser — detalle completo vive en fna.html) ===== -->
+        <!-- ===== CARD — FNA ===== -->
         <article class="project-card carousel-card">
           <span class="project-card__badge">Diseño</span>
           <h3 class="project-card__title">FNA</h3>
           <p class="project-card__role">UI/UX Designer — diseño de sistema y componentes</p>
           <p class="project-card__description">
-            Rediseñé fnamilanoforlanini.com sin versión mobile, construyendo una
-            librería de componentes reutilizables desde cero — 9 pantallas
-            construidas sobre el mismo sistema, sin rehacer patrones por página.
+            Rediseño completo de fnamilanoforlanini.com, sin versión mobile
+            previa — sistema de componentes desde cero.
           </p>
           <div class="project-card__image-wrapper">
             <img src="https://www.figma.com/api/mcp/asset/ca029a15-9509-45b3-88f2-a23f4d6b02af" alt="Mockup del proyecto FNA" />
@@ -185,9 +177,8 @@
           <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
           <p class="project-card__role">Service Designer — investigación y facilitación</p>
           <p class="project-card__description">
-            Research en campo para habilitar identidad digital blockchain de
-            productores textiles en el Valle Sagrado, Cusco — mapeo de
-            ecosistema de actores y service blueprint de 5 etapas.
+            Research de campo para habilitar identidad digital blockchain
+            de productores textiles en Cusco.
           </p>
           <div class="project-card__image-wrapper">
             <img src="ama-mapa-actores.png" alt="Mockup del proyecto AMA — Perfilamiento de usuario" />
@@ -201,12 +192,8 @@
           <h3 class="project-card__title">Rediseño Banbif</h3>
           <p class="project-card__role">UI/UX Designer — reto de bootcamp</p>
           <p class="project-card__description">
-            Sistema de componentes con estados documentados, benchmark
-            competitivo y motion en las transiciones para reforzar feedback.
-          </p>
-          <p class="project-card__result">
-            Testing visual: usuarios valoraron la estética moderna y la
-            cercanía a la marca Banbif.
+            Sistema de componentes con estados documentados y testing
+            visual con usuarios reales.
           </p>
           <div class="project-card__image-wrapper">
             <img src="https://www.figma.com/api/mcp/asset/c07b8562-99f6-4e06-b07d-cb7a66856418" alt="Mockup del proyecto Rediseño Banbif" />
@@ -214,18 +201,14 @@
           <a href="banbif.html" class="project-card__link">Ver proyecto</a>
         </article>
 
-        <!-- ===== CARD — MEP (Pacífico Seguros, contenido real) ===== -->
+        <!-- ===== CARD — MEP ===== -->
         <article class="project-card carousel-card">
           <span class="project-card__badge">Diseño</span>
           <h3 class="project-card__title">MEP</h3>
           <p class="project-card__role">Senior Product &amp; Service Designer</p>
           <p class="project-card__description">
-            Rediseño de Home y Mis Seguros en Pacífico Seguros — 3 iteraciones
-            sucesivas de Home desde 2023, cada una sobre un aprendizaje distinto.
-          </p>
-          <p class="project-card__result">
-            Incremento en autogestión y reducción de dependencia del call
-            center (cifras exactas bajo confidencialidad de negocio).
+            Rediseño de Home y Mis Seguros — más autogestión, menos
+            dependencia del call center.
           </p>
           <div class="project-card__image-wrapper">
             <img src="mep-mis-seguros.png" alt="Mockup del proyecto MEP" />
@@ -327,6 +310,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=13"></script>
+  <script src="main.js?v=15"></script>
 </body>
 </html>
