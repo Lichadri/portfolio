@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=11" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="tokens.css?v=12" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
 
@@ -110,84 +110,91 @@
     <div class="projects-section__eyebrow" data-reveal>02 — proyectos</div>
     <h2 class="projects-section__title" data-reveal>Casos de estudio</h2>
 
-    <!-- Destacados: grid estático, 3 casos fijos. El resto vive en el
-         carrusel de abajo — con 9 proyectos totales, un grid uniforme
-         obligaría a escanear todo antes de decidir qué abrir (Ley de
-         Hick). Curaduría editorial en vez de dejarlo al azar del orden. -->
-    <div class="projects-grid">
+    <!-- Anclas: 2 casos con jerarquía visual distinta (primaria/secundaria),
+         no 3+ — el contraste que hace notar un ancla se diluye si más de
+         ~1/3 del set "compite" por atención primaria (efecto von Restorff).
+         Selección basada en métrica real verificable, no en preferencia:
+         Inkabank tiene la única puntuación cuantitativa del set (SUS 85/100
+         vs. 68 promedio industria) y es research+diseño end-to-end; AGROS
+         tiene la segunda métrica más fuerte (-50% tiempo de proceso). -->
+    <div class="projects-anchors">
 
-      <!-- ===== CARD 1 — FNA (teaser — detalle completo vive en fna.html) ===== -->
-      <article class="project-card" data-reveal>
-        <span class="project-card__badge">Diseño</span>
-        <h3 class="project-card__title">FNA</h3>
-        <p class="project-card__role">UI/UX Designer — diseño de sistema y componentes</p>
-        <p class="project-card__description">
-          Rediseñé fnamilanoforlanini.com sin versión mobile, construyendo una
-          librería de componentes reutilizables desde cero.
-        </p>
-        <div class="project-card__image-wrapper">
-          <img src="https://www.figma.com/api/mcp/asset/ca029a15-9509-45b3-88f2-a23f4d6b02af" alt="Mockup del proyecto FNA" />
-        </div>
-        <a href="fna.html" class="project-card__link">Ver proyecto</a>
-      </article>
-
-      <!-- ===== CARD 2 — Inkabank (contenido real) ===== -->
-      <article class="project-card" data-reveal>
-        <span class="project-card__badge">Diseño</span>
+      <!-- ===== ANCLA PRIMARIA — Inkabank ===== -->
+      <article class="project-card project-card--anchor-primary" data-reveal>
+        <span class="project-card__badge project-card__badge--primary">Caso ancla</span>
         <h3 class="project-card__title">Inkabank</h3>
         <p class="project-card__role">UI/UX Designer end-to-end — research y diseño</p>
         <p class="project-card__description">
           Diseñé de cero una solución de cambio de divisas, con UI kit completo
           y una decisión de marca entre dos direcciones distintas.
         </p>
+        <span class="project-card__metric">SUS 85/100 · vs. 68 promedio industria</span>
         <div class="project-card__image-wrapper">
           <img src="https://www.figma.com/api/mcp/asset/10d099fc-293d-4700-a506-6963bab71903" alt="Mockup del proyecto Inkabank" />
         </div>
         <a href="inkabank.html" class="project-card__link">Ver proyecto</a>
       </article>
 
-      <!-- ===== CARD 3 — AMA / Perfilamiento de usuario ===== -->
-      <article class="project-card" data-reveal>
-        <span class="project-card__badge">Investigación</span>
-        <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
-        <p class="project-card__role">Service Designer — investigación y facilitación</p>
+      <!-- ===== ANCLA SECUNDARIA — AGROS Registro ===== -->
+      <article class="project-card project-card--anchor-secondary" data-reveal>
+        <span class="project-card__badge project-card__badge--secondary">Caso destacado</span>
+        <h3 class="project-card__title">AGROS Registro</h3>
+        <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
         <p class="project-card__description">
-          Research para habilitar identidad digital blockchain de
-          productores textiles en el Valle Sagrado, Cusco.
+          App de registro de parcelas para zonas rurales de baja cobertura.
         </p>
+        <span class="project-card__metric">-50% tiempo de proceso · 30+ parcelas registradas</span>
         <div class="project-card__image-wrapper">
-          <img src="ama-mapa-actores.png" alt="Mockup del proyecto AMA — Perfilamiento de usuario" />
+          <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
         </div>
-        <a href="ama.html" class="project-card__link">Ver proyecto</a>
+        <a href="agros.html" class="project-card__link">Ver proyecto</a>
       </article>
 
     </div>
 
-    <!-- Carrusel: resto de proyectos (crece hasta ~9). Scroll-snap nativo
-         (drag/swipe funciona sin JS extra) + flechas para visibilidad del
-         affordance en desktop (Nielsen #1 — sin flecha, muchos usuarios
-         nunca descubren que se puede arrastrar). -->
+    <!-- Carrusel: resto de proyectos (crece hasta ~9). Sin badge de métrica —
+         FNA y AMA no tienen Resultado con data real (regla del sistema:
+         omitir antes que inventar), Banbif y MEP no tienen cifra pública
+         verificable todavía. Scroll-snap nativo (drag/swipe funciona sin JS
+         extra) + flechas para visibilidad del affordance en desktop
+         (Nielsen #1 — sin flecha, muchos usuarios nunca descubren que se
+         puede arrastrar). -->
     <div class="carousel-wrapper" data-reveal>
       <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Ver proyecto anterior">←</button>
 
       <div class="carousel-track" id="carousel-track">
 
-        <!-- ===== CARD 4 — AGROS Registro ===== -->
+        <!-- ===== CARD — FNA (teaser — detalle completo vive en fna.html) ===== -->
         <article class="project-card carousel-card">
           <span class="project-card__badge">Diseño</span>
-          <h3 class="project-card__title">AGROS Registro</h3>
-          <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
+          <h3 class="project-card__title">FNA</h3>
+          <p class="project-card__role">UI/UX Designer — diseño de sistema y componentes</p>
           <p class="project-card__description">
-            App de registro de parcelas para zonas rurales de baja cobertura —
-            30+ parcelas registradas, tiempo de proceso reducido a la mitad.
+            Rediseñé fnamilanoforlanini.com sin versión mobile, construyendo una
+            librería de componentes reutilizables desde cero.
           </p>
           <div class="project-card__image-wrapper">
-            <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
+            <img src="https://www.figma.com/api/mcp/asset/ca029a15-9509-45b3-88f2-a23f4d6b02af" alt="Mockup del proyecto FNA" />
           </div>
-          <a href="agros.html" class="project-card__link">Ver proyecto</a>
+          <a href="fna.html" class="project-card__link">Ver proyecto</a>
         </article>
 
-        <!-- ===== CARD 5 — Rediseño Banbif ===== -->
+        <!-- ===== CARD — AMA / Perfilamiento de usuario ===== -->
+        <article class="project-card carousel-card">
+          <span class="project-card__badge">Investigación</span>
+          <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
+          <p class="project-card__role">Service Designer — investigación y facilitación</p>
+          <p class="project-card__description">
+            Research para habilitar identidad digital blockchain de
+            productores textiles en el Valle Sagrado, Cusco.
+          </p>
+          <div class="project-card__image-wrapper">
+            <img src="ama-mapa-actores.png" alt="Mockup del proyecto AMA — Perfilamiento de usuario" />
+          </div>
+          <a href="ama.html" class="project-card__link">Ver proyecto</a>
+        </article>
+
+        <!-- ===== CARD — Rediseño Banbif ===== -->
         <article class="project-card carousel-card">
           <span class="project-card__badge">Diseño</span>
           <h3 class="project-card__title">Rediseño Banbif</h3>
@@ -202,7 +209,7 @@
           <a href="banbif.html" class="project-card__link">Ver proyecto</a>
         </article>
 
-        <!-- ===== CARD 6 — MEP (Pacífico Seguros, contenido real) ===== -->
+        <!-- ===== CARD — MEP (Pacífico Seguros, contenido real) ===== -->
         <article class="project-card carousel-card">
           <span class="project-card__badge">Diseño</span>
           <h3 class="project-card__title">MEP</h3>
@@ -311,6 +318,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=11"></script>
+  <script src="main.js?v=12"></script>
 </body>
 </html>

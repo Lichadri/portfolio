@@ -21,6 +21,9 @@
   --color-accent-lime: #90eb2f;     /* acento decorativo / underline / borde CTA */
   --color-mint-light: #effcf0;      /* fondo sección hero */
   --color-mint-badge: #c9fdc0;      /* fondo de badges de categoría */
+  --color-metric-text: #2f5e14;     /* texto sobre --color-mint-badge — para
+     el pill de métrica real en casos ancla (SUS, %, conteos). Reutiliza
+     --color-mint-badge como fondo en vez de crear un tono nuevo. */
 
   /* ---- Tipografía / Familias ---- */
   --font-title: 'Space Grotesk', sans-serif;   /* H1, H2 */
