@@ -421,6 +421,33 @@ img {
   margin: var(--space-16) auto 0;
 }
 
+.version-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-16);
+}
+
+.version-timeline__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.version-timeline__year {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .version-timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .case-gallery {
     grid-template-columns: 1fr;
