@@ -1023,7 +1023,7 @@ img {
   padding: var(--space-24);
   display: flex;
   flex-direction: column;
-  gap: var(--space-24);
+  gap: var(--space-16);
   overflow: hidden;
   transition: border-color var(--duration-base) var(--easing-standard);
   text-decoration: none;
@@ -1210,7 +1210,7 @@ img {
 }
 
 .project-card--featured .project-card__image-wrapper {
-  height: 150px;
+  height: 130px;
 }
 
 /* Fallback para cards que todavía usan captura/mockup real en vez de cover
@@ -1275,25 +1275,24 @@ img {
 
 .project-card__metric {
   align-self: flex-start;
-  width: 100%;
   background: var(--color-mint-badge);
-  padding: 10px 12px;
+  padding: 6px 12px;
   border-radius: 3px;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .project-card__metric-value {
   font-family: var(--font-title);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-sm);
   color: var(--color-secondary-900);
 }
 
 .project-card__metric-sub {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--color-metric-text);
 }
 
