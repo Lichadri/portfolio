@@ -1275,7 +1275,7 @@ img {
 
 .project-card__metric {
   align-self: flex-start;
-  background: var(--color-mint-badge);
+  background: var(--color-secondary-50);
   padding: 6px 12px;
   border-radius: 3px;
   display: flex;
@@ -1293,7 +1293,7 @@ img {
 .project-card__metric-sub {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-metric-text);
+  color: var(--gray-600);
 }
 
 @media (max-width: 768px) {
