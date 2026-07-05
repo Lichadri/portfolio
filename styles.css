@@ -1175,7 +1175,8 @@ img {
   justify-content: center;
   height: 100px;
   position: relative;
-  background: var(--color-secondary-900);
+  background: var(--color-hero-surface);
+  border: 0.5px solid var(--color-hero-line);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -1184,13 +1185,25 @@ img {
   height: 150px;
 }
 
+/* Fallback para cards que todavía usan captura/mockup real en vez de cover
+   ilustrado — ruta de migración progresiva, no un valor de sistema nuevo.
+   Ej.: <div class="project-card__image-wrapper project-card__image-wrapper--photo"> */
+.project-card__image-wrapper--photo {
+  height: 170px;
+  background: var(--color-hero-bg);
+}
+
+.project-card--featured .project-card__image-wrapper--photo {
+  height: 170px;
+}
+
 .project-card__cover-caption {
   position: absolute;
   bottom: 6px;
   right: 8px;
   font-family: var(--font-mono);
   font-size: 9px;
-  color: #a8a6a0;
+  color: var(--gray-600);
 }
 
 .project-card__image-wrapper img {
