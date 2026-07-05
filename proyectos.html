@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=17" />
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="tokens.css?v=18" />
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
 <body>
 
@@ -142,6 +142,28 @@
           <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
         </div>
         <a href="agros.html" class="project-card__link">Ver proyecto</a>
+      </article>
+    </div>
+
+    <!-- Spotlight: categoría distinta a "Caso destacado", no un 3er ancla.
+         Onco no compite por "mejor caso" — responde a una pregunta
+         específica (experiencia con IA) que los otros 2 no cubren. Mismo
+         nivel de visibilidad, badge y label distintos para que el lector
+         no lea "ahora hay 3 mejores casos" (eso sí diluiría el contraste
+         de arriba — 3 de 7 ya se acerca a la mitad del set). -->
+    <div class="projects-spotlight">
+      <p class="projects-spotlight__label">Explorando</p>
+      <article class="project-card project-card--featured" data-reveal>
+        <span class="project-card__badge project-card__badge--spotlight">AI-Assisted Design</span>
+        <h3 class="project-card__title">Onco Efectivo</h3>
+        <p class="project-card__role">Senior Product Designer — diseño end-to-end del flujo conversacional</p>
+        <p class="project-card__description">
+          Seguro oncológico embebido en punto de venta (Pacífico Seguros ×
+          Tottus) — flujo conversacional completo diseñado con Claude y
+          Figma Make como método de producción, no solo como herramienta.
+        </p>
+        <span class="project-card__metric">UMUX 90/100 · 15 pts sobre el umbral mínimo</span>
+        <a href="onco.html" class="project-card__link">Ver proyecto</a>
       </article>
     </div>
 
@@ -310,6 +332,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=17"></script>
+  <script src="main.js?v=18"></script>
 </body>
 </html>

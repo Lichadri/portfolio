@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onco Efectivo — Adriana Bautista</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="tokens.css?v=18" />
+  <link rel="stylesheet" href="styles.css?v=18" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar">
+    <a href="proyectos.html" class="navbar__logo">
+      AB
+      <span class="navbar__logo-tooltip">Volver al inicio</span>
+    </a>
+    <nav>
+      <ul class="navbar__menu">
+        <li><a href="proyectos.html" class="navbar__link navbar__link--active" aria-current="page">Proyectos</a></li>
+        <li><a href="index.html" class="navbar__link">Sobre mi</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===================== BREADCRUMB ===================== -->
+  <nav class="case-breadcrumb">
+    <a href="proyectos.html">Proyectos</a> / Onco Efectivo
+  </nav>
+
+  <!-- ===================== CASE HERO ===================== -->
+  <section class="case-hero">
+    <span class="case-hero__eyebrow" data-reveal>case study — AI-assisted design</span>
+    <h1 class="case-hero__title" data-reveal>Onco Efectivo</h1>
+
+    <div class="case-hero__meta" data-reveal>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Cliente</span>
+        <span class="case-hero__meta-value">Pacífico Seguros × Tottus</span>
+      </div>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Categoría</span>
+        <span class="case-hero__meta-value">Seguros — flujo conversacional con IA</span>
+      </div>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Rol</span>
+        <span class="case-hero__meta-value">Senior Product Designer — diseño end-to-end</span>
+      </div>
+      <div class="case-hero__meta-cell">
+        <span class="case-hero__meta-label">Herramientas de IA</span>
+        <span class="case-hero__meta-value">Claude · Figma Make</span>
+      </div>
+    </div>
+
+    <a href="https://oncotottus.figma.site/"
+       class="case-proto-link" target="_blank" rel="noopener" data-reveal>
+      Ver prototipo navegable →
+    </a>
+  </section>
+
+  <!-- ===================== CASE BODY ===================== -->
+  <main class="case-body">
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Contexto de negocio</span>
+      <h2 class="case-section__title">El problema</h2>
+      <p>
+        Onco Efectivo es un seguro oncológico embebido que se vende en góndola
+        dentro de las tiendas Tottus, por S/50 en pago único. El cliente lo
+        compra en caja, escanea un código QR en la tarjeta de góndola, y
+        activa la póliza a través de una conversación de WhatsApp con Vera,
+        el bot de Pacífico Seguros. La validación interna ocurre al día
+        siguiente a las 5:00 a.m., y el resultado se comunica por WhatsApp y
+        correo.
+      </p>
+      <p>
+        El reto no era solo construir una interfaz: era diseñar una
+        conversación completa — con sus reglas de negocio, validaciones
+        legales y casos de error — que funcionara dentro de las
+        restricciones de un canal de mensajería, y que se sintiera cálida y
+        clara incluso cuando el mensaje era un rechazo.
+      </p>
+      <div class="case-section__tokens">
+        <span>--font-body: DM Sans</span>
+        <span>--line-height-sm: 24px</span>
+      </div>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Mi rol</span>
+      <h2 class="case-section__title">Diseño end-to-end del flujo conversacional, con IA como método de producción</h2>
+      <p>
+        Cubrí arquitectura, copy, prototipado y research. A diferencia de mis
+        otros casos, acá el proceso de diseño fue deliberadamente
+        AI-assisted: usé Claude para arquitectura del flujo, copy,
+        generación de prompts y construcción del prototipo interactivo, y
+        Figma Make para el user flow y el prototipo visual — documentando el
+        método de producción, no solo el resultado.
+      </p>
+      <div class="case-section__tokens">
+        <span>--font-title: Space Grotesk</span>
+        <span>--font-weight-bold: 700</span>
+      </div>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Decisión de sistema</span>
+      <h2 class="case-section__title">Una conversación con reglas de negocio, no un formulario con burbujas</h2>
+      <p>
+        Mapeé el journey completo en tres fases: registro (comprobante, tipo
+        de documento, número, nombres, correo, fecha de nacimiento),
+        consentimientos (declaración jurada y T&amp;C), y validación Pacífico
+        (emisión o rechazo al día siguiente). Sobre esa arquitectura construí
+        el user flow completo en Figma con copy en cada nodo — happy path,
+        casuísticas de error con reintento, timeout a 24 horas y
+        comunicaciones post-validación.
+      </p>
+      <p>
+        Algunas decisiones clave y su razón: el QR es un trigger reactivo, no
+        un mensaje proactivo del bot — es el cliente quien inicia la
+        conversación (control y libertad del usuario, heurística de
+        Nielsen). Pedí el tipo de documento (DNI/CE) antes del número, para
+        validar el formato correcto antes de que el usuario tipee. La
+        declaración jurada se reescribió como pregunta directa con botones
+        Sí/No, evitando la ambigüedad de responder a una negación. Y agregué
+        un nodo de transferencia del seguro para los casos en que el
+        comprador no es el asegurado final — evitando perder la venta por un
+        desajuste que el flujo original no contemplaba.
+      </p>
+      <p>
+        El copy completo se refinó bajo un criterio de tono cálido: segunda
+        persona para el comprador, tercera persona para el asegurado (porque
+        no siempre son la misma persona), con mensajes cortos y directos —
+        por ejemplo, "Solo necesito algunos datos tuyos, ¡son poquitos!" en
+        vez de un tono corporativo. También se diseñaron las tres
+        comunicaciones post-activación (confirmación, seguro activo,
+        rechazo/devolución), y un prototipo interactivo funcional que simula
+        la conversación real con Vera — validaciones activas por campo,
+        errores con reintento, y confirmación de éxito.
+      </p>
+      <div class="case-section__tokens">
+        <span>--color-accent: #90eb2f</span>
+        <span>--border-width: 0.5px</span>
+      </div>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Restricción real</span>
+      <h2 class="case-section__title">Diseñar dentro de un canal sin UI propia</h2>
+      <p>
+        WhatsApp no da lienzo: no hay layout, ni jerarquía visual, ni
+        componentes propios — solo texto, botones binarios y el orden en que
+        se presenta la información. Cada decisión de diseño tuvo que
+        resolverse en la secuencia y el copy, no en la pantalla. A eso se
+        sumaron reglas de negocio y validaciones legales reales (rango de
+        edad exacto entre 18 años y menores de 65, redacción de la
+        declaración jurada, plazos de devolución) que no eran negociables
+        por diseño — el flujo tenía que ser cálido y claro operando dentro de
+        esos límites, no a pesar de ellos.
+      </p>
+      <div class="case-section__tokens">
+        <span>--space-32: 32px</span>
+        <span>--space-48: 48px</span>
+      </div>
+    </section>
+
+    <section class="case-section" data-reveal>
+      <span class="case-section__label">Resultado</span>
+      <h2 class="case-section__title">UMUX 90/100 — 15 puntos sobre el umbral mínimo</h2>
+      <p>
+        Diseñé un plan de research de usabilidad presencial con 5–6
+        participantes mixtos (compradores Tottus, asegurados existentes y
+        personas sin relación con el producto), sesiones de 15–20 minutos,
+        con escala UMUX adaptada al contexto conversacional y un umbral
+        mínimo de 75 puntos definido para aprobar el flujo antes del
+        lanzamiento.
+      </p>
+      <p>
+        El resultado: <strong>UMUX 90/100</strong> — 15 puntos por encima del
+        umbral mínimo, validando la claridad y usabilidad del flujo
+        conversacional antes de su paso a producción.
+      </p>
+      <div class="case-section__tokens">
+        <span>--color-hero-line: #d8d4c9</span>
+        <span>--color-hero-bg: #f7f6f2</span>
+      </div>
+    </section>
+
+    <div class="case-nav-footer">
+      <a href="proyectos.html">← Volver a proyectos</a>
+    </div>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <section class="footer-cta">
+    <div class="footer-cta__eyebrow">contacto</div>
+    "Gracias por tu interés en mi trabajo, sigamos en contacto"
+  </section>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <div class="navbar__logo" style="color: var(--color-secondary-10); margin-bottom: var(--space-16); cursor: default;">AB</div>
+        <p class="footer__bio">
+          Mi pasión es la democratización de servicios e información a través
+          del diseño, creando experiencias significativas que impulsan el
+          éxito de las empresas en línea.
+        </p>
+      </div>
+      <div>
+        <p class="footer__contact-title">Contact</p>
+        <p class="footer__contact-item"><a href="tel:+51989952907">+51 989952907</a></p>
+        <p class="footer__contact-item"><a href="mailto:lichibautista@gmail.com">lichibautista@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer__divider"></div>
+    <p class="footer__copyright">Copyright© 2026 Portfolio designed by me</p>
+  </footer>
+
+  <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
+
+  <script src="main.js?v=18"></script>
+</body>
+</html>

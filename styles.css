@@ -1173,6 +1173,27 @@ img {
   color: var(--color-hero-ink);
 }
 
+.project-card__badge--spotlight {
+  background: transparent;
+  border-color: var(--color-accent-lime);
+  color: var(--color-secondary-900);
+}
+
+.projects-spotlight {
+  width: 100%;
+  max-width: 480px;
+  margin-top: var(--space-24);
+}
+
+.projects-spotlight__label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-600);
+  margin-bottom: var(--space-8);
+}
+
 .project-card__metric {
   align-self: flex-start;
   font-family: var(--font-mono);
