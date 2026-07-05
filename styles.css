@@ -1203,7 +1203,7 @@ img {
   justify-content: center;
   height: 100px;
   position: relative;
-  background: var(--color-hero-surface);
+  background: var(--color-secondary-50);
   border: 0.5px solid var(--color-hero-line);
   border-radius: 2px;
   overflow: hidden;
