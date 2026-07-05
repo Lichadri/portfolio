@@ -1368,12 +1368,14 @@ img {
   background: var(--color-hero-bg);
   border: 0.5px solid var(--color-hero-line);
   transition: border-color var(--duration-base) var(--easing-standard),
-              background var(--duration-base) var(--easing-standard);
+              background var(--duration-base) var(--easing-standard),
+              transform var(--duration-base) var(--easing-standard);
 }
 
 .stack-card:hover {
   border-color: var(--color-accent-lime);
   background: var(--color-secondary-50);
+  transform: scale(1.03);
 }
 
 .stack-card__mark {
@@ -1409,6 +1411,7 @@ img {
 }
 
 .stack-card:hover .stack-card__used-for {
+  opacity: 1;
   color: var(--gray-600);
   max-height: 20px;
 }
@@ -1441,7 +1444,9 @@ img {
 }
 
 .stack-card:hover .stack-card__corner--tr,
-.stack-card:hover .stack-card__corner--bl {
+.stack-card:hover .stack-card__corner--bl,
+.stack-card.is-visible .stack-card__corner--tr,
+.stack-card.is-visible .stack-card__corner--bl {
   --draw: 1;
 }
 
