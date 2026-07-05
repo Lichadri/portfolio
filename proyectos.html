@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=18" />
-  <link rel="stylesheet" href="styles.css?v=18" />
+  <link rel="stylesheet" href="tokens.css?v=19" />
+  <link rel="stylesheet" href="styles.css?v=19" />
 </head>
 <body>
 
@@ -37,16 +37,17 @@
             <span class="hero-b__spec-value">6 años</span>
           </div>
           <div class="hero-b__spec-cell">
-            <span class="hero-b__spec-label">Enfoque</span>
-            <span class="hero-b__spec-value">Design Systems</span>
-          </div>
-          <div class="hero-b__spec-cell">
             <span class="hero-b__spec-label">Rol</span>
-            <span class="hero-b__spec-value">Product &amp; Service</span>
+            <span class="hero-b__spec-value">Product &amp; Service Designer</span>
           </div>
-          <div class="hero-b__spec-cell hero-b__spec-cell--status">
-            <span class="hero-b__status-dot" aria-hidden="true"></span>
-            <span class="hero-b__spec-value">Disponible para nuevos retos</span>
+          <div class="hero-b__spec-cell hero-b__spec-cell--wide">
+            <span class="hero-b__spec-label">Especialidades</span>
+            <div class="hero-b__spec-tags">
+              <span class="hero-b__spec-tag">Design Systems + Negocio</span>
+              <span class="hero-b__spec-tag">UI Design</span>
+              <span class="hero-b__spec-tag">Research</span>
+              <span class="hero-b__spec-tag">AI-Assisted Design</span>
+            </div>
           </div>
           <div class="hero-b__spec-cell hero-b__spec-cell--wide">
             <span class="hero-b__spec-label">Sobre mí</span>
@@ -68,10 +69,11 @@
       </div>
 
       <div class="hero-b__photo">
-        <span class="hero-b__photo-tag">img · 240×320</span>
+        <span class="hero-b__photo-tag">img · centrada</span>
         <!-- NOTA: imagen temporal desde Figma (expira). Reemplazar por
              asset exportado en /assets/img antes de publicar. -->
         <img src="https://www.figma.com/api/mcp/asset/0dd5a13a-755b-48e1-ba64-ef6bb533a295" alt="Foto de Adriana Bautista" />
+        <span class="hero-b__status"><span class="hero-b__status-dot" aria-hidden="true"></span>Disponible</span>
         <span class="hero-b__corner hero-b__corner--tr" aria-hidden="true"></span>
         <span class="hero-b__corner hero-b__corner--bl" aria-hidden="true"></span>
       </div>
@@ -107,15 +109,47 @@
     <div class="projects-section__eyebrow" data-reveal>02 — proyectos</div>
     <h2 class="projects-section__title" data-reveal>Casos de estudio</h2>
 
-    <!-- Dos casos destacados, misma anatomía de card que el resto (sin
-         layout especial) — al vivir en un grid de 2 columnas, cada card
-         vuelve a tener ancho acotado por el grid, igual que en el
-         carrusel. Selección basada en métrica real verificable: Inkabank
-         (SUS 85/100 vs. 68 promedio industria) y AGROS (-50% tiempo de
-         proceso) son los únicos dos proyectos con cifra cuantitativa. -->
+    <!-- Tres casos destacados, misma anatomía de card, mismo peso visual.
+         Orden por relevancia estratégica para el posicionamiento actual
+         (seguros + IA aplicada a producción), no por magnitud de métrica:
+         Onco (UMUX 90/100) → Inkabank (SUS 85/100) → AGROS (-50% tiempo).
+         3 de 7 proyectos como destacados es el límite razonable (Ley de
+         Hick) — un 4to empezaría a competir por atención primaria. Cada
+         card es un único <a> (no <article> con link anidado): mejor
+         target de click (Fitts's Law) y evita interactivo-dentro-de-
+         interactivo. El CTA visual es un span aria-hidden, decorativo. -->
     <div class="projects-anchors">
-      <article class="project-card project-card--featured" data-reveal>
+
+      <a href="onco.html" class="project-card project-card--featured" data-reveal aria-label="Ver caso completo: Onco Efectivo">
         <span class="project-card__badge project-card__badge--primary">Caso destacado</span>
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <path d="M100 40 L60 40 Q48 40 48 52 L48 98 Q48 110 60 110 L100 110" fill="none" stroke="#90eb2f" stroke-width="10" stroke-linecap="round"/>
+            <path d="M180 40 L220 40 Q232 40 232 52 L232 98 Q232 110 220 110 L180 110" fill="none" stroke="#90eb2f" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="140" cy="75" r="22" fill="#f7f6f2"/>
+            <circle cx="140" cy="75" r="7" fill="#90eb2f"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · motif: containment</span>
+        </div>
+        <h3 class="project-card__title">Onco Efectivo</h3>
+        <p class="project-card__role">Senior Product Designer — diseño end-to-end del flujo conversacional</p>
+        <p class="project-card__description">
+          Seguro oncológico embebido en punto de venta — flujo conversacional
+          diseñado con Claude y Figma Make como método de producción.
+        </p>
+        <span class="project-card__metric">UMUX 90/100 · 15 pts sobre el umbral mínimo</span>
+        <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+      </a>
+
+      <a href="inkabank.html" class="project-card project-card--featured" data-reveal aria-label="Ver caso completo: Inkabank">
+        <span class="project-card__badge project-card__badge--primary">Caso destacado</span>
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <path d="M110 55 L190 55 M190 55 L172 40 M190 55 L172 70" fill="none" stroke="#90eb2f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M190 95 L110 95 M110 95 L128 80 M110 95 L128 110" fill="none" stroke="#90eb2f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · motif: flow</span>
+        </div>
         <h3 class="project-card__title">Inkabank</h3>
         <p class="project-card__role">UI/UX Designer end-to-end — research y diseño</p>
         <p class="project-card__description">
@@ -123,14 +157,17 @@
           marca validada con testing real.
         </p>
         <span class="project-card__metric">SUS 85/100 · vs. 68 promedio industria</span>
-        <div class="project-card__image-wrapper">
-          <img src="https://www.figma.com/api/mcp/asset/10d099fc-293d-4700-a506-6963bab71903" alt="Mockup del proyecto Inkabank" />
-        </div>
-        <a href="inkabank.html" class="project-card__link">Ver proyecto</a>
-      </article>
+        <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+      </a>
 
-      <article class="project-card project-card--featured" data-reveal>
+      <a href="agros.html" class="project-card project-card--featured" data-reveal aria-label="Ver caso completo: AGROS Registro">
         <span class="project-card__badge project-card__badge--primary">Caso destacado</span>
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <path d="M140 105 C110 105 95 85 100 60 C120 65 125 45 140 45 C155 45 160 65 180 60 C185 85 170 105 140 105 Z" fill="#90eb2f"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · motif: organic</span>
+        </div>
         <h3 class="project-card__title">AGROS Registro</h3>
         <p class="project-card__role">UI/UX Designer end-to-end (research + diseño)</p>
         <p class="project-card__description">
@@ -138,109 +175,116 @@
           y conectividad limitada.
         </p>
         <span class="project-card__metric">-50% tiempo de proceso · 30+ parcelas</span>
-        <div class="project-card__image-wrapper">
-          <img src="https://www.figma.com/api/mcp/asset/3a732b78-32be-4421-ba00-e9b166ca8b08" alt="Mockup del proyecto AGROS Registro" />
-        </div>
-        <a href="agros.html" class="project-card__link">Ver proyecto</a>
-      </article>
+        <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+      </a>
+
     </div>
 
-    <!-- Spotlight: categoría distinta a "Caso destacado", no un 3er ancla.
-         Onco no compite por "mejor caso" — responde a una pregunta
-         específica (experiencia con IA) que los otros 2 no cubren. Mismo
-         nivel de visibilidad, badge y label distintos para que el lector
-         no lea "ahora hay 3 mejores casos" (eso sí diluiría el contraste
-         de arriba — 3 de 7 ya se acerca a la mitad del set). -->
-    <div class="projects-spotlight">
-      <p class="projects-spotlight__label">Explorando</p>
-      <article class="project-card project-card--featured" data-reveal>
-        <span class="project-card__badge project-card__badge--spotlight">AI-Assisted Design</span>
-        <h3 class="project-card__title">Onco Efectivo</h3>
-        <p class="project-card__role">Senior Product Designer — diseño end-to-end del flujo conversacional</p>
-        <p class="project-card__description">
-          Seguro oncológico embebido en punto de venta (Pacífico Seguros ×
-          Tottus) — flujo conversacional completo diseñado con Claude y
-          Figma Make como método de producción, no solo como herramienta.
-        </p>
-        <span class="project-card__metric">UMUX 90/100 · 15 pts sobre el umbral mínimo</span>
-        <a href="onco.html" class="project-card__link">Ver proyecto</a>
-      </article>
-    </div>
-
-    <!-- Carrusel: teaser puro, texto corto a propósito. El detalle rico
-         (contexto, decisiones, resultado) vive en la página de cada
-         proyecto — acá el trabajo del texto es que se pueda escanear las
-         4 cards en paralelo, no leerlas completas (Ley de Miller). Sin
-         badge de métrica ni párrafo de resultado: eso queda reservado a
-         los 2 casos destacados de arriba, para no diluir la jerarquía. -->
+    <!-- Carrusel: teaser puro, texto corto a propósito (line-clamp:2 en la
+         descripción evita que un texto largo desborde el card). Orden por
+         vigencia (MEP es el trabajo actual en Pacífico Seguros), no por
+         categoría — criterio distinto al de las anclas de arriba, y así
+         debe ser: las anclas responden "qué es lo más fuerte", el
+         carrusel responde "qué estoy haciendo ahora". Sin badge de
+         métrica ni resultado: eso queda reservado a los 3 destacados. -->
     <div class="carousel-wrapper" data-reveal>
       <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Ver proyecto anterior">←</button>
 
       <div class="carousel-track" id="carousel-track">
 
-        <!-- ===== CARD — FNA ===== -->
-        <article class="project-card carousel-card">
-          <span class="project-card__badge">Diseño</span>
-          <h3 class="project-card__title">FNA</h3>
-          <p class="project-card__role">UI/UX Designer — diseño de sistema y componentes</p>
-          <p class="project-card__description">
-            Rediseño completo de fnamilanoforlanini.com, sin versión mobile
-            previa — sistema de componentes desde cero.
-          </p>
-          <div class="project-card__image-wrapper">
-            <img src="https://www.figma.com/api/mcp/asset/ca029a15-9509-45b3-88f2-a23f4d6b02af" alt="Mockup del proyecto FNA" />
-          </div>
-          <a href="fna.html" class="project-card__link">Ver proyecto</a>
-        </article>
-
-        <!-- ===== CARD — AMA / Perfilamiento de usuario ===== -->
-        <article class="project-card carousel-card">
-          <span class="project-card__badge">Investigación</span>
-          <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
-          <p class="project-card__role">Service Designer — investigación y facilitación</p>
-          <p class="project-card__description">
-            Research de campo para habilitar identidad digital blockchain
-            de productores textiles en Cusco.
-          </p>
-          <div class="project-card__image-wrapper">
-            <img src="ama-mapa-actores.png" alt="Mockup del proyecto AMA — Perfilamiento de usuario" />
-          </div>
-          <a href="ama.html" class="project-card__link">Ver proyecto</a>
-        </article>
-
-        <!-- ===== CARD — Rediseño Banbif ===== -->
-        <article class="project-card carousel-card">
-          <span class="project-card__badge">Diseño</span>
-          <h3 class="project-card__title">Rediseño Banbif</h3>
-          <p class="project-card__role">UI/UX Designer — reto de bootcamp</p>
-          <p class="project-card__description">
-            Sistema de componentes con estados documentados y testing
-            visual con usuarios reales.
-          </p>
-          <div class="project-card__image-wrapper">
-            <img src="https://www.figma.com/api/mcp/asset/c07b8562-99f6-4e06-b07d-cb7a66856418" alt="Mockup del proyecto Rediseño Banbif" />
-          </div>
-          <a href="banbif.html" class="project-card__link">Ver proyecto</a>
-        </article>
-
         <!-- ===== CARD — MEP ===== -->
-        <article class="project-card carousel-card">
+        <a href="mep.html" class="project-card carousel-card" aria-label="Ver caso completo: MEP">
           <span class="project-card__badge">Diseño</span>
+          <div class="project-card__image-wrapper">
+            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+              <circle cx="150" cy="75" r="14" fill="none" stroke="#90eb2f" stroke-width="4"/>
+              <circle cx="150" cy="75" r="30" fill="none" stroke="#90eb2f" stroke-width="2.5" opacity="0.6"/>
+              <circle cx="150" cy="75" r="46" fill="none" stroke="#90eb2f" stroke-width="1.5" opacity="0.35"/>
+            </svg>
+            <span class="project-card__cover-caption">--cover: illustrated · motif: radiate</span>
+          </div>
           <h3 class="project-card__title">MEP</h3>
           <p class="project-card__role">Senior Product &amp; Service Designer</p>
           <p class="project-card__description">
             Rediseño de Home y Mis Seguros — más autogestión, menos
             dependencia del call center.
           </p>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </a>
+
+        <!-- ===== CARD — FNA ===== -->
+        <a href="fna.html" class="project-card carousel-card" aria-label="Ver caso completo: FNA">
+          <span class="project-card__badge">Diseño</span>
           <div class="project-card__image-wrapper">
-            <img src="mep-mis-seguros.png" alt="Mockup del proyecto MEP" />
+            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+              <rect x="105" y="45" width="24" height="24" fill="none" stroke="#90eb2f" stroke-width="2"/>
+              <rect x="138" y="45" width="24" height="24" fill="none" stroke="#90eb2f" stroke-width="2"/>
+              <rect x="171" y="45" width="24" height="24" fill="none" stroke="#90eb2f" stroke-width="2"/>
+              <rect x="105" y="78" width="24" height="24" fill="none" stroke="#90eb2f" stroke-width="2"/>
+              <rect x="138" y="78" width="24" height="24" fill="#90eb2f"/>
+              <rect x="171" y="78" width="24" height="24" fill="none" stroke="#90eb2f" stroke-width="2"/>
+            </svg>
+            <span class="project-card__cover-caption">--cover: illustrated · motif: grid</span>
           </div>
-          <a href="mep.html" class="project-card__link">Ver proyecto</a>
-        </article>
+          <h3 class="project-card__title">FNA</h3>
+          <p class="project-card__role">UI/UX Designer — diseño de sistema y componentes</p>
+          <p class="project-card__description">
+            Rediseño completo de fnamilanoforlanini.com, sin versión mobile
+            previa — sistema de componentes desde cero.
+          </p>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </a>
+
+        <!-- ===== CARD — AMA / Perfilamiento de usuario ===== -->
+        <a href="ama.html" class="project-card carousel-card" aria-label="Ver caso completo: AMA — Perfilamiento de usuario">
+          <span class="project-card__badge">Investigación</span>
+          <div class="project-card__image-wrapper">
+            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+              <line x1="110" y1="55" x2="150" y2="80" stroke="#90eb2f" stroke-width="1"/>
+              <line x1="150" y1="80" x2="195" y2="60" stroke="#90eb2f" stroke-width="1"/>
+              <line x1="150" y1="80" x2="130" y2="105" stroke="#90eb2f" stroke-width="1"/>
+              <line x1="150" y1="80" x2="185" y2="100" stroke="#90eb2f" stroke-width="1"/>
+              <circle cx="110" cy="55" r="4" fill="#90eb2f"/>
+              <circle cx="150" cy="80" r="6" fill="#90eb2f"/>
+              <circle cx="195" cy="60" r="4" fill="#90eb2f"/>
+              <circle cx="130" cy="105" r="4" fill="#90eb2f"/>
+              <circle cx="185" cy="100" r="4" fill="#90eb2f"/>
+            </svg>
+            <span class="project-card__cover-caption">--cover: illustrated · motif: network</span>
+          </div>
+          <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
+          <p class="project-card__role">Service Designer — investigación y facilitación</p>
+          <p class="project-card__description">
+            Research de campo para habilitar identidad digital blockchain
+            de productores textiles en Cusco.
+          </p>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </a>
+
+        <!-- ===== CARD — Rediseño Banbif ===== -->
+        <a href="banbif.html" class="project-card carousel-card" aria-label="Ver caso completo: Rediseño Banbif">
+          <span class="project-card__badge">Diseño</span>
+          <div class="project-card__image-wrapper">
+            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+              <rect x="115" y="70" width="60" height="38" rx="4" fill="none" stroke="#90eb2f" stroke-width="2"/>
+              <rect x="128" y="58" width="60" height="38" rx="4" fill="none" stroke="#90eb2f" stroke-width="2"/>
+              <rect x="141" y="46" width="60" height="38" rx="4" fill="#90eb2f"/>
+            </svg>
+            <span class="project-card__cover-caption">--cover: illustrated · motif: layers</span>
+          </div>
+          <h3 class="project-card__title">Rediseño Banbif</h3>
+          <p class="project-card__role">UI/UX Designer — reto de bootcamp</p>
+          <p class="project-card__description">
+            Sistema de componentes con estados documentados y testing
+            visual con usuarios reales.
+          </p>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </a>
 
       </div>
 
       <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Ver siguiente proyecto">→</button>
+    </div>
     </div>
   </section>
 
@@ -332,6 +376,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=18"></script>
+  <script src="main.js?v=19"></script>
 </body>
 </html>

@@ -560,13 +560,6 @@ img {
   border-right: none;
 }
 
-.hero-b__spec-cell--status {
-  flex-direction: row;
-  align-items: center;
-  gap: var(--space-8);
-  border-bottom: none;
-}
-
 .hero-b__spec-cell--wide {
   grid-column: span 2;
   border-right: none;
@@ -575,6 +568,24 @@ img {
 
 .hero-b__spec-cell--wide:last-child {
   border-bottom: none;
+}
+
+.hero-b__spec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.hero-b__spec-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--color-accent-lime);
+  color: var(--color-secondary-900);
+  padding: 4px 9px;
+  border-radius: 3px;
 }
 
 .hero-b__spec-bio {
@@ -600,20 +611,6 @@ img {
   font-size: var(--font-size-lg);
 }
 
-.hero-b__spec-cell--status .hero-b__spec-value {
-  font-family: var(--font-body);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-sm);
-}
-
-.hero-b__status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-accent-lime);
-  flex-shrink: 0;
-}
-
 .hero-b__spec-footer {
   margin-top: auto;
   padding: var(--space-12, 12px) var(--space-16);
@@ -625,22 +622,24 @@ img {
   opacity: 0.5;
 }
 
-/* ---- Foto: sin sombra, con corner marks (firma visual del sistema) ---- */
+/* ---- Foto: llena todo el alto disponible del panel, encuadre centrado.
+   Antes anclaba la imagen al fondo con su alto natural; ahora el alto del
+   panel varía según cuánto contenido tenga el spec-grid (ej. al agregar
+   Especialidades), así que la foto necesita estirarse y recortar con
+   object-position:center en vez de depender de una proporción fija. ---- */
 
 .hero-b__photo {
   position: relative;
   background: var(--color-hero-surface);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   overflow: hidden;
 }
 
 .hero-b__photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center;
 }
 
 .hero-b__photo-tag {
@@ -651,6 +650,37 @@ img {
   font-size: 9px;
   color: var(--gray-600);
   z-index: 2;
+}
+
+/* Estatus "disponible": superpuesto en la foto, no en el spec-grid — es
+   una señal de urgencia/acción, por eso usa relleno lima sólido (mismo
+   peso que el badge "Caso destacado"), a diferencia de los tags de
+   especialidad, que son informativos y usan outline. */
+.hero-b__status {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 3;
+  background: var(--color-accent-lime);
+  color: var(--color-hero-ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hero-b__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-hero-ink);
+  flex-shrink: 0;
 }
 
 .hero-b__corner {
@@ -996,6 +1026,9 @@ img {
   gap: var(--space-24);
   overflow: hidden;
   transition: border-color var(--duration-base) var(--easing-standard);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .project-card::before,
@@ -1023,22 +1056,25 @@ img {
 }
 
 .project-card:hover,
-.project-card:focus-within {
+.project-card:focus-visible {
   border-color: var(--color-accent-lime);
+  outline: none;
 }
 
 .project-card:hover::before,
 .project-card:hover::after,
-.project-card:focus-within::before,
-.project-card:focus-within::after {
+.project-card:focus-visible::before,
+.project-card:focus-visible::after {
   opacity: 1;
 }
 
-.project-card__image-wrapper img {
+.project-card__image-wrapper img,
+.project-card__image-wrapper svg {
   transition: transform var(--duration-slow) var(--easing-standard);
 }
 
-.project-card:hover .project-card__image-wrapper img {
+.project-card:hover .project-card__image-wrapper img,
+.project-card:hover .project-card__image-wrapper svg {
   transform: scale(1.02);
 }
 
@@ -1059,6 +1095,7 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-card__image-wrapper img,
+  .project-card__image-wrapper svg,
   .project-card__badge,
   .project-card::before,
   .project-card::after {
@@ -1086,6 +1123,10 @@ img {
 .project-card__description {
   font-size: var(--font-size-md);
   line-height: var(--line-height-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .project-card__result {
@@ -1111,28 +1152,45 @@ img {
   transition: color var(--duration-fast) var(--easing-standard);
 }
 
-.project-card__link:hover,
-.project-card__link:focus-visible {
+.project-card:hover .project-card__link,
+.project-card:focus-visible .project-card__link {
   color: var(--color-accent-lime);
 }
 
 .project-card__link::after {
-  content: '→';
+  content: '\2192';
   display: inline-block;
   color: var(--color-accent-lime);
   transition: transform var(--duration-fast) var(--easing-standard);
 }
 
-.project-card__link:hover::after,
-.project-card__link:focus-visible::after {
+.project-card:hover .project-card__link::after,
+.project-card:focus-visible .project-card__link::after {
   transform: translateX(4px);
 }
 
 .project-card__image-wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  height: 170px;
+  justify-content: center;
+  height: 100px;
+  position: relative;
+  background: var(--color-secondary-900);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.project-card--featured .project-card__image-wrapper {
+  height: 150px;
+}
+
+.project-card__cover-caption {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: #a8a6a0;
 }
 
 .project-card__image-wrapper img {
@@ -1141,6 +1199,7 @@ img {
   width: auto;
   object-fit: contain;
 }
+
 
 /* ==========================================================================
    CASOS DESTACADOS — misma anatomía de card que el resto del sitio, cero
@@ -1156,7 +1215,7 @@ img {
 
 .projects-anchors {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-24);
   width: 100%;
   margin-top: var(--space-32);
@@ -1171,27 +1230,6 @@ img {
   background: var(--color-accent-lime);
   border-color: var(--color-accent-lime);
   color: var(--color-hero-ink);
-}
-
-.project-card__badge--spotlight {
-  background: transparent;
-  border-color: var(--color-accent-lime);
-  color: var(--color-secondary-900);
-}
-
-.projects-spotlight {
-  width: 100%;
-  max-width: 480px;
-  margin-top: var(--space-24);
-}
-
-.projects-spotlight__label {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--gray-600);
-  margin-bottom: var(--space-8);
 }
 
 .project-card__metric {
