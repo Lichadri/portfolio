@@ -718,11 +718,18 @@ img {
   color: var(--gray-600);
   padding: var(--space-8) 0;
   transition: opacity var(--duration-fast) var(--easing-standard);
+  animation: scroll-cue-nudge 3s var(--easing-standard) infinite;
+}
+
+@keyframes scroll-cue-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }
 
 .hero-b__scroll-cue:hover,
 .hero-b__scroll-cue:focus-visible {
   opacity: 0.9;
+  animation-play-state: paused;
 }
 
 .hero-b__scroll-line {
@@ -751,7 +758,8 @@ img {
   .hero-b__eyebrow,
   .hero-b__name,
   .hero-b__tagline,
-  .hero-b__panel {
+  .hero-b__panel,
+  .hero-b__scroll-cue {
     animation: none;
   }
 }
@@ -1037,8 +1045,7 @@ img {
   position: absolute;
   width: 12px;
   height: 12px;
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--easing-standard);
+  --draw: 0;
 }
 
 .project-card::before {
@@ -1046,6 +1053,8 @@ img {
   right: 6px;
   border-top: 1.5px solid var(--color-secondary-900);
   border-right: 1.5px solid var(--color-secondary-900);
+  clip-path: polygon(0 0, calc(var(--draw) * 100%) 0, calc(var(--draw) * 100%) 100%, 0 100%);
+  transition: clip-path var(--motion-corner-draw);
 }
 
 .project-card::after {
@@ -1053,6 +1062,8 @@ img {
   left: 6px;
   border-bottom: 1.5px solid var(--color-secondary-900);
   border-left: 1.5px solid var(--color-secondary-900);
+  clip-path: polygon(calc(100% - (var(--draw) * 100%)) 100%, 100% 100%, 100% 0, calc(100% - (var(--draw) * 100%)) 0);
+  transition: clip-path var(--motion-corner-draw);
 }
 
 .project-card:hover,
@@ -1065,7 +1076,7 @@ img {
 .project-card:hover::after,
 .project-card:focus-visible::before,
 .project-card:focus-visible::after {
-  opacity: 1;
+  --draw: 1;
 }
 
 .project-card__image-wrapper img,
@@ -1264,7 +1275,7 @@ img {
 
 .project-card--featured::before,
 .project-card--featured::after {
-  opacity: 1;
+  --draw: 1;
 }
 
 .project-card__badge--primary {
@@ -1356,39 +1367,13 @@ img {
   min-height: 100px;
   background: var(--color-hero-bg);
   border: 0.5px solid var(--color-hero-line);
-  transition: border-color var(--duration-base) var(--easing-standard);
+  transition: border-color var(--duration-base) var(--easing-standard),
+              background var(--duration-base) var(--easing-standard);
 }
 
 .stack-card:hover {
   border-color: var(--color-accent-lime);
-}
-
-/* Logo monocromo vía mask-image: el SVG de marca solo aporta la forma
-   (alpha), el color real lo controla background-color — así el logo
-   puede pasar de tinta a lima en :hover sin swap de imagen ni JS. */
-.stack-card__logo {
-  width: 24px;
-  height: 24px;
-  background-color: var(--color-secondary-900);
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  transition: background-color var(--duration-base) var(--easing-standard);
-}
-
-.stack-card__logo--figma {
-  -webkit-mask-image: url('https://cdn.simpleicons.org/figma');
-  mask-image: url('https://cdn.simpleicons.org/figma');
-}
-
-.stack-card__logo--hotjar {
-  -webkit-mask-image: url('https://cdn.simpleicons.org/hotjar');
-  mask-image: url('https://cdn.simpleicons.org/hotjar');
-}
-
-.stack-card:hover .stack-card__logo {
-  background-color: var(--color-accent-lime);
+  background: var(--color-secondary-50);
 }
 
 .stack-card__mark {
@@ -1468,7 +1453,6 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
   .stack-card,
-  .stack-card__logo,
   .stack-card__mark,
   .stack-card__used-for,
   .stack-card__corner--tr,
