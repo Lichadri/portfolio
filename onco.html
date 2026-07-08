@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Onco Efectivo — Adriana Bautista</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=29" />
-  <link rel="stylesheet" href="styles.css?v=29" />
+  <link rel="stylesheet" href="tokens.css?v=30" />
+  <link rel="stylesheet" href="styles.css?v=30" />
 </head>
 <body>
 
@@ -108,36 +108,9 @@
       <span class="case-section__label">Decisión de sistema</span>
       <h2 class="case-section__title">Una conversación con reglas de negocio, no un formulario con burbujas</h2>
       <p>
-        Mapeé el journey completo en tres fases: registro (comprobante, tipo
-        de documento, número, nombres, correo, fecha de nacimiento),
-        consentimientos (declaración jurada y T&amp;C), y validación Pacífico
-        (emisión o rechazo al día siguiente). Sobre esa arquitectura construí
-        el user flow completo en Figma con copy en cada nodo — happy path,
-        casuísticas de error con reintento, timeout a 24 horas y
-        comunicaciones post-validación.
-      </p>
-      <p>
-        Algunas decisiones clave y su razón: el QR es un trigger reactivo, no
-        un mensaje proactivo del bot — es el cliente quien inicia la
-        conversación (control y libertad del usuario, heurística de
-        Nielsen). Pedí el tipo de documento (DNI/CE) antes del número, para
-        validar el formato correcto antes de que el usuario tipee. La
-        declaración jurada se reescribió como pregunta directa con botones
-        Sí/No, evitando la ambigüedad de responder a una negación. Y agregué
-        un nodo de transferencia del seguro para los casos en que el
-        comprador no es el asegurado final — evitando perder la venta por un
-        desajuste que el flujo original no contemplaba.
-      </p>
-      <p>
-        El copy completo se refinó bajo un criterio de tono cálido: segunda
-        persona para el comprador, tercera persona para el asegurado (porque
-        no siempre son la misma persona), con mensajes cortos y directos —
-        por ejemplo, "Solo necesito algunos datos tuyos, ¡son poquitos!" en
-        vez de un tono corporativo. También se diseñaron las tres
-        comunicaciones post-activación (confirmación, seguro activo,
-        rechazo/devolución), y un prototipo interactivo funcional que simula
-        la conversación real con Vera — validaciones activas por campo,
-        errores con reintento, y confirmación de éxito.
+        Mapeé el journey en tres fases — registro, consentimientos y
+        validación — y construí el user flow completo en Figma, con copy en
+        cada nodo, casuísticas de error y timeout incluidos.
       </p>
 
       <div class="case-image">
@@ -176,37 +149,29 @@
           </g>
         </svg>
       </div>
-      <p class="case-image__caption">Flujo condensado de las 3 fases — versión completa con reintentos y timeout en <a href="https://www.figma.com/design/5KI0bNpLMEfA01vEx1xONi/User-flow?node-id=163-613" target="_blank" rel="noopener">Figma</a></p>
+      <p class="case-image__caption">Flujo condensado — versión completa con reintentos y timeout en <a href="https://www.figma.com/design/5KI0bNpLMEfA01vEx1xONi/User-flow?node-id=163-613" target="_blank" rel="noopener">Figma</a></p>
 
-      <div class="case-image">
-        <img src="onco-registro.png" alt="Conversación de WhatsApp pidiendo el número de boleta para iniciar el registro" />
+      <ul class="case-list">
+        <li>QR reactivo, no proactivo — el cliente inicia la conversación, no el bot.</li>
+        <li>Tipo de documento antes del número — valida el formato correcto (DNI o CE).</li>
+        <li>Declaración jurada como pregunta directa — evita ambigüedad de Sí/No en negativo.</li>
+        <li>Tercera persona para el asegurado — el comprador no siempre es quien se asegura.</li>
+        <li>Transferencia si no califica — evita perder la venta por un desajuste no contemplado.</li>
+      </ul>
+
+      <div class="case-mobile-preview">
+        <div class="case-image case-image--mobile">
+          <img src="onco-registro.png" alt="Conversación de WhatsApp pidiendo el número de boleta para iniciar el registro" />
+        </div>
+        <p class="case-image__caption">Trigger reactivo — Vera responde solicitando el N° de boleta</p>
       </div>
-      <p class="case-image__caption">Trigger reactivo — el cliente inicia pidiendo activar, Vera responde solicitando el N° de boleta</p>
 
-      <div class="case-image">
-        <img src="onco-mensaje-activo.png" alt="Mensaje de WhatsApp confirmando que el seguro está activo, con certificado PDF adjunto y resumen de cobertura" />
+      <div class="case-mobile-preview">
+        <div class="case-image case-image--mobile">
+          <img src="onco-mensaje-activo.png" alt="Mensaje de WhatsApp confirmando que el seguro está activo, con certificado PDF adjunto y resumen de cobertura" />
+        </div>
+        <p class="case-image__caption">Cierre exitoso — certificado y cobertura en el mismo mensaje</p>
       </div>
-      <p class="case-image__caption">Cierre exitoso — certificado adjunto y resumen de cobertura en el mismo mensaje</p>
-
-      <div class="case-image">
-        <video src="onco-demo.mp4" autoplay loop muted playsinline></video>
-      </div>
-      <p class="case-image__caption">Prototipo interactivo construido con Figma Make — simula la conversación real con Vera, incluyendo validaciones por campo y reintentos</p>
-
-      <table class="case-table">
-        <thead>
-          <tr><th>Decisión</th><th>Razón</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>QR reactivo, no proactivo</td><td>El cliente inicia la conversación, no el bot</td></tr>
-          <tr><td>Tipo de documento antes del número</td><td>Valida el formato correcto según DNI o CE</td></tr>
-          <tr><td>Pregunta directa en declaración jurada</td><td>Evita ambigüedad de Sí/No en una pregunta negativa</td></tr>
-          <tr><td>Tercera persona para el asegurado</td><td>El comprador no siempre es la persona asegurada</td></tr>
-          <tr><td>Transferencia si no califica</td><td>Evita perder la venta cuando el comprador no es el asegurado</td></tr>
-          <tr><td>Retry de fecha con "CONFIRMAR"</td><td>Corrige un error de tipeo sin agregar un paso adicional</td></tr>
-          <tr><td>Cierre condensado con ambas opciones</td><td>Evita extender el flujo con un Sí/No innecesario</td></tr>
-        </tbody>
-      </table>
 
       <div class="case-section__tokens">
         <span>--color-accent: #90eb2f</span>
@@ -218,15 +183,11 @@
       <span class="case-section__label">Restricción real</span>
       <h2 class="case-section__title">Diseñar dentro de un canal sin UI propia</h2>
       <p>
-        WhatsApp no da lienzo: no hay layout, ni jerarquía visual, ni
-        componentes propios — solo texto, botones binarios y el orden en que
-        se presenta la información. Cada decisión de diseño tuvo que
-        resolverse en la secuencia y el copy, no en la pantalla. A eso se
-        sumaron reglas de negocio y validaciones legales reales (rango de
-        edad exacto entre 18 años y menores de 65, redacción de la
-        declaración jurada, plazos de devolución) que no eran negociables
-        por diseño — el flujo tenía que ser cálido y claro operando dentro de
-        esos límites, no a pesar de ellos.
+        WhatsApp resuelve todo en texto, botones binarios y el orden de la
+        conversación — sin layout ni componentes propios. Cada decisión de
+        jerarquía se jugaba en la secuencia y el copy, dentro de reglas de
+        negocio no negociables (rango de edad, redacción legal, plazos de
+        devolución).
       </p>
       <div class="case-section__tokens">
         <span>--space-32: 32px</span>
@@ -238,23 +199,28 @@
       <span class="case-section__label">Resultado</span>
       <h2 class="case-section__title">UMUX 90/100 — 15 puntos sobre el umbral mínimo</h2>
       <p>
-        Diseñé un plan de research de usabilidad presencial con 5–6
-        participantes mixtos (compradores Tottus, asegurados existentes y
-        personas sin relación con el producto), sesiones de 15–20 minutos,
-        con escala UMUX adaptada al contexto conversacional y un umbral
-        mínimo de 75 puntos definido para aprobar el flujo antes del
-        lanzamiento.
+        Research de usabilidad presencial con 5–6 participantes mixtos,
+        escala UMUX adaptada al contexto conversacional, umbral mínimo de 75
+        puntos definido antes del lanzamiento.
       </p>
       <p>
-        El resultado: <strong>UMUX 90/100</strong> — 15 puntos por encima del
-        umbral mínimo, validando la claridad y usabilidad del flujo
-        conversacional antes de su paso a producción.
+        El resultado: <strong>UMUX 90/100</strong> — validando la claridad y
+        usabilidad del flujo antes de su paso a producción.
       </p>
+
+      <div class="case-mobile-preview">
+        <div class="case-image case-image--mobile">
+          <video src="onco-demo.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <p class="case-image__caption">Así se ve funcionando — prototipo construido con Figma Make</p>
+      </div>
+
       <div class="case-section__tokens">
         <span>--color-hero-line: #d8d4c9</span>
         <span>--color-hero-bg: #f7f6f2</span>
       </div>
     </section>
+
 
     <div class="case-nav-footer">
       <a href="proyectos.html">← Volver a proyectos</a>
@@ -290,6 +256,6 @@
 
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=29"></script>
+  <script src="main.js?v=30"></script>
 </body>
 </html>

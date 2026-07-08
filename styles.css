@@ -456,6 +456,30 @@ img {
   border-bottom: none;
 }
 
+.case-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.case-list li {
+  position: relative;
+  padding-left: var(--space-16);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-sm);
+}
+
+.case-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent-lime);
+}
+
 .version-timeline {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
