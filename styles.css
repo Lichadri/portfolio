@@ -1205,15 +1205,11 @@ img {
 /* Estructura de copy recomendada: rol + problema + resultado.
    Ver placeholders en el HTML — reemplazar con contenido real por proyecto. */
 .project-card__role {
-  align-self: flex-start;
-  display: inline-block;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xs);
   color: var(--gray-600);
-  border: 0.5px solid var(--color-hero-line);
-  border-radius: 4px;
-  padding: 6px 10px;
   text-transform: none;
   letter-spacing: 0.01em;
 }
@@ -1352,12 +1348,6 @@ img {
 .project-card--featured::before,
 .project-card--featured::after {
   --draw: 1;
-}
-
-.project-card__badge--primary {
-  background: var(--color-accent-lime);
-  border-color: var(--color-accent-lime);
-  color: var(--color-hero-ink);
 }
 
 .project-card__metric {
@@ -1977,4 +1967,3 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
