@@ -438,6 +438,19 @@ img {
   margin: var(--space-16) auto 0;
 }
 
+.case-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-16);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .case-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
 .case-table {
   width: 100%;
   border-collapse: collapse;
@@ -1202,18 +1215,6 @@ img {
   line-height: var(--line-height-sm);
 }
 
-/* Estructura de copy recomendada: rol + problema + resultado.
-   Ver placeholders en el HTML — reemplazar con contenido real por proyecto. */
-.project-card__role {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-xs);
-  color: var(--gray-600);
-  text-transform: none;
-  letter-spacing: 0.01em;
-}
-
 .project-card__description {
   font-size: var(--font-size-md);
   line-height: var(--line-height-sm);
@@ -1967,3 +1968,4 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=34" />
-  <link rel="stylesheet" href="styles.css?v=34" />
+  <link rel="stylesheet" href="tokens.css?v=35" />
+  <link rel="stylesheet" href="styles.css?v=35" />
 </head>
 <body>
 
@@ -133,7 +133,6 @@
         <div class="project-card__header">
           <h3 class="project-card__title">Onco Efectivo</h3>
         </div>
-        <span class="project-card__role">Senior Product Designer — diseño end-to-end del flujo conversacional</span>
         <div class="project-card__metric">
           <span class="project-card__metric-value">UMUX 90/100</span>
           <span class="project-card__metric-sub">15 pts sobre el umbral mínimo</span>
@@ -164,7 +163,6 @@
         <div class="project-card__header">
           <h3 class="project-card__title">Inkabank</h3>
         </div>
-        <span class="project-card__role">UI/UX Designer end-to-end — research y diseño</span>
         <div class="project-card__metric">
           <span class="project-card__metric-value">SUS 85/100</span>
           <span class="project-card__metric-sub">vs. 68 promedio industria</span>
@@ -193,7 +191,6 @@
         <div class="project-card__header">
           <h3 class="project-card__title">AGROS Registro</h3>
         </div>
-        <span class="project-card__role">UI/UX Designer end-to-end (research + diseño)</span>
         <div class="project-card__metric">
           <span class="project-card__metric-value">-50% tiempo</span>
           <span class="project-card__metric-sub">30+ parcelas registradas</span>
@@ -212,13 +209,48 @@
 
     <!-- Carrusel: teaser puro, texto corto a propósito (line-clamp:2 en la
          descripción evita que un texto largo desborde el card). Orden por
-         vigencia (MEP es el trabajo actual en Pacífico Seguros), no por
+         vigencia (Dalton 2.0 es lo más reciente, luego MEP), no por
          categoría. Sin métrica: --card-variant: regular en el footer en
          vez de la caja de métrica, que queda reservada a los destacados. -->
     <div class="carousel-wrapper" data-reveal>
       <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Ver proyecto anterior">←</button>
 
       <div class="carousel-track" id="carousel-track">
+
+        <a href="dalton.html" class="project-card carousel-card" aria-label="Ver caso completo: Dalton 2.0">
+          <div class="project-card__image-wrapper">
+            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+              <g fill="#90eb2f">
+                <rect x="64" y="42" width="70" height="20" rx="10"/>
+                <rect x="140" y="42" width="48" height="20" rx="10"/>
+                <rect x="194" y="42" width="42" height="20" rx="10"/>
+              </g>
+              <g fill="none" stroke="#90eb2f" stroke-width="2">
+                <rect x="64" y="72" width="56" height="20" rx="10"/>
+                <rect x="126" y="72" width="64" height="20" rx="10"/>
+              </g>
+              <g fill="none" stroke="#15130f" stroke-width="1.5" stroke-dasharray="3 3">
+                <rect x="64" y="102" width="44" height="20" rx="10"/>
+                <rect x="114" y="102" width="44" height="20" rx="10"/>
+                <rect x="164" y="102" width="36" height="20" rx="10"/>
+                <rect x="206" y="102" width="30" height="20" rx="10"/>
+              </g>
+            </svg>
+            <span class="project-card__cover-caption">--cover: illustrated · sector: design ops</span>
+          </div>
+          <div class="project-card__header">
+            <h3 class="project-card__title">Dalton 2.0</h3>
+            <span class="project-card__badge">Design systems</span>
+          </div>
+          <p class="project-card__description">
+            Assessment con Negocio, documentación por componente y estudio
+            tiempo-movimiento sobre la librería en uso.
+          </p>
+          <div class="project-card__footer">
+            <span class="project-card__footer-note">--card-variant: regular</span>
+            <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+          </div>
+        </a>
 
         <a href="mep.html" class="project-card carousel-card" aria-label="Ver caso completo: MEP">
           <div class="project-card__image-wrapper">
@@ -233,7 +265,6 @@
             <h3 class="project-card__title">MEP</h3>
             <span class="project-card__badge">Diseño</span>
           </div>
-          <span class="project-card__role">Senior Product &amp; Service Designer</span>
           <p class="project-card__description">
             Rediseño de Home y Mis Seguros — más autogestión, menos
             dependencia del call center.
@@ -261,7 +292,6 @@
             <h3 class="project-card__title">FNA</h3>
             <span class="project-card__badge">Diseño</span>
           </div>
-          <span class="project-card__role">UI/UX Designer — diseño de sistema y componentes</span>
           <p class="project-card__description">
             Rediseño completo de fnamilanoforlanini.com, sin versión mobile
             previa — sistema de componentes desde cero.
@@ -289,7 +319,6 @@
             <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
             <span class="project-card__badge">Investigación</span>
           </div>
-          <span class="project-card__role">Service Designer — investigación y facilitación</span>
           <p class="project-card__description">
             Research de campo para habilitar identidad digital blockchain
             de productores textiles en Cusco.
@@ -314,7 +343,6 @@
             <h3 class="project-card__title">Rediseño Banbif</h3>
             <span class="project-card__badge">Diseño</span>
           </div>
-          <span class="project-card__role">UI/UX Designer — reto de bootcamp</span>
           <p class="project-card__description">
             Sistema de componentes con estados documentados y testing
             visual con usuarios reales.
@@ -419,6 +447,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=34"></script>
+  <script src="main.js?v=35"></script>
 </body>
 </html>
