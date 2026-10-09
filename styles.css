@@ -1034,6 +1034,85 @@ img {
   background: var(--color-accent-lime);
 }
 
+/* ==========================================================================
+   CAROUSEL — resto de proyectos, más allá de los destacados. Scroll-snap
+   nativo (drag/swipe gratis en touch y trackpad), flechas para affordance
+   visible en desktop. Mismo lenguaje visual que project-card, sin librería.
+   ========================================================================== */
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+  margin-top: var(--space-16);
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--space-24);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: var(--space-8);
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: var(--color-hero-line);
+}
+
+.carousel-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-hero-bg);
+  border: 0.5px solid var(--color-hero-line);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--easing-standard),
+              opacity var(--duration-fast) var(--easing-standard);
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+  border-color: var(--color-accent-lime);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .carousel-card {
+    flex-basis: 260px;
+  }
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    scroll-behavior: auto;
+  }
+}
+
 .project-card {
   position: relative;
   background: var(--color-hero-bg);
@@ -1338,14 +1417,6 @@ img {
   grid-column: span 4;
 }
 
-.projects-secondary {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-24);
-  width: 100%;
-  margin-top: var(--space-24);
-}
-
 /* Card con demo interactiva: no es un enlace completo, así que no promete
    clic (cursor normal) y dibuja sus esquinas también con foco interno. */
 .project-card--demo {
@@ -1562,12 +1633,6 @@ button.token {
   .systems-bento__side {
     grid-column: auto;
     grid-row: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-secondary {
-    grid-template-columns: 1fr;
   }
 }
 

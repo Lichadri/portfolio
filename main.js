@@ -1,7 +1,7 @@
 /* ==========================================================================
    MAIN.JS
    Responsabilidades: reveal-on-scroll, scroll suave del hero, avatar
-   flotante, typewriter de la cita y la demo de la cadena de tokens. Nada de
+   flotante, typewriter de la cita, carrusel y la demo de la cadena de tokens. Nada de
    librerías externas — el motion vive en CSS (transiciones/keyframes), este
    script solo agrega/quita la clase que las dispara. Así, si mañana quitas
    el JS, el sitio sigue siendo funcional (progressive enhancement): la demo
@@ -381,6 +381,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => paint(false));
     }
+  }
+
+  // ---- Carrusel de proyectos ----
+  const carouselTrack = document.getElementById('carousel-track');
+  const carouselPrev = document.getElementById('carousel-prev');
+  const carouselNext = document.getElementById('carousel-next');
+
+  if (carouselTrack && carouselPrev && carouselNext) {
+    // Gap leído desde el token real (--space-24), no hardcodeado — mismo
+    // patrón que ya usa el typewriter del quote-panel para
+    // --motion-reveal-char. Si el token cambia algún día, el carrusel
+    // scrollea consistente con lo que el ojo ve, sin tocar JS.
+    const cardGap = () =>
+      parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--space-24'),
+        10
+      ) || 24;
+
+    const scrollAmount = () => {
+      const card = carouselTrack.querySelector('.carousel-card');
+      return card ? card.offsetWidth + cardGap() : 320;
+    };
+
+    const updateArrowState = () => {
+      const maxScroll = carouselTrack.scrollWidth - carouselTrack.clientWidth;
+      carouselPrev.disabled = carouselTrack.scrollLeft <= 4;
+      carouselNext.disabled = carouselTrack.scrollLeft >= maxScroll - 4;
+    };
+
+    carouselPrev.addEventListener('click', () => {
+      carouselTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+    carouselNext.addEventListener('click', () => {
+      carouselTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+    carouselTrack.addEventListener('scroll', updateArrowState);
+    updateArrowState();
   }
 
 });
