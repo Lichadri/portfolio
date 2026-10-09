@@ -295,6 +295,7 @@ img {
 
 .case-section {
   position: relative;
+  scroll-margin-top: var(--space-96);
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
@@ -1033,85 +1034,6 @@ img {
   background: var(--color-accent-lime);
 }
 
-/* ==========================================================================
-   CAROUSEL — resto de proyectos, más allá de los destacados. Scroll-snap
-   nativo (drag/swipe gratis en touch y trackpad), flechas para affordance
-   visible en desktop. Mismo lenguaje visual que project-card, sin librería.
-   ========================================================================== */
-
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  gap: var(--space-16);
-  width: 100%;
-  margin-top: var(--space-16);
-}
-
-.carousel-track {
-  display: flex;
-  gap: var(--space-24);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding-bottom: var(--space-8);
-  -webkit-overflow-scrolling: touch;
-}
-
-.carousel-track::-webkit-scrollbar {
-  height: 4px;
-}
-
-.carousel-track::-webkit-scrollbar-thumb {
-  background: var(--color-hero-line);
-}
-
-.carousel-card {
-  flex: 0 0 320px;
-  scroll-snap-align: start;
-}
-
-.carousel-arrow {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-hero-bg);
-  border: 0.5px solid var(--color-hero-line);
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-md);
-  cursor: pointer;
-  transition: border-color var(--duration-fast) var(--easing-standard),
-              opacity var(--duration-fast) var(--easing-standard);
-}
-
-.carousel-arrow:hover,
-.carousel-arrow:focus-visible {
-  border-color: var(--color-accent-lime);
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-@media (max-width: 768px) {
-  .carousel-card {
-    flex-basis: 260px;
-  }
-  .carousel-arrow {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .carousel-track {
-    scroll-behavior: auto;
-  }
-}
-
 .project-card {
   position: relative;
   background: var(--color-hero-bg);
@@ -1376,6 +1298,275 @@ img {
 
 @media (max-width: 768px) {
   .projects-anchors {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   SISTEMAS — categoría de trabajo distinta a "producto", con layout propio.
+   Bento asimétrico 8/4: una card ancla (demo de tokens) y dos laterales.
+   Es el único lugar con grilla asimétrica: los casos de producto son
+   paralelos entre sí y van en grilla pareja.
+   ========================================================================== */
+
+.projects-section--systems {
+  background: var(--color-secondary-10);
+}
+
+.projects-section__lead {
+  max-width: 560px;
+  text-align: center;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-sm);
+  color: var(--gray-600);
+}
+
+.systems-bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-24);
+  width: 100%;
+  margin-top: var(--space-32);
+}
+
+.systems-bento__main {
+  grid-column: span 8;
+  grid-row: span 2;
+}
+
+.systems-bento__side {
+  grid-column: span 4;
+}
+
+.projects-secondary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-24);
+  width: 100%;
+  margin-top: var(--space-24);
+}
+
+/* Card con demo interactiva: no es un enlace completo, así que no promete
+   clic (cursor normal) y dibuja sus esquinas también con foco interno. */
+.project-card--demo {
+  cursor: default;
+}
+
+.project-card--demo:hover .project-card__image-wrapper svg {
+  transform: none;
+}
+
+.project-card__image-wrapper--demo {
+  display: block;
+  height: auto;
+  padding: var(--space-16);
+}
+
+.project-card--featured .project-card__image-wrapper--demo {
+  height: auto;
+}
+
+.project-card__cover-caption--static {
+  position: static;
+  display: block;
+  margin-top: var(--space-8);
+  text-align: right;
+}
+
+/* ---- Cadena de tokens: primitivo → semántico → componente ---- */
+
+.token-demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.token-demo[hidden],
+.token-demo__fallback[hidden] {
+  display: none;
+}
+
+.token-demo__fallback {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+  color: var(--gray-600);
+}
+
+.token-demo__scroll {
+  overflow-x: auto;
+}
+
+.token-chain {
+  position: relative;
+  min-width: 520px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-48);
+  padding: 2px;
+}
+
+.token-chain__col h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-600);
+  margin-bottom: var(--space-8);
+}
+
+.token-chain__col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.token {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-secondary-900);
+  background: var(--color-hero-bg);
+  border: 0.5px solid var(--color-hero-line);
+  border-radius: 2px;
+  padding: 6px 10px;
+  text-align: left;
+  cursor: default;
+  transition: opacity var(--duration-base) var(--easing-standard),
+              border-color var(--duration-base) var(--easing-standard);
+}
+
+button.token {
+  cursor: pointer;
+}
+
+.token__swatch {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border: 0.5px solid var(--color-hero-line);
+  transition: background var(--duration-slow) var(--easing-standard);
+}
+
+.token.is-dim {
+  opacity: 0.4;
+}
+
+.token.is-hot {
+  border-color: var(--color-secondary-900);
+}
+
+.token-chain__links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.token-chain__links path {
+  fill: none;
+  stroke: var(--color-secondary-900);
+  stroke-width: 1;
+  transition: opacity var(--duration-base) var(--easing-standard);
+}
+
+.token-chain__links path.is-faint {
+  opacity: 0.15;
+}
+
+.token-demo__live {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 0.5px solid var(--color-hero-line);
+}
+
+.token-demo__mode {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.token-demo__label,
+.token-demo__hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gray-600);
+}
+
+.mode-switch {
+  display: inline-flex;
+  border: 0.5px solid var(--color-secondary-900);
+}
+
+.mode-switch button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 0;
+  color: var(--color-secondary-900);
+  cursor: pointer;
+}
+
+.mode-switch button[aria-pressed="true"] {
+  background: var(--color-secondary-900);
+  color: var(--color-hero-bg);
+}
+
+.token-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  min-width: 240px;
+  padding: 10px 14px;
+  border: 0.5px solid transparent;
+  border-radius: 8px;
+  transition: background var(--duration-slow) var(--easing-standard),
+              color var(--duration-slow) var(--easing-standard);
+}
+
+.token-preview p {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.token-preview__btn {
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-weight: var(--font-weight-bold);
+  font-size: 13px;
+  transition: background var(--duration-slow) var(--easing-standard),
+              color var(--duration-slow) var(--easing-standard);
+}
+
+/* El bento 8/4 necesita ancho: por debajo de 1024px se apila. Es el único
+   componente con un segundo breakpoint, a propósito. */
+@media (max-width: 1024px) {
+  .systems-bento {
+    grid-template-columns: 1fr;
+  }
+  .systems-bento__main,
+  .systems-bento__side {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-secondary {
     grid-template-columns: 1fr;
   }
 }

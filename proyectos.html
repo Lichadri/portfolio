@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adriana Bautista — Proyectos</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="tokens.css?v=35" />
-  <link rel="stylesheet" href="styles.css?v=35" />
+  <link rel="stylesheet" href="tokens.css?v=36" />
+  <link rel="stylesheet" href="styles.css?v=36" />
 </head>
 <body>
 
@@ -80,7 +80,7 @@
     <div class="hero-b__scroll-cue" id="hero-scroll-cue">
       <span>scroll</span>
       <span class="hero-b__scroll-line"></span>
-      <span>02 — proyectos</span>
+      <span>02 — sistemas</span>
     </div>
   </section>
 
@@ -102,10 +102,134 @@
     </div>
   </section>
 
+  <!-- ===================== SISTEMAS ===================== -->
+  <!-- Categoría de trabajo distinta a "producto": por eso tiene su propia
+       sección y un layout asimétrico (bento) en vez de la grilla pareja.
+       La card de Dalton es un <article> y no un <a> único: su portada es una
+       demo interactiva (toggle de modo, chips enfocables) y no puede vivir
+       dentro de un enlace. El CTA es el único link real. -->
+  <section class="projects-section projects-section--systems">
+    <div class="projects-section__eyebrow" data-reveal>02 — sistemas</div>
+    <h2 class="projects-section__title" data-reveal>Diseño las reglas, no solo las pantallas</h2>
+    <p class="projects-section__lead" data-reveal>
+      Arquitectura de variables, documentación y medición para que los
+      equipos diseñen más rápido y con coherencia.
+    </p>
+
+    <div class="systems-bento">
+
+      <article class="project-card project-card--featured project-card--demo systems-bento__main">
+        <div class="project-card__image-wrapper project-card__image-wrapper--demo">
+          <p class="token-demo__fallback">
+            Tres capas de variables — primitivos, semánticos y de componente.
+            Al cambiar de modo solo se reasigna la capa semántica; los
+            componentes no se tocan.
+          </p>
+          <div class="token-demo" id="token-demo" hidden>
+            <div class="token-demo__scroll">
+              <div class="token-chain" id="token-chain">
+                <svg class="token-chain__links" id="token-links" aria-hidden="true"></svg>
+                <div class="token-chain__col"><h4>color-prim</h4><ul id="tok-prim"></ul></div>
+                <div class="token-chain__col"><h4>color-sem</h4><ul id="tok-sem"></ul></div>
+                <div class="token-chain__col"><h4>color-comp</h4><ul id="tok-comp"></ul></div>
+              </div>
+            </div>
+            <div class="token-demo__live">
+              <div class="token-demo__mode">
+                <span class="token-demo__label">--mode:</span>
+                <div class="mode-switch" role="group" aria-label="Modo de color">
+                  <button type="button" aria-pressed="true" data-mode="light">claro</button>
+                  <button type="button" aria-pressed="false" data-mode="dark">oscuro</button>
+                </div>
+                <span class="token-demo__hint">los componentes no se tocan</span>
+              </div>
+              <div class="token-preview" id="token-preview" aria-hidden="true">
+                <p>Tu póliza está activa</p>
+                <span class="token-preview__btn">Ver detalle</span>
+              </div>
+            </div>
+          </div>
+          <span class="project-card__cover-caption project-card__cover-caption--static">--cover: token chain · tokens ilustrativos</span>
+        </div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">Dalton 2.0</h3>
+        </div>
+        <p class="project-card__description">
+          Arquitectura de variables en tres capas, documentación por
+          componente y estudio de tiempo con la librería en uso.
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__footer-note">--card-variant: featured</span>
+          <a href="dalton.html" class="project-card__link" aria-label="Ver caso completo: Dalton 2.0">Ver proyecto</a>
+        </div>
+      </article>
+
+      <a href="fna.html" class="project-card systems-bento__side" aria-label="Ver caso completo: FNA">
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <rect x="95" y="42" width="110" height="66" rx="4" fill="none" stroke="#15130f" stroke-width="2"/>
+            <line x1="95" y1="58" x2="205" y2="58" stroke="#15130f" stroke-width="2"/>
+            <circle cx="105" cy="50" r="2.5" fill="#15130f"/>
+            <circle cx="114" cy="50" r="2.5" fill="#15130f"/>
+            <rect x="108" y="70" width="30" height="10" rx="5" fill="#90eb2f"/>
+            <rect x="108" y="86" width="50" height="8" rx="2" fill="none" stroke="#15130f" stroke-width="1.5"/>
+            <circle cx="180" cy="90" r="7" fill="none" stroke="#15130f" stroke-width="1.5"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · sector: sistema de diseño</span>
+        </div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">FNA</h3>
+          <span class="project-card__badge">Design system</span>
+        </div>
+        <p class="project-card__description">
+          Rediseño completo de fnamilanoforlanini.com, sin versión mobile
+          previa — sistema de componentes desde cero.
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__footer-note">--card-variant: regular</span>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </div>
+      </a>
+
+      <a href="dalton.html#resultado" class="project-card project-card--featured systems-bento__side" aria-label="Ver el estudio tiempo-movimiento de Dalton 2.0">
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <g font-family="'JetBrains Mono', monospace" font-size="9" fill="#475467">
+              <text x="64" y="40">desde cero · 5:40</text>
+              <text x="64" y="80">con Dalton · 3:50</text>
+              <text x="208" y="122" text-anchor="middle">−1:50</text>
+            </g>
+            <rect x="64" y="46" width="172" height="16" fill="#15130f"/>
+            <rect x="64" y="86" width="116" height="16" fill="#90eb2f"/>
+            <line x1="180" y1="108" x2="236" y2="108" stroke="#15130f" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · sector: design ops</span>
+        </div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">Estudio tiempo-movimiento</h3>
+          <span class="project-card__badge">Medición</span>
+        </div>
+        <div class="project-card__metric">
+          <span class="project-card__metric-value">~30%</span>
+          <span class="project-card__metric-sub">menos tiempo · n=10</span>
+        </div>
+        <p class="project-card__description">
+          Tiempo de construir la misma pieza desde cero y con Dalton, con la
+          librería ya en producción.
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__footer-note">--card-variant: featured</span>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- ===================== PROYECTOS ===================== -->
   <section class="projects-section">
-    <div class="projects-section__eyebrow" data-reveal>02 — proyectos</div>
-    <h2 class="projects-section__title" data-reveal>Casos de estudio</h2>
+    <div class="projects-section__eyebrow" data-reveal>03 — proyectos</div>
+    <h2 class="projects-section__title" data-reveal>Casos de producto</h2>
 
     <!-- Tres casos destacados, misma anatomía de card, mismo peso visual.
          Orden por relevancia estratégica para el posicionamiento actual
@@ -207,155 +331,85 @@
 
     </div>
 
-    <!-- Carrusel: teaser puro, texto corto a propósito (line-clamp:2 en la
-         descripción evita que un texto largo desborde el card). Orden por
-         vigencia (Dalton 2.0 es lo más reciente, luego MEP), no por
-         categoría. Sin métrica: --card-variant: regular en el footer en
-         vez de la caja de métrica, que queda reservada a los destacados. -->
-    <div class="carousel-wrapper" data-reveal>
-      <button class="carousel-arrow carousel-arrow--prev" id="carousel-prev" aria-label="Ver proyecto anterior">←</button>
+    <!-- Segunda fila: grilla de 3 (antes carrusel). Con Dalton y FNA movidos
+         a Sistemas quedan 3 cards regulares, que caben sin scroll horizontal.
+         Orden por vigencia (MEP primero), no por categoría. -->
+    <div class="projects-secondary">
 
-      <div class="carousel-track" id="carousel-track">
+      <a href="mep.html" class="project-card" data-reveal aria-label="Ver caso completo: MEP">
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <path d="M150 45 l30 12 v28 c0 20 -14 32 -30 38 c-16 -6 -30 -18 -30 -38 v-28 z" fill="none" stroke="#15130f" stroke-width="2"/>
+            <rect x="128" y="90" width="44" height="20" rx="10" fill="none" stroke="#90eb2f" stroke-width="2"/>
+            <circle cx="160" cy="100" r="7" fill="#90eb2f"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · sector: seguros</span>
+        </div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">MEP</h3>
+          <span class="project-card__badge">Diseño</span>
+        </div>
+        <p class="project-card__description">
+          Rediseño de Home y Mis Seguros — más autogestión, menos
+          dependencia del call center.
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__footer-note">--card-variant: regular</span>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </div>
+      </a>
 
-        <a href="dalton.html" class="project-card carousel-card" aria-label="Ver caso completo: Dalton 2.0">
-          <div class="project-card__image-wrapper">
-            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
-              <g fill="#90eb2f">
-                <rect x="64" y="42" width="70" height="20" rx="10"/>
-                <rect x="140" y="42" width="48" height="20" rx="10"/>
-                <rect x="194" y="42" width="42" height="20" rx="10"/>
-              </g>
-              <g fill="none" stroke="#90eb2f" stroke-width="2">
-                <rect x="64" y="72" width="56" height="20" rx="10"/>
-                <rect x="126" y="72" width="64" height="20" rx="10"/>
-              </g>
-              <g fill="none" stroke="#15130f" stroke-width="1.5" stroke-dasharray="3 3">
-                <rect x="64" y="102" width="44" height="20" rx="10"/>
-                <rect x="114" y="102" width="44" height="20" rx="10"/>
-                <rect x="164" y="102" width="36" height="20" rx="10"/>
-                <rect x="206" y="102" width="30" height="20" rx="10"/>
-              </g>
-            </svg>
-            <span class="project-card__cover-caption">--cover: illustrated · sector: design ops</span>
-          </div>
-          <div class="project-card__header">
-            <h3 class="project-card__title">Dalton 2.0</h3>
-            <span class="project-card__badge">Design systems</span>
-          </div>
-          <p class="project-card__description">
-            Assessment con Negocio, documentación por componente y estudio
-            tiempo-movimiento sobre la librería en uso.
-          </p>
-          <div class="project-card__footer">
-            <span class="project-card__footer-note">--card-variant: regular</span>
-            <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
-          </div>
-        </a>
+      <a href="ama.html" class="project-card" data-reveal aria-label="Ver caso completo: AMA — Perfilamiento de usuario">
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <circle cx="120" cy="70" r="24" fill="none" stroke="#15130f" stroke-width="2"/>
+            <line x1="138" y1="88" x2="152" y2="102" stroke="#15130f" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="185" cy="55" r="6" fill="none" stroke="#90eb2f" stroke-width="2"/>
+            <circle cx="200" cy="80" r="6" fill="none" stroke="#90eb2f" stroke-width="2"/>
+            <circle cx="178" cy="95" r="6" fill="none" stroke="#90eb2f" stroke-width="2"/>
+            <line x1="185" y1="61" x2="200" y2="74" stroke="#90eb2f" stroke-width="1"/>
+            <line x1="200" y1="86" x2="178" y2="89" stroke="#90eb2f" stroke-width="1"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · sector: investigación</span>
+        </div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
+          <span class="project-card__badge">Investigación</span>
+        </div>
+        <p class="project-card__description">
+          Research de campo para habilitar identidad digital blockchain
+          de productores textiles en Cusco.
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__footer-note">--card-variant: regular</span>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </div>
+      </a>
 
-        <a href="mep.html" class="project-card carousel-card" aria-label="Ver caso completo: MEP">
-          <div class="project-card__image-wrapper">
-            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
-              <path d="M150 45 l30 12 v28 c0 20 -14 32 -30 38 c-16 -6 -30 -18 -30 -38 v-28 z" fill="none" stroke="#15130f" stroke-width="2"/>
-              <rect x="128" y="90" width="44" height="20" rx="10" fill="none" stroke="#90eb2f" stroke-width="2"/>
-              <circle cx="160" cy="100" r="7" fill="#90eb2f"/>
-            </svg>
-            <span class="project-card__cover-caption">--cover: illustrated · sector: seguros</span>
-          </div>
-          <div class="project-card__header">
-            <h3 class="project-card__title">MEP</h3>
-            <span class="project-card__badge">Diseño</span>
-          </div>
-          <p class="project-card__description">
-            Rediseño de Home y Mis Seguros — más autogestión, menos
-            dependencia del call center.
-          </p>
-          <div class="project-card__footer">
-            <span class="project-card__footer-note">--card-variant: regular</span>
-            <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
-          </div>
-        </a>
+      <a href="banbif.html" class="project-card" data-reveal aria-label="Ver caso completo: Rediseño Banbif">
+        <div class="project-card__image-wrapper">
+          <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
+            <rect x="95" y="50" width="110" height="72" rx="8" fill="none" stroke="#15130f" stroke-width="2"/>
+            <rect x="110" y="68" width="20" height="16" rx="3" fill="#90eb2f"/>
+            <line x1="110" y1="100" x2="160" y2="100" stroke="#15130f" stroke-width="2" stroke-linecap="round"/>
+            <line x1="110" y1="110" x2="140" y2="110" stroke="#15130f" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+          <span class="project-card__cover-caption">--cover: illustrated · sector: banca</span>
+        </div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">Rediseño Banbif</h3>
+          <span class="project-card__badge">Diseño</span>
+        </div>
+        <p class="project-card__description">
+          Sistema de componentes con estados documentados y testing
+          visual con usuarios reales.
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__footer-note">--card-variant: regular</span>
+          <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
+        </div>
+      </a>
 
-        <a href="fna.html" class="project-card carousel-card" aria-label="Ver caso completo: FNA">
-          <div class="project-card__image-wrapper">
-            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
-              <rect x="95" y="42" width="110" height="66" rx="4" fill="none" stroke="#15130f" stroke-width="2"/>
-              <line x1="95" y1="58" x2="205" y2="58" stroke="#15130f" stroke-width="2"/>
-              <circle cx="105" cy="50" r="2.5" fill="#15130f"/>
-              <circle cx="114" cy="50" r="2.5" fill="#15130f"/>
-              <rect x="108" y="70" width="30" height="10" rx="5" fill="#90eb2f"/>
-              <rect x="108" y="86" width="50" height="8" rx="2" fill="none" stroke="#15130f" stroke-width="1.5"/>
-              <circle cx="180" cy="90" r="7" fill="none" stroke="#15130f" stroke-width="1.5"/>
-            </svg>
-            <span class="project-card__cover-caption">--cover: illustrated · sector: sistema de diseño</span>
-          </div>
-          <div class="project-card__header">
-            <h3 class="project-card__title">FNA</h3>
-            <span class="project-card__badge">Diseño</span>
-          </div>
-          <p class="project-card__description">
-            Rediseño completo de fnamilanoforlanini.com, sin versión mobile
-            previa — sistema de componentes desde cero.
-          </p>
-          <div class="project-card__footer">
-            <span class="project-card__footer-note">--card-variant: regular</span>
-            <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
-          </div>
-        </a>
-
-        <a href="ama.html" class="project-card carousel-card" aria-label="Ver caso completo: AMA — Perfilamiento de usuario">
-          <div class="project-card__image-wrapper">
-            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
-              <circle cx="120" cy="70" r="24" fill="none" stroke="#15130f" stroke-width="2"/>
-              <line x1="138" y1="88" x2="152" y2="102" stroke="#15130f" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="185" cy="55" r="6" fill="none" stroke="#90eb2f" stroke-width="2"/>
-              <circle cx="200" cy="80" r="6" fill="none" stroke="#90eb2f" stroke-width="2"/>
-              <circle cx="178" cy="95" r="6" fill="none" stroke="#90eb2f" stroke-width="2"/>
-              <line x1="185" y1="61" x2="200" y2="74" stroke="#90eb2f" stroke-width="1"/>
-              <line x1="200" y1="86" x2="178" y2="89" stroke="#90eb2f" stroke-width="1"/>
-            </svg>
-            <span class="project-card__cover-caption">--cover: illustrated · sector: investigación</span>
-          </div>
-          <div class="project-card__header">
-            <h3 class="project-card__title">AMA — Perfilamiento de usuario</h3>
-            <span class="project-card__badge">Investigación</span>
-          </div>
-          <p class="project-card__description">
-            Research de campo para habilitar identidad digital blockchain
-            de productores textiles en Cusco.
-          </p>
-          <div class="project-card__footer">
-            <span class="project-card__footer-note">--card-variant: regular</span>
-            <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
-          </div>
-        </a>
-
-        <a href="banbif.html" class="project-card carousel-card" aria-label="Ver caso completo: Rediseño Banbif">
-          <div class="project-card__image-wrapper">
-            <svg width="100%" height="100%" viewBox="0 0 300 150" aria-hidden="true">
-              <rect x="95" y="50" width="110" height="72" rx="8" fill="none" stroke="#15130f" stroke-width="2"/>
-              <rect x="110" y="68" width="20" height="16" rx="3" fill="#90eb2f"/>
-              <line x1="110" y1="100" x2="160" y2="100" stroke="#15130f" stroke-width="2" stroke-linecap="round"/>
-              <line x1="110" y1="110" x2="140" y2="110" stroke="#15130f" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-            </svg>
-            <span class="project-card__cover-caption">--cover: illustrated · sector: banca</span>
-          </div>
-          <div class="project-card__header">
-            <h3 class="project-card__title">Rediseño Banbif</h3>
-            <span class="project-card__badge">Diseño</span>
-          </div>
-          <p class="project-card__description">
-            Sistema de componentes con estados documentados y testing
-            visual con usuarios reales.
-          </p>
-          <div class="project-card__footer">
-            <span class="project-card__footer-note">--card-variant: regular</span>
-            <span class="project-card__link" aria-hidden="true">Ver proyecto</span>
-          </div>
-        </a>
-
-      </div>
-
-      <button class="carousel-arrow carousel-arrow--next" id="carousel-next" aria-label="Ver siguiente proyecto">→</button>
     </div>
   </section>
 
@@ -416,7 +470,7 @@
 
   <!-- ===================== FOOTER ===================== -->
   <section class="footer-cta">
-    <div class="footer-cta__eyebrow">03 — contacto</div>
+    <div class="footer-cta__eyebrow">04 — contacto</div>
     "Gracias por tu interés en mi trabajo, sigamos en contacto"
   </section>
 
@@ -447,6 +501,6 @@
        Aparece tras pasar el hero, con idle animation. Click = volver arriba. -->
   <button class="floating-avatar" id="floating-avatar" aria-label="Volver al inicio de la página" type="button">AB</button>
 
-  <script src="main.js?v=35"></script>
+  <script src="main.js?v=36"></script>
 </body>
 </html>
